@@ -83,26 +83,20 @@ section{padding-block:clamp(64px,9vw,120px)}
 .hero .trust b{color:var(--ink);font-weight:700}
 @media (max-width:900px){.hero .wrap{grid-template-columns:1fr}}
 
-/* dashboard mock */
-.mock{background:var(--ink);color:#F3F5F8;border-radius:22px;padding:26px 26px 22px;box-shadow:0 30px 80px -30px rgba(14,20,32,.55);position:relative}
-:root[data-theme="dark"] .mock,.mock{--m-line:#2A3446;--m-mute:#AEB8C7}
-.mock .top{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:11.5px;color:var(--m-mute);letter-spacing:.06em}
-.mock .top .live{display:inline-flex;align-items:center;gap:6px;color:#F3F5F8}
-.mock .top .live i{width:7px;height:7px;border-radius:50%;background:#3FB950;display:inline-block;box-shadow:0 0 0 3px rgba(63,185,80,.25)}
-.mock h3{font-size:17px;font-weight:700;margin-top:14px;color:#fff;letter-spacing:-0.01em}
-.mock .sub{font-size:12.5px;color:var(--m-mute);margin-top:2px}
-.funnel{margin-top:22px;display:grid;gap:10px}
-.funnel .row{display:grid;grid-template-columns:96px 1fr 58px;align-items:center;gap:12px;font-size:13px}
-.funnel .row .lbl{color:#E4E8EE}
-.funnel .bar{height:22px;background:#1C2434;border-radius:0 4px 4px 0;overflow:hidden}
-.funnel .bar i{display:block;height:100%;background:var(--f);border-radius:0 4px 4px 0;width:var(--w);animation:grow 1.1s cubic-bezier(.2,.8,.2,1) both}
-@keyframes grow{from{width:0}}
-.funnel .val{font-family:var(--mono);font-size:13px;text-align:right;font-variant-numeric:tabular-nums;color:#fff}
-.mock .foot{margin-top:22px;padding-top:16px;border-top:1px solid var(--m-line);display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.mock .foot div{font-size:11.5px;color:var(--m-mute)}
-.mock .foot b{display:block;font-size:19px;color:#fff;font-weight:700;letter-spacing:-0.02em;font-variant-numeric:tabular-nums}
-.mock .foot b.up{color:#7EE2A8}
-.mock .tag{position:absolute;top:-14px;right:22px;background:var(--red);color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.08em;padding:6px 10px;border-radius:999px;font-weight:600}
+/* cctv hero scene */
+.cctv{background:var(--ink);border-radius:22px;padding:14px;box-shadow:0 30px 80px -30px rgba(14,20,32,.55);position:relative}
+.cctv .head{display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:#AEB8C7;padding:2px 4px 10px}
+.cctv .head .live{display:inline-flex;align-items:center;gap:6px;color:#F3F5F8}
+.cctv .head .live i{width:7px;height:7px;border-radius:50%;background:#3FB950;display:inline-block;box-shadow:0 0 0 3px rgba(63,185,80,.25)}
+.cctv canvas{display:block;width:100%;aspect-ratio:4/3;max-width:100%;border-radius:12px;background:#080D15}
+.cctv .cap{display:flex;flex-wrap:wrap;gap:6px 14px;font-family:var(--mono);font-size:10.5px;color:#7F8A9B;padding:10px 4px 0;letter-spacing:.04em}
+.cctv .cap b{color:#AEB8C7;font-weight:500}
+.cctv .foot{margin-top:12px;padding-top:14px;border-top:1px solid #2A3446;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.cctv .foot div{font-size:11.5px;color:#AEB8C7}
+.cctv .foot b{display:block;font-size:22px;color:#fff;font-weight:700;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;line-height:1.2}
+.cctv .foot b small{font-size:12px;color:#AEB8C7;font-weight:500;margin-left:3px}
+.cctv .tag{position:absolute;top:-13px;right:20px;background:var(--red);color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.08em;padding:6px 11px;border-radius:999px;font-weight:600}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* stats */
 .stats{border-block:1px solid var(--line);background:var(--tint);padding-block:36px}
@@ -294,23 +288,18 @@ footer .legal{grid-column:1/-1;padding-top:24px;border-top:1px solid var(--line)
       </div>
     </div>
 
-    <div class="mock" aria-label="L.GA 대시보드 예시">
-      <span class="tag">LIVE · 잠실점 팝업존 B</span>
-      <div class="top"><span>GLOWLAB · 2026.08.14 – 08.27</span><span class="live"><i></i>수집 중</span></div>
-      <h3>오늘의 방문 퍼널 (유입 100명 기준)</h3>
-      <p class="sub">통행 → 유입 → 체류 → 집품 → 구매</p>
-      <div class="funnel">
-        <div class="row"><span class="lbl">유입</span><div class="bar"><i style="--w:100%;--f:#3987E5"></i></div><span class="val">100</span></div>
-        <div class="row"><span class="lbl">30초+ 체류</span><div class="bar"><i style="--w:52%;--f:#2A78D6"></i></div><span class="val">52</span></div>
-        <div class="row"><span class="lbl">집품</span><div class="bar"><i style="--w:34%;--f:#256ABF"></i></div><span class="val">34</span></div>
-        <div class="row"><span class="lbl">구매</span><div class="bar"><i style="--w:3%;--f:#F0475A"></i></div><span class="val">2.8</span></div>
-      </div>
+    <figure class="cctv">
+      <span class="tag">LIVE · 잠실점 2F 팝업존 B</span>
+      <div class="head"><span>CAM 02 · 엣지 추론</span><span class="live"><i></i>측정 중</span></div>
+      <canvas id="scene" aria-label="매장 앞 통행과 매장 안 방문객을 익명 박스로 인식하는 CCTV 화면 예시"></canvas>
+      <p class="sr">화면에는 사람 형체와 익명 번호만 표시됩니다. 얼굴이나 개인 정보는 사용하지 않습니다.</p>
+      <figcaption class="cap"><span><b>익명 좌표만 추출</b> · 원본 영상 미전송</span><span><b>얼굴 특징값 미사용</b></span><span>붉은 점선 = 매장 경계선</span></figcaption>
       <div class="foot">
-        <div>집품 → 구매 전환<b>8.1%</b></div>
-        <div>신규 고객 비중<b class="up">63%</b></div>
-        <div>벤치마크 대비 유입률<b class="up">+4.2%p</b></div>
+        <div>통행<b id="cTraffic">0</b></div>
+        <div>유입<b id="cEntry">0<small id="cRate"></small></b></div>
+        <div>집품<b id="cPick">0</b></div>
       </div>
-    </div>
+    </figure>
   </div>
 </section>
 
@@ -558,5 +547,328 @@ footer .legal{grid-column:1/-1;padding-top:24px;border-top:1px solid var(--line)
   </div>
 </footer>
 
+<script>
+/* 히어로 CCTV 장면 — 매장 앞 통행과 매장 안 방문객을 익명 박스로 인식하는 모습.
+   사람 형체와 번호만 그립니다. 얼굴·개인정보 개념은 아예 등장하지 않습니다. */
+(function(){
+  var cv = document.getElementById('scene');
+  if(!cv || !cv.getContext) return;
+  var ctx = cv.getContext('2d');
+  var W = 0, H = 0, DPR = 1;
+  var MONO = '"IBM Plex Mono", ui-monospace, Menlo, monospace';
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 월드 좌표: x 0~100(좌우), y 0~60 (0 = 매장 안쪽 = 화면 위, 60 = 통로 앞쪽 = 화면 아래) */
+  var LINE_Y = 38, GAP0 = 38, GAP1 = 62;
+  var SHELVES = [
+    {x0:16, x1:40, y0:11, y1:19, label:'세럼 · 앰플 월'},
+    {x0:60, x1:84, y0:11, y1:19, label:'테스터 바'},
+    {x0:41, x1:59, y0:25, y1:31, label:'시그니처 테이블'}
+  ];
+  var SPOTS = [{x:28,y:22},{x:72,y:22},{x:50,y:34},{x:22,y:21},{x:78,y:21}];
+
+  var C = {
+    pass:  '#6DA7EC',
+    inside:'#3987E5',
+    pick:  '#F5A623',
+    line:  '#F0475A'
+  };
+
+  function resize(){
+    var r = cv.getBoundingClientRect();
+    if(!r.width) return;
+    DPR = Math.min(2, window.devicePixelRatio || 1);
+    W = r.width; H = r.height;
+    cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR);
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  }
+
+  function proj(x, y){
+    var t = Math.max(0, Math.min(1, y / 60));
+    var persp = 0.42 + 0.80 * t;
+    return {
+      sx: W/2 + (x - 50) * (W/118) * persp,
+      sy: H*0.09 + Math.pow(t, 1.12) * H*0.80,
+      p: persp
+    };
+  }
+
+  var agents = [], pulses = [], nextId = 1, spawnIn = 0;
+  var count = {traffic:0, entry:0, pick:0};
+
+  function spawn(){
+    var side = Math.random() < 0.5 ? -1 : 1;
+    agents.push({
+      id: (nextId++ % 99) || 1,
+      x: side < 0 ? -8 : 108,
+      y: 45 + Math.random()*11,
+      dir: side < 0 ? 1 : -1,
+      speed: 11 + Math.random()*5,
+      state: 'pass',
+      decided: false,
+      counted: false,
+      dwell: 0,
+      picked: false,
+      flash: 0,
+      way: [],
+      trail: [],
+      trailT: 0
+    });
+  }
+
+  function seat(a){
+    var s = SPOTS[Math.floor(Math.random()*SPOTS.length)];
+    a.way = [{x:50, y:LINE_Y - 1}, {x:s.x + (Math.random()*6-3), y:s.y + (Math.random()*3-1.5)}];
+  }
+
+  function step(a, dt){
+    if(a.state === 'pass'){
+      a.x += a.dir * a.speed * dt;
+      a.y += Math.sin(a.x/14 + a.id) * 1.2 * dt;
+      if(!a.counted && ((a.dir > 0 && a.x > 50) || (a.dir < 0 && a.x < 50))){ a.counted = true; count.traffic++; }
+      if(!a.decided && a.x > GAP0 && a.x < GAP1){
+        a.decided = true;
+        if(Math.random() < 0.42){ a.state = 'enter'; count.entry++; seat(a); pulses.push({x:a.x, t:1}); }
+      }
+    } else if(a.state === 'enter' || a.state === 'leave'){
+      var t = a.way[0];
+      if(!t){
+        if(a.state === 'enter'){ a.state = 'dwell'; a.dwell = 2.6 + Math.random()*3.4; }
+        else { a.state = 'pass'; a.decided = true; a.dir = Math.random() < 0.5 ? 1 : -1; }
+        return;
+      }
+      var dx = t.x - a.x, dy = t.y - a.y, d = Math.hypot(dx, dy);
+      var v = (a.state === 'enter' ? 9 : 11) * dt;
+      if(d < v){ a.x = t.x; a.y = t.y; a.way.shift(); }
+      else { a.x += dx/d * v; a.y += dy/d * v; }
+    } else if(a.state === 'dwell'){
+      a.x += Math.sin(performance.now()/900 + a.id) * 0.9 * dt;
+      a.dwell -= dt;
+      if(!a.picked && a.dwell < 1.9 && Math.random() < 0.028){
+        a.picked = true; a.flash = 1.1; count.pick++;
+      }
+      if(a.dwell <= 0){
+        a.state = 'leave';
+        a.way = [{x:50, y:LINE_Y - 1}, {x:48 + Math.random()*8, y:48 + Math.random()*8}];
+      }
+    }
+    if(a.flash > 0) a.flash -= dt;
+
+    a.trailT -= dt;
+    if(a.trailT <= 0 && a.y < LINE_Y + 4){
+      a.trail.push({x:a.x, y:a.y});
+      if(a.trail.length > 16) a.trail.shift();
+      a.trailT = 0.16;
+    }
+    return a.x > -14 && a.x < 114;
+  }
+
+  function label(a){
+    if(a.state === 'dwell') return a.picked ? '집품' : '체류';
+    if(a.state === 'enter') return '유입';
+    if(a.state === 'leave') return '이동';
+    return '통행';
+  }
+  function color(a){
+    if(a.flash > 0 || (a.state === 'dwell' && a.picked)) return C.pick;
+    if(a.state === 'pass') return C.pass;
+    return C.inside;
+  }
+
+  function quad(pts, fill){
+    ctx.beginPath();
+    ctx.moveTo(pts[0].sx, pts[0].sy);
+    for(var i=1;i<pts.length;i++) ctx.lineTo(pts[i].sx, pts[i].sy);
+    ctx.closePath(); ctx.fillStyle = fill; ctx.fill();
+  }
+
+  function drawScene(){
+    /* 바닥 */
+    var g = ctx.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0, '#0C131F'); g.addColorStop(1, '#131C2B');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+
+    /* 매장 안 바닥 — 경계선 위쪽 */
+    quad([proj(0, 0), proj(100, 0), proj(100, LINE_Y), proj(0, LINE_Y)], 'rgba(57,135,229,.055)');
+
+    /* 원근 그리드 */
+    ctx.lineWidth = 1; ctx.strokeStyle = 'rgba(255,255,255,.055)';
+    for(var y=0; y<=60; y+=10){
+      var a1 = proj(0, y), b1 = proj(100, y);
+      ctx.beginPath(); ctx.moveTo(a1.sx, a1.sy); ctx.lineTo(b1.sx, b1.sy); ctx.stroke();
+    }
+    for(var x=0; x<=100; x+=20){
+      var a2 = proj(x, 0), b2 = proj(x, 60);
+      ctx.beginPath(); ctx.moveTo(a2.sx, a2.sy); ctx.lineTo(b2.sx, b2.sy); ctx.stroke();
+    }
+
+    /* 집기 */
+    SHELVES.forEach(function(sh){
+      var base = [proj(sh.x0, sh.y0), proj(sh.x1, sh.y0), proj(sh.x1, sh.y1), proj(sh.x0, sh.y1)];
+      quad(base, '#202C40');
+      var lift = H * 0.042;
+      var top = base.map(function(pt){ return {sx:pt.sx, sy:pt.sy - lift * pt.p}; });
+      quad(top, '#2B3A52');
+      ctx.strokeStyle = 'rgba(148,175,214,.28)'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(top[0].sx, top[0].sy); ctx.lineTo(top[1].sx, top[1].sy);
+      ctx.lineTo(top[2].sx, top[2].sy); ctx.lineTo(top[3].sx, top[3].sy); ctx.closePath(); ctx.stroke();
+      if(W > 290 && sh.label){
+        var c = top[0];
+        ctx.font = '9px ' + MONO; ctx.textAlign = 'left';
+        ctx.fillStyle = 'rgba(174,184,199,.6)';
+        ctx.fillText(sh.label, c.sx + 2, c.sy - 4);
+      }
+    });
+
+    /* 매장 경계선 */
+    ctx.save();
+    ctx.setLineDash([6, 5]); ctx.lineWidth = 1.6; ctx.strokeStyle = C.line;
+    [[0, GAP0], [GAP1, 100]].forEach(function(sg){
+      var a3 = proj(sg[0], LINE_Y), b3 = proj(sg[1], LINE_Y);
+      ctx.beginPath(); ctx.moveTo(a3.sx, a3.sy); ctx.lineTo(b3.sx, b3.sy); ctx.stroke();
+    });
+    ctx.restore();
+
+    /* 유입 순간의 펄스 */
+    pulses = pulses.filter(function(p){
+      var q = proj(p.x, LINE_Y), r = (1 - p.t) * 22 * q.p;
+      ctx.beginPath(); ctx.arc(q.sx, q.sy, r, 0, Math.PI*2);
+      ctx.strokeStyle = 'rgba(240,71,90,' + (p.t * 0.7).toFixed(3) + ')'; ctx.lineWidth = 2; ctx.stroke();
+      p.t -= 0.02; return p.t > 0;
+    });
+
+    var lp = proj(74, LINE_Y);
+    ctx.font = '10px ' + MONO; ctx.fillStyle = 'rgba(240,71,90,.92)'; ctx.textAlign = 'left';
+    ctx.fillText('매장 경계선', lp.sx, lp.sy + 13);
+  }
+
+  var tags = [];
+
+  function drawAgent(a){
+    var q = proj(a.x, a.y);
+    var col = color(a);
+    var bh = H * 0.155 * q.p;          /* 사람 높이 */
+    var bw = bh * 0.34;
+
+    /* 동선 */
+    if(a.trail.length > 1){
+      ctx.lineWidth = 1.4; ctx.lineCap = 'round';
+      for(var i=1;i<a.trail.length;i++){
+        var p0 = proj(a.trail[i-1].x, a.trail[i-1].y), p1 = proj(a.trail[i].x, a.trail[i].y);
+        ctx.strokeStyle = 'rgba(57,135,229,' + (0.05 + 0.22 * i/a.trail.length).toFixed(3) + ')';
+        ctx.beginPath(); ctx.moveTo(p0.sx, p0.sy); ctx.lineTo(p1.sx, p1.sy); ctx.stroke();
+      }
+    }
+
+    /* 그림자 */
+    ctx.beginPath(); ctx.ellipse(q.sx, q.sy, bw*0.72, bh*0.075, 0, 0, Math.PI*2);
+    ctx.fillStyle = 'rgba(0,0,0,.38)'; ctx.fill();
+
+    /* 몸 · 머리 (실루엣만) */
+    var bodyTop = q.sy - bh*0.62;
+    ctx.fillStyle = a.state === 'pass' ? '#7B8BA1' : '#9DB2CB';
+    ctx.beginPath();
+    if(ctx.roundRect) { ctx.roundRect(q.sx - bw/2, bodyTop, bw, bh*0.62, bw*0.42); }
+    else { ctx.rect(q.sx - bw/2, bodyTop, bw, bh*0.62); }
+    ctx.fill();
+    ctx.beginPath(); ctx.arc(q.sx, bodyTop - bh*0.15, bh*0.125, 0, Math.PI*2); ctx.fill();
+
+    /* 인식 박스 */
+    var x0 = q.sx - bw*0.92, x1 = q.sx + bw*0.92;
+    var y0 = bodyTop - bh*0.34, y1 = q.sy + bh*0.05;
+    var w = x1 - x0, h2 = y1 - y0, k = Math.min(w, h2) * 0.26;
+    ctx.globalAlpha = a.flash > 0 ? 1 : 0.28;
+    ctx.strokeStyle = col; ctx.lineWidth = 1;
+    ctx.strokeRect(x0, y0, w, h2);
+    ctx.globalAlpha = 1;
+    ctx.lineWidth = 2; ctx.strokeStyle = col;
+    ctx.beginPath();
+    ctx.moveTo(x0, y0+k); ctx.lineTo(x0, y0); ctx.lineTo(x0+k, y0);
+    ctx.moveTo(x1-k, y0); ctx.lineTo(x1, y0); ctx.lineTo(x1, y0+k);
+    ctx.moveTo(x1, y1-k); ctx.lineTo(x1, y1); ctx.lineTo(x1-k, y1);
+    ctx.moveTo(x0+k, y1); ctx.lineTo(x0, y1); ctx.lineTo(x0, y1-k);
+    ctx.stroke();
+
+    if(w > 26) tags.push({x:x0, y:y0 - 15, txt:('0' + a.id).slice(-2) + ' · ' + label(a), col:col});
+  }
+
+  /* 겹치는 라벨은 그리지 않는다 */
+  function drawTags(){
+    var placed = [];
+    ctx.font = '10px ' + MONO; ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+    for(var i = tags.length - 1; i >= 0; i--){
+      var t = tags[i], w = ctx.measureText(t.txt).width + 12, h = 13;
+      var clash = placed.some(function(r){
+        return !(t.x + w < r.x || t.x > r.x + r.w || t.y + h < r.y || t.y > r.y + r.h);
+      });
+      if(clash) continue;
+      placed.push({x:t.x, y:t.y, w:w, h:h});
+      ctx.fillStyle = t.col;
+      ctx.beginPath();
+      if(ctx.roundRect) ctx.roundRect(t.x, t.y, w, h, 3); else ctx.rect(t.x, t.y, w, h);
+      ctx.fill();
+      ctx.fillStyle = '#0E1420'; ctx.fillText(t.txt, t.x + 6, t.y + 10);
+    }
+    tags.length = 0;
+  }
+
+  function osd(){
+    ctx.font = '10px ' + MONO; ctx.textAlign = 'left';
+    ctx.fillStyle = 'rgba(127,138,155,.8)';
+    ctx.fillText('EDGE INFERENCE · 원본 영상 미전송 · 좌표만 추출', 12, H - 12);
+  }
+
+  var elT = document.getElementById('cTraffic'), elE = document.getElementById('cEntry'),
+      elR = document.getElementById('cRate'), elP = document.getElementById('cPick');
+  var uiT = 0;
+  function ui(dt){
+    uiT -= dt; if(uiT > 0) return; uiT = 0.25;
+    if(elT) elT.textContent = count.traffic.toLocaleString();
+    if(elE && elE.firstChild) elE.firstChild.nodeValue = count.entry.toLocaleString();
+    if(elR) elR.textContent = count.traffic ? ' · ' + (count.entry / count.traffic * 100).toFixed(0) + '%' : '';
+    if(elP) elP.textContent = count.pick.toLocaleString();
+  }
+
+  var last = 0, running = false;
+  function frame(now){
+    if(!running) return;
+    var dt = Math.min(0.05, (now - last) / 1000 || 0.016); last = now;
+    spawnIn -= dt;
+    if(spawnIn <= 0 && agents.length < 11){ spawn(); spawnIn = 0.55 + Math.random()*1.1; }
+    agents = agents.filter(function(a){ return step(a, dt) !== false; });
+    agents.sort(function(a, b){ return a.y - b.y; });
+    drawScene();
+    agents.forEach(drawAgent);
+    drawTags();
+    osd();
+    ui(dt);
+    requestAnimationFrame(frame);
+  }
+
+  function still(){
+    for(var i=0;i<7;i++){ spawn(); }
+    agents.forEach(function(a, i){
+      a.x = 12 + i*13; a.y = 44 + (i%3)*4;
+      if(i < 3){ a.state='dwell'; a.dwell=3; a.x = SPOTS[i].x; a.y = SPOTS[i].y; a.picked = i===0; }
+    });
+    count.traffic = 84; count.entry = 18; count.pick = 6;
+    agents.sort(function(a,b){ return a.y - b.y; });
+    drawScene(); agents.forEach(drawAgent); drawTags(); osd(); uiT = 0; ui(0);
+  }
+
+  function start(){ if(running || reduce) return; running = true; last = performance.now(); requestAnimationFrame(frame); }
+  function stop(){ running = false; }
+
+  resize();
+  window.addEventListener('resize', function(){ resize(); if(reduce || !running) { agents.length ? (drawScene(), agents.forEach(drawAgent), drawTags(), osd()) : still(); } });
+  document.addEventListener('visibilitychange', function(){ document.hidden ? stop() : start(); });
+
+  if(reduce){ still(); }
+  else if(window.IntersectionObserver){
+    new IntersectionObserver(function(es){ es[0].isIntersecting ? start() : stop(); }, {threshold:0.05}).observe(cv);
+    still();
+  } else { still(); start(); }
+})();
+</script>
 </body>
 </html>
