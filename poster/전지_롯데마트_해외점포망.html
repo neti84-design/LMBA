@@ -1,0 +1,495 @@
+<title>롯데마트 해외 점포망 전지</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --ground:#EEF0F3;
+    --paper:#FCFCFA;
+    --paper-edge:#DFE3E8;
+    --ink:#1A1D24;
+    --ink-2:#5A616E;
+    --ink-3:#8C93A0;
+    --rule:#C9D0DA;
+    --blue:#17439B;
+    --red:#C22D26;
+    --hi:#FFE95C;
+    --hi-soft:rgba(255,233,92,.55);
+    --ok:#2C6E4B;
+    --shadow:rgba(26,29,36,.16);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0F1115;
+      --paper:#1B1E24;
+      --paper-edge:#2B3039;
+      --ink:#E9EBEF;
+      --ink-2:#A6ADBA;
+      --ink-3:#767E8C;
+      --rule:#39404B;
+      --blue:#8BAEF2;
+      --red:#FF8377;
+      --hi:#C9A92B;
+      --hi-soft:rgba(201,169,43,.32);
+      --ok:#68C494;
+      --shadow:rgba(0,0,0,.5);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0F1115;
+    --paper:#1B1E24;
+    --paper-edge:#2B3039;
+    --ink:#E9EBEF;
+    --ink-2:#A6ADBA;
+    --ink-3:#767E8C;
+    --rule:#39404B;
+    --blue:#8BAEF2;
+    --red:#FF8377;
+    --hi:#C9A92B;
+    --hi-soft:rgba(201,169,43,.32);
+    --ok:#68C494;
+    --shadow:rgba(0,0,0,.5);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:"Gothic A1","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    padding-inline:16px;
+    padding-block:28px 56px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:24px}
+
+  /* ---------- header ---------- */
+  .masthead{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 24px}
+  .masthead h1{
+    font-family:"Black Han Sans","Gothic A1",sans-serif;
+    font-weight:400;font-size:clamp(22px,3.4vw,34px);
+    margin:0;letter-spacing:-.01em;text-wrap:balance;line-height:1.15;
+  }
+  .kicker{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-3);margin:0 0 6px;
+  }
+  .specs{display:flex;flex-wrap:wrap;gap:6px}
+  .spec{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;
+    border:1px solid var(--rule);border-radius:999px;padding:4px 10px;color:var(--ink-2);
+    font-variant-numeric:tabular-nums;
+  }
+  .pens{display:flex;flex-wrap:wrap;gap:14px;align-items:center;
+    border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:10px 0}
+  .pen{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-2)}
+  .nib{width:22px;height:5px;border-radius:2px;flex:none}
+  .nib.k{background:var(--ink)} .nib.b{background:var(--blue)}
+  .nib.r{background:var(--red)} .nib.h{background:var(--hi)}
+
+  /* ---------- sheet ---------- */
+  .stage{container-type:inline-size}
+  .sheet{
+    position:relative;
+    background:var(--paper);
+    border:1px solid var(--paper-edge);
+    box-shadow:0 18px 44px -18px var(--shadow);
+    aspect-ratio:1091/788;
+    padding:2.3% 2.6%;
+    display:grid;grid-template-columns:1fr 1fr;
+    font-size:clamp(8px,.95vw,13px);
+    line-height:1.36;
+  }
+  @supports (font-size:1cqi){ .sheet{font-size:1.02cqi} }
+  /* 여백 가이드 = 실제 5cm 마진 */
+  .sheet::before{
+    content:"";position:absolute;inset:2.3% 2.6%;
+    border:1px dashed var(--rule);opacity:.55;pointer-events:none;
+  }
+  .col{padding:.85em 1.4em .85em 1.95em;display:flex;flex-direction:column;gap:.8em;min-width:0}
+  .col.left{border-right:3px solid var(--ink)}
+
+  .blk{position:relative;display:flex;flex-direction:column;gap:.3em}
+  .tag{
+    position:absolute;top:0;left:-1.55em;
+    font-family:"IBM Plex Mono",ui-monospace,monospace;
+    font-size:.62em;color:var(--ink-3);letter-spacing:.04em;
+  }
+
+  .q{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.8em;color:var(--blue);letter-spacing:.1em}
+  .head{
+    font-family:"Black Han Sans","Gothic A1",sans-serif;font-weight:400;
+    color:var(--blue);font-size:1.95em;line-height:1.08;margin:0;letter-spacing:-.01em;
+  }
+  .sub{font-size:.98em;font-weight:700;color:var(--ink);line-height:1.34}
+
+  /* 경쟁자 비교 */
+  .vs{display:flex;flex-direction:column;gap:.2em;font-size:.92em}
+  .vs .row{display:grid;grid-template-columns:5.6em 1fr;gap:.6em;align-items:baseline}
+  .vs .who{font-weight:700;color:var(--ink-2)}
+  .vs .what{color:var(--ink-2);line-height:1.3}
+  .vs .lotte{border-top:2px solid var(--ink);padding-top:.32em;margin-top:.18em}
+  .vs .lotte .who,.vs .lotte .what{color:var(--ink);font-weight:700}
+  .vs .lotte .what em{font-style:normal;background:linear-gradient(transparent 58%,var(--hi-soft) 58%);padding:0 .1em}
+  .star{color:var(--red);font-weight:700}
+
+  /* 번호 목록 */
+  .four{display:flex;flex-direction:column;gap:.48em}
+  .item{display:grid;grid-template-columns:1.5em 1fr;gap:.5em}
+  .num{font-family:"IBM Plex Mono",ui-monospace,monospace;font-weight:500;color:var(--blue);font-size:1.05em}
+  .item b{display:block;font-size:1.05em;font-weight:700;line-height:1.24}
+  .item span{display:block;color:var(--ink-2);font-size:.92em;line-height:1.3}
+  .item .arrow{color:var(--ink);display:inline}
+  .item.key b{background:linear-gradient(transparent 60%,var(--hi-soft) 60%);display:inline-block}
+
+  /* 결론 */
+  .verdict{
+    border-top:3px solid var(--red);border-bottom:3px solid var(--red);
+    padding:.45em 0;color:var(--red);
+    font-family:"Black Han Sans","Gothic A1",sans-serif;font-weight:400;
+    font-size:1.4em;line-height:1.18;letter-spacing:-.01em;
+  }
+  .verdict small{display:block;font-family:"Gothic A1",sans-serif;font-weight:700;font-size:.58em;margin-top:.22em;letter-spacing:0;line-height:1.3}
+  .score{
+    font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.62em;
+    letter-spacing:.06em;font-variant-numeric:tabular-nums;display:block;margin-top:.25em;
+  }
+  .blk.bridge-wrap{margin-top:auto}
+  .bridge{font-size:.88em;color:var(--ink-2);
+    border-left:3px solid var(--rule);padding-left:.6em;line-height:1.35;
+  }
+  .bridge b{color:var(--ink)}
+
+  /* 사슬 */
+  .chain{width:100%;height:auto;max-width:100%;display:block}
+  .chain text{font-family:"Gothic A1",sans-serif;font-weight:700}
+
+  /* 신호등 */
+  .lights{display:flex;flex-direction:column;gap:.5em}
+  .lg{display:grid;grid-template-columns:1.45em 1fr;gap:.5em}
+  .sym{font-size:1.15em;font-weight:700;line-height:1.3}
+  .sym.o{color:var(--ok)} .sym.t{color:var(--ink-3)} .sym.x{color:var(--red)}
+  .lg h4{margin:0 0 .1em;font-size:.98em;font-weight:700;letter-spacing:.02em}
+  .lg.bad h4{color:var(--red)}
+  .lg ul{margin:0;padding-left:.9em;display:flex;flex-direction:column;gap:.1em}
+  .lg li{font-size:.92em;color:var(--ink-2);line-height:1.28}
+  .lg li b{color:var(--ink)}
+  .lg.bad li b{color:var(--red)}
+  .cause{font-size:.86em;color:var(--ink-3);margin:.15em 0 0;line-height:1.28}
+
+  .three{display:flex;flex-direction:column;gap:.34em}
+  .three .item span{font-size:.92em}
+
+  /* ---------- 아래 보조 정보 ---------- */
+  .notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px}
+  .note h3{
+    font-size:12px;font-family:"IBM Plex Mono",ui-monospace,monospace;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);
+    margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid var(--rule);
+  }
+  .steps{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+  .steps li{display:grid;grid-template-columns:1.6em 1fr;gap:8px;font-size:13.5px;color:var(--ink-2);line-height:1.5}
+  .steps .n{font-family:"IBM Plex Mono",ui-monospace,monospace;color:var(--blue);font-weight:500}
+  .steps b{color:var(--ink)}
+  .check{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+  .check li{font-size:13.5px;color:var(--ink-2);line-height:1.5;padding-left:20px;position:relative}
+  .check li::before{content:"☐";position:absolute;left:0;color:var(--ink-3)}
+  .warn{font-size:13px;color:var(--red);line-height:1.55;margin:10px 0 0}
+
+  @media (max-width:760px){
+    .sheet{aspect-ratio:auto;grid-template-columns:1fr;font-size:14px;padding:22px 18px}
+    .col{padding:.4em .2em .4em 1.6em}
+    .col.left{border-right:0;border-bottom:3px solid var(--ink);padding-bottom:1.6em}
+    .tag{left:-1.5em}
+    .bridge{margin-top:1em}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .sheet{transition:box-shadow .3s ease}
+  }
+
+  /* ---------- 인쇄 / PDF ---------- */
+  .printbar{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+  .printbtn{
+    font-family:"Gothic A1","Apple SD Gothic Neo",sans-serif;font-weight:700;font-size:13px;
+    background:var(--ink);color:var(--paper);border:0;border-radius:4px;
+    padding:9px 16px;cursor:pointer;
+  }
+  .printbtn:hover{background:var(--blue)}
+  .printbtn:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+  .printhint{font-size:12.5px;color:var(--ink-2);line-height:1.55;max-width:56ch}
+  .printhint b{color:var(--ink)}
+
+  @page{ size: landscape; margin: 8mm; }
+  @media print{
+    :root,
+    :root[data-theme="dark"],
+    :root:not([data-theme="light"]){
+      --ground:#ffffff; --paper:#ffffff; --paper-edge:#9AA2AE;
+      --ink:#000000; --ink-2:#333333; --ink-3:#666666; --rule:#B8BFC9;
+      --blue:#12377F; --red:#B01E19; --hi:#FFE95C; --hi-soft:rgba(255,233,92,.6);
+      --ok:#1F5A3C; --shadow:transparent;
+    }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    body{ background:#fff; padding:0; }
+    .wrap{ display:block; max-width:none; }
+    .masthead, .printbar{ display:none; }
+    .pens{ border:0; padding:0 0 2.5mm; justify-content:center; gap:16px }
+    .stage+.notes{ margin-top:0 }
+    .pen{ font-size:9pt }
+    .stage{ max-width:125vh; margin:0 auto; }
+    .sheet{ box-shadow:none; break-inside:avoid; }
+    .notes{ break-before:page; padding-top:4mm; grid-template-columns:repeat(3,1fr); gap:10mm }
+    .note{ break-inside:avoid }
+    .note h3{ font-size:9pt }
+    .steps li, .check li{ font-size:9.5pt }
+    .warn{ font-size:9pt }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div>
+      <p class="kicker">전지 작성안 · 손글씨용 시안</p>
+      <h1>롯데마트 해외 점포망 — 좌우 2단 전지</h1>
+    </div>
+    <div class="specs">
+      <span class="spec">788 × 1091 mm</span>
+      <span class="spec">가로 놓기</span>
+      <span class="spec">좌우 2단</span>
+      <span class="spec">한 줄 22자 이내</span>
+      <span class="spec">본문 글자 ≈ 1.2 cm</span>
+      <span class="spec">여백 5 cm</span>
+    </div>
+  </header>
+
+  <div class="pens">
+    <span class="pen"><i class="nib k"></i>검정 — 본문</span>
+    <span class="pen"><i class="nib b"></i>파랑 — 제목·구조</span>
+    <span class="pen"><i class="nib r"></i>빨강 — 결론 (맨 마지막에)</span>
+    <span class="pen"><i class="nib h"></i>형광 — 밑줄 강조</span>
+  </div>
+
+
+  <div class="printbar">
+    <button class="printbtn" id="printbtn" type="button">PDF로 저장 / 인쇄</button>
+    <p class="printhint">인쇄 창에서 <b>용지 방향 가로</b>, <b>A4 또는 A3</b>, <b>배경 그래픽 켜기</b>를 고른 뒤 대상을 <b>PDF로 저장</b>으로 바꾸십시오.
+    전지 비율(1.38)과 A4·A3 가로 비율(1.41)이 거의 같아 그대로 확대하면 됩니다. 1쪽 = 전지, 2쪽 = 작성 순서와 확인 목록.
+    <br>버튼이 눌리지 않으면 이 페이지를 새 탭으로 연 뒤 <b>Ctrl/⌘ + P</b> 를 누르십시오.</p>
+  </div>
+
+  <div class="stage">
+  <div class="sheet">
+
+    <!-- ================= 왼쪽 ================= -->
+    <section class="col left">
+
+      <div class="blk">
+        <span class="tag">L0</span>
+        <span class="q">Q1</span>
+        <h2 class="head">롯데마트만 가진 것<br>= 해외 점포망</h2>
+        <p class="sub">남들은 수입한다.<br>롯데는 현지에서 판다.</p>
+      </div>
+
+      <div class="blk">
+        <span class="tag">L1</span>
+        <div class="vs">
+          <div class="row"><span class="who">이마트</span><span class="what">중국 철수 · 베트남 파트너 전환</span></div>
+          <div class="row"><span class="who">홈플러스</span><span class="what">해외 점포 없음</span></div>
+          <div class="row"><span class="who">코스트코</span><span class="what">글로벌 본사 소싱 · 한국 협력사 판로 아님</span></div>
+          <div class="row"><span class="who">쿠팡·컬리</span><span class="what">오프라인 점포 자체가 없음</span></div>
+          <div class="row lotte"><span class="who">롯데마트</span><span class="what"><em>베트남 · 인도네시아 직영 점포망</em> <span class="star">★</span></span></div>
+        </div>
+      </div>
+
+      <div class="blk">
+        <span class="tag">L2</span>
+        <div class="four">
+          <div class="item"><span class="num">①</span><div>
+            <b>산지 직소싱</b>
+            <span>중간 수입상을 건너뛴다<br><span class="arrow">→</span> 원가 · 신선도 · 남들 없는 구색</span>
+          </div></div>
+          <div class="item key"><span class="num">②</span><div>
+            <b>협력사에게 줄 수출 판로</b>
+            <span>“우리와 하면 해외 매대에 깔린다”<br><span class="arrow">→</span> 좋은 상품이 롯데에 먼저 온다</span>
+          </div></div>
+          <div class="item"><span class="num">③</span><div>
+            <b>PB 생산 · 조달 기지</b>
+            <span>요리하다 · 오늘좋은의 원가 방어</span>
+          </div></div>
+          <div class="item"><span class="num">④</span><div>
+            <b>성장하는 두 번째 시장</b>
+            <span>국내는 역성장 · 현지는 젊은 인구와 중산층</span>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="blk">
+        <span class="tag">L3</span>
+        <p class="verdict">수입하는 회사가 아니라<br>현지에서 파는 회사
+          <small>→ 돈으로 못 따라온다 · 점포는 10년이 걸린다</small>
+        </p>
+      </div>
+
+      <div class="blk bridge-wrap">
+        <span class="tag">L4</span>
+        <p class="bridge">단, 한국 고객은 인도네시아 점포를 모른다.<br>
+        <b>매대 위 상품으로 바뀌어야 비로소 “가치”가 된다</b> ──▶</p>
+      </div>
+
+    </section>
+
+    <!-- ================= 오른쪽 ================= -->
+    <section class="col right">
+
+      <div class="blk">
+        <span class="tag">R0</span>
+        <span class="q">Q2</span>
+        <h2 class="head">그 강점대로<br>활동이 짜여 있는가</h2>
+        <p class="sub">자산은 있다. 사슬이 문제다.</p>
+      </div>
+
+      <div class="blk">
+        <span class="tag">R1</span>
+        <svg class="chain" viewBox="0 0 600 212" role="img" aria-label="활동 사슬: 해외 점포에서 현지 바잉, 물류·콜드체인으로 이어지고, 국내 매대에서 고객 체감으로 가는 구간이 끊겨 있다">
+          <defs>
+            <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 L10 5 L0 10 z" fill="currentColor"></path>
+            </marker>
+          </defs>
+          <g style="color:var(--ink)" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="8"   y="8"   width="150" height="38" rx="4" fill="var(--paper)"></rect>
+            <rect x="225" y="8"   width="150" height="38" rx="4" fill="var(--paper)"></rect>
+            <rect x="442" y="8"   width="150" height="38" rx="4" fill="var(--paper)"></rect>
+            <rect x="8"   y="86"  width="150" height="38" rx="4" fill="var(--paper)"></rect>
+            <rect x="225" y="86"  width="150" height="38" rx="4" fill="var(--paper)"></rect>
+            <rect x="442" y="86"  width="150" height="38" rx="4" fill="var(--paper)"></rect>
+            <rect x="8"   y="164" width="150" height="38" rx="4" fill="var(--paper)"></rect>
+            <rect x="225" y="164" width="150" height="38" rx="4" fill="var(--paper)"></rect>
+            <path d="M162 27 H221" marker-end="url(#ah)"></path>
+            <path d="M379 27 H438" marker-end="url(#ah)"></path>
+            <path d="M83 48 V82" marker-end="url(#ah)"></path>
+            <path d="M379 105 H438" marker-end="url(#ah)"></path>
+            <path d="M162 183 H221" marker-end="url(#ah)"></path>
+            <path d="M83 162 V128" marker-end="url(#ah)"></path>
+          </g>
+          <g style="color:var(--red)" fill="none" stroke="currentColor" stroke-width="2.4" stroke-dasharray="7 5">
+            <path d="M162 105 H221" marker-end="url(#ah)"></path>
+          </g>
+          <text x="191" y="99" fill="var(--red)" font-size="18" text-anchor="middle">✂</text>
+          <text x="191" y="72" fill="var(--red)" font-size="12" font-weight="700" text-anchor="middle">끊긴 곳</text>
+          <g fill="var(--ink)" font-size="15" text-anchor="middle">
+            <text x="83"  y="32">해외 점포</text>
+            <text x="300" y="32">현지 바잉</text>
+            <text x="517" y="32">물류 · 콜드체인</text>
+            <text x="83"  y="110">국내 매대</text>
+            <text x="300" y="110">고객 체감</text>
+            <text x="517" y="110">재구매</text>
+            <text x="83"  y="188">협력사 수출판로</text>
+            <text x="300" y="188">국내 바잉협상력</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="blk">
+        <span class="tag">R2</span>
+        <div class="lights">
+          <div class="lg"><span class="sym o">○</span><div>
+            <h4>맞물려 있다</h4>
+            <ul>
+              <li>해외 점포 운영 = 소싱 인프라가 <b>실재</b></li>
+              <li>마트+슈퍼 통합구매 = 컨테이너 물량 소화력</li>
+              <li>PB 2종 정리 = 해외 조달을 담을 그릇</li>
+            </ul>
+          </div></div>
+          <div class="lg"><span class="sym t">△</span><div>
+            <h4>절반만</h4>
+            <ul>
+              <li>소싱 성과를 SKU · 매대로 관리하는가</li>
+              <li>콜드체인 리드타임 — 신선의 실질 제약</li>
+            </ul>
+          </div></div>
+          <div class="lg bad"><span class="sym x">✕</span><div>
+            <h4>어긋나 있다</h4>
+            <ul>
+              <li><b>매대에서 안 보인다</b> → 그냥 싸 보이는 바나나</li>
+              <li>수출 판로를 협상 카드로 안 쓴다</li>
+              <li><b>KPI가 분리돼 있다</b> — 해외는 현지실적 / 국내는 국내실적</li>
+              <li>국내 최저가 경쟁에 자원이 쏠린다</li>
+            </ul>
+            <p class="cause">→ 아무도 “연결”로 평가받지 않는다</p>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="blk">
+        <span class="tag">R3</span>
+        <p class="verdict">자산은 유일한데<br>가치로 번역하는 고리가 끊겼다
+          <span class="score">사슬 정합성 &nbsp;55 / 100</span>
+        </p>
+      </div>
+
+      <div class="blk">
+        <span class="tag">R4</span>
+        <div class="three">
+          <div class="item"><span class="num">①</span><div>
+            <b>번역한다</b>
+            <span>전점 「글로벌 직소싱 존」 + 산지 표기 → 5분 안에 체감</span>
+          </div></div>
+          <div class="item key"><span class="num">②</span><div>
+            <b>지표를 교차시킨다</b>
+            <span>해외본부 ← “국내 매대 기여” / 국내본부 ← “직소싱 비중”</span>
+          </div></div>
+          <div class="item"><span class="num">③</span><div>
+            <b>무기로 쓴다</b>
+            <span>협력사 등급에 “롯데 해외 채널 입점 우선권”</span>
+          </div></div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+  </div>
+
+  <div class="notes">
+    <div class="note">
+      <h3>쓰는 순서</h3>
+      <ol class="steps">
+        <li><span class="n">01</span><span>연필로 칸을 나눈다 — 좌우 각 <b>50cm</b>, 사방 여백 <b>5cm</b></span></li>
+        <li><span class="n">02</span><span>가운데 <b>굵은 세로선</b>을 자 대고 검정으로 긋는다</span></li>
+        <li><span class="n">03</span><span>파랑으로 양쪽 <b>제목</b>을 먼저 (글자 높이 약 <b>2.2cm</b>, 두 줄)</span></li>
+        <li><span class="n">04</span><span>검정으로 본문 (약 <b>1.2cm</b>) — <b>한 줄 22자를 넘기지 말 것</b></span></li>
+        <li><span class="n">05</span><span>마지막에 빨강으로 <b>결론 두 칸과 ✂ 표시</b></span></li>
+      </ol>
+      <p class="warn">빨강을 먼저 쓰면 전지가 빨개집니다. 결론은 반드시 맨 끝에.<br>글자를 더 크게 쓰고 싶으면 <b>왼쪽 · 오른쪽을 전지 2장으로 나누십시오</b> — 한 장에 다 넣으면 본문이 1.2cm를 넘길 수 없습니다.</p>
+    </div>
+    <div class="note">
+      <h3>말로만 하고 쓰지 말 것</h3>
+      <ol class="steps">
+        <li><span class="n">L1</span><span>해외에서 <b>직접 점포를 운영하는 한국 마트는 롯데뿐</b>. 점포는 10년이 걸린다</span></li>
+        <li><span class="n">L2</span><span>①③④는 롯데가 얻는 이익, <b>②는 협력사에게 주는 이익</b> — 경쟁사가 못 내미는 조건</span></li>
+        <li><span class="n">R1</span><span>앞쪽 절반은 돈다. <b>끊긴 건 국내 매대 → 고객 체감 구간</b></span></li>
+        <li><span class="n">R2</span><span>의지 문제가 아니라 <b>평가 지표 문제</b></span></li>
+        <li><span class="n">R4</span><span><b>②번 하나만 해도</b> 나머지는 따라온다</span></li>
+      </ol>
+    </div>
+    <div class="note">
+      <h3>숫자를 쓸 거라면 먼저 확인</h3>
+      <ul class="check">
+        <li>해외 점포 수 — 베트남 / 인도네시아 (소매 · 도매 구분)</li>
+        <li>이마트의 현재 해외 운영 형태 (직영인지 파트너인지)</li>
+        <li>국내 매대의 해외 직소싱 SKU 수 · 매출 비중</li>
+        <li>협력사 수출 지원 프로그램의 실재 여부와 실적</li>
+        <li>해외 법인 손익 — “해외는 적자 아니냐” 반론 대비</li>
+      </ul>
+      <p class="warn">확인 전이면 숫자를 빼고 구조만 쓰십시오. 틀린 숫자는 변명이 안 됩니다.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  document.getElementById('printbtn').addEventListener('click', function () {
+    try { window.print(); } catch (e) { /* 샌드박스에서 막히면 Ctrl+P 안내대로 */ }
+  });
+</script>
