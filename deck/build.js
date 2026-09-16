@@ -322,7 +322,68 @@ tx(s, "온라인 GA의 오프라인 구현", { x:G.M+0.34, y:gy, w:2.5, h:0.92, 
   });
 foot(s, "지표 체계는 온라인 GA와 1:1입니다.  다른 점은 결제 데이터로 결과를 증명한다는 것입니다.", { size:12.5 });
 
-/* ============================================================ 7. 03 채널 */
+/* ============================================================ 7. 02 가치 제안 ③ 맛보기 */
+s = newSlide();
+head(s, "02", "가치 제안  |  유입률 좋은 자리는 먼저 열어드립니다",
+  "브랜드가 가장 먼저 묻는 질문은 \"어디에 열어야 하나\"입니다. 계약 전에 그 답의 앞 세 줄을 무상으로 엽니다  ※ 스팟명·수치는 설명용 예시", { step:1 });
+const SPOTS = [
+  ["TOP 1", "본점 2F · 에스컬레이터 정면", "9.4", "카테고리 평균 5.2% 대비 1.8배",
+   "주중 14~17시 통행 집중"],
+  ["TOP 2", "잠실 에비뉴엘 1F · 정문 리드존", "8.6", "카테고리 평균 5.2% 대비 1.7배",
+   "주말 통행량 전점 1위"],
+  ["TOP 3", "인천점 3F · 식음 동선 접점", "7.9", "카테고리 평균 5.2% 대비 1.5배",
+   "체류가 긴 동선 · 신규 방문 비중 높음"],
+];
+const spW = cols(3), spIn = spW - G.padX*2;
+const spH = 2.24;
+tx(s, "이번 달 유입률 상위 스팟  ·  샘플 3곳 무상 공개",
+  { x:G.M, y:G.top-0.30, w:7.0, size:12.5, bold:true, cs:1, color:C.red });
+tx(s, "유입률 = 앞을 지나간 사람 중 매장에 들어온 비율",
+  { x:7.2, y:G.top-0.30, w:G.CW-7.2+G.M, size:T.small, align:"right", color:C.slate });
+SPOTS.forEach((sp,i)=>{
+  const x = colX(i,3);
+  box(s, x, G.top, spW, spH, C.tint, { shadow:true });
+  s.addShape(pres.ShapeType.roundRect, { x:x+G.padX, y:G.top+0.22, w:0.80, h:0.32,
+    fill:{color:C.red}, rectRadius:0.05 });
+  tx(s, sp[0], { x:x+G.padX, y:G.top+0.22, w:0.80, h:0.32, size:T.micro, bold:true,
+    color:C.white, align:"center", valign:"middle", noCheck:true });
+  tx(s, sp[1], { x:x+G.padX, y:G.top+0.64, w:spIn, h:0.34, size:T.body, bold:true, valign:"middle" });
+  s.addText([{ text:sp[2], options:{ fontSize:34, bold:true, color:C.red }},
+             { text:"%", options:{ fontSize:17, bold:true, color:C.red }},
+             { text:"   유입률", options:{ fontSize:T.small, color:C.slate }}],
+    { x:x+G.padX, y:G.top+1.00, w:spIn, h:0.56, fontFace:F, valign:"bottom",
+      margin:0, isTextBox:true });
+  tx(s, sp[3], { x:x+G.padX, y:G.top+1.58, w:spIn, h:0.26, size:T.small, bold:true, valign:"middle" });
+  tx(s, sp[4], { x:x+G.padX, y:G.top+1.84, w:spIn, h:0.24, size:T.micro, color:C.slate, valign:"middle" });
+});
+const tzY = G.top + spH + 0.30, tzH = G.bottomF - tzY;
+const freeW = 4.46, lockX = G.M + freeW + 0.22, lockW = G.W - G.M - lockX;
+box(s, G.M, tzY, freeW, tzH, C.warm, { line:C.line });
+tx(s, "여기까지는 무상", { x:G.M+G.padX, y:tzY+G.padY, w:freeW-G.padX*2, size:12.5, bold:true, cs:1, color:C.red });
+bulletsTx(s, ["유입률 상위 스팟과 그 평균 유입률","스팟별 통행량 · 시간대 · 요일 패턴","카테고리 평균 대비 몇 배인지"],
+  { x:G.M+G.padX, y:tzY+0.62, w:freeW-G.padX*2, size:T.small });
+tx(s, "공간의 지표 — 롯데가 가진 자산이라 열 수 있습니다",
+  { x:G.M+G.padX, y:tzY+tzH-0.46, w:freeW-G.padX*2, h:0.26, size:T.micro, bold:true, color:C.slate });
+box(s, lockX, tzY, lockW, tzH, C.ink);
+tx(s, "여기부터는 L.GA 안에서", { x:lockX+G.padX, y:tzY+G.padY, w:2.60, size:12.5, bold:true, cs:1, color:C.amber });
+tx(s, "팝업 패키지 · 월 구독 · 해당 매장 L.GA 운영 시 공개",
+  { x:lockX+2.90, y:tzY+G.padY, w:lockW-2.90-G.padX, h:0.26, size:T.small, align:"right",
+    color:C.muteW, valign:"middle" });
+const LOCKED = [["그 스팟의 구매 전환율","■ ■ %"],["내 매장 방문객의 신규 비율","■ ■ %"],
+                ["들어왔는데 안 산 사람의 정체","■ ■ ■"],["집품률 · 체류시간 · 이탈 지점","■ ■ ■"]];
+const lkY = tzY + 0.62, lkH = (tzH - 0.62 - G.padY - 3*0.08)/4;
+LOCKED.forEach((l,i)=>{
+  const y = lkY + i*(lkH+0.08);
+  box(s, lockX+G.padX, y, lockW-G.padX*2, lkH, C.ink2);
+  tx(s, l[0], { x:lockX+G.padX+0.22, y:y, w:4.4, h:lkH, size:T.small, color:C.white, valign:"middle" });
+  tx(s, l[1], { x:lockX+lockW-G.padX-1.5, y:y, w:1.28, h:lkH, size:T.small, bold:true,
+    color:C.amber, align:"right", valign:"middle", noCheck:true });
+});
+foot(s, [{ text:"유입률은 공간의 지표라 공개할 수 있고,  ", options:{ color:C.ink }},
+         { text:"전환율은 그 브랜드의 성과라 계약 안에서만 열립니다.", options:{ bold:true, color:C.red }}],
+     { size:12.5 });
+
+/* ============================================================ 8. 03 채널 */
 s = newSlide();
 head(s, "03", "채널  |  고객에게 어떻게 접근하는가?",
   "외부 영업이 아니라 계약 시점에 팔립니다 — 안에서 밖으로", { step:1 });
@@ -346,7 +407,7 @@ chs.forEach((c,i)=>{
 });
 foot(s, "첫 고객은 외부 브랜드가 아니라 롯데 자신입니다.  그룹 안에서 검증하고, 그룹 시너지로 확산합니다.");
 
-/* ============================================================ 8. 04 고객 관계 */
+/* ============================================================ 9. 04 고객 관계 */
 s = newSlide();
 head(s, "04", "고객 관계  |  어떻게 확보·유지·성장시킬 것인가?",
   "증명이 갱신의 근거입니다 — 리텐션 엔진", { step:1 });
@@ -367,7 +428,7 @@ foot(s, [{ text:"사랑과 신뢰를 받는 서비스  —  ", options:{ bold:tr
          { text:"증명하기 전에는 청구하지 않습니다. 신뢰가 먼저 쌓이고, 갱신은 그 결과입니다.", options:{ color:C.ink }}],
      { size:12.5 });
 
-/* ============================================================ 9. 05 수익원 ① */
+/* ============================================================ 10. 05 수익원 ① */
 s = newSlide();
 head(s, "05", "수익원  |  고객은 무엇에 기꺼이 돈을 지불하는가?",
   "팝업은 매출 엔진이 아니라 유입 깔때기 — 3년차 매출의 51%가 반복 매출", { step:1 });
@@ -393,7 +454,7 @@ tiers.forEach((t,i)=>{
 });
 foot(s, "구글 애널리틱스는 무료입니다. 구글은 측정이 아니라 광고로 법니다. 저희도 같습니다.", { size:T.lead });
 
-/* ============================================================ 10. 05 수익원 ② 손익 */
+/* ============================================================ 11. 05 수익원 ② 손익 */
 s = newSlide();
 head(s, "05", "수익원  |  3개년 손익 — 24개월에 손익분기",
   "※ 내부 검증 전 추정치 — 롯데 내부 데이터로 재검증 필요", { step:1 });
@@ -424,7 +485,7 @@ tx(s, "침투율 저조 + 구독 저조 + 광고 미실행이 동시에 일어�
     color:C.amber, valign:"middle" });
 foot(s, "파일럿 1.5억으로 시작해 24개월에 손익분기를 넘습니다.", { size:T.body });
 
-/* ============================================================ 11. 06 핵심 자원 */
+/* ============================================================ 12. 06 핵심 자원 */
 s = newSlide();
 head(s, "06", "핵심 자원  |  반드시 필요한 자산은?",
   "새로 사는 자산이 거의 없습니다 — 이미 가진 그룹 자산 위에 AI를 얹는 AI 트랜스포메이션 과제입니다", { step:2 });
@@ -440,7 +501,7 @@ const resOff = Math.max(0, (resH - rowNat(res, rw2))/2);
 res.forEach((r,i)=> drawCard(s, r, colX(i%2,2), G.top + Math.floor(i/2)*(resH+0.18), rw2, resH, resOff));
 foot(s, "카메라는 누구나 깔 수 있습니다.  L.POINT와 POS와 전점 트래픽을 한 번에 가진 곳은 롯데뿐입니다.");
 
-/* ============================================================ 12. 07 핵심 활동 */
+/* ============================================================ 13. 07 핵심 활동 */
 s = newSlide();
 head(s, "07", "핵심 활동  |  반드시 수행해야 하는 활동은?",
   "생산은 기계가, 문제해결은 사람이, 플랫폼은 시간이 합니다", { step:2 });
@@ -470,7 +531,7 @@ tx(s, "운영 원칙 · 핵심가치 Respect(존중) — 사람을 추적하지 
   { x:G.M, y:ly-0.36, w:G.CW, size:12.5, bold:true, cs:1, color:C.slate });
 cardRow(s, LAYERS, ly, { h:actRows[1] });
 
-/* ============================================================ 13. 08 핵심 파트너 */
+/* ============================================================ 14. 08 핵심 파트너 */
 s = newSlide();
 head(s, "08", "핵심 파트너  |  외부 파트너나 공급업체는 누구인가?",
   "세 조각이 다 모여야 성립하는 사업입니다 — 그래서 지금까지 아무도 못 했습니다", { step:2 });
@@ -499,15 +560,15 @@ cardRow(s, EXT, exY, { h:parRows[1] });
 foot(s, "조직: 3사 합작 TF → 성과 검증 후 분사(Spin-off) 옵션   ·   한 사만으로는 만들 수 없는, 그룹이어야 가능한 사업입니다",
   { size:12.5 });
 
-/* ============================================================ 14. 09 비용 구조 */
+/* ============================================================ 15. 09 비용 구조 */
 s = newSlide();
 head(s, "09", "비용 구조  |  가장 큰 비용 항목은?",
   "가장 큰 항목은 인건비 — 의도된 구조입니다. 클라우드 비용은 엣지로 1/10", { step:2 });
-const COST_BAND_Y = G.bottom - 0.84, CH14 = COST_BAND_Y - 0.30 - G.top;
+const COST_BAND_Y = G.bottom - 0.84, CH15 = COST_BAND_Y - 0.30 - G.top;
 s.addChart(pres.ChartType.line, [
   { name:"클라우드 방식 (경쟁사)", labels:["10개점","50개점","100개점","300개점"], values:[0.8,4.0,8.0,24.0] },
   { name:"엣지 방식 (L.GA)", labels:["10개점","50개점","100개점","300개점"], values:[0.3,0.7,1.2,3.0] }],
-  { x:G.M, y:G.top, w:6.40, h:CH14, chartColors:[C.slate, C.red], lineSize:3, lineDataSymbolSize:8,
+  { x:G.M, y:G.top, w:6.40, h:CH15, chartColors:[C.slate, C.red], lineSize:3, lineDataSymbolSize:8,
     showTitle:true, title:"매장 확산에 따른 연간 인프라 비용 (억원, 추정)", titleFontFace:F,
     titleFontSize:12, titleColor:C.slate,
     showLegend:true, legendPos:"b", legendFontFace:F, legendFontSize:11, legendColor:C.slate,
@@ -521,12 +582,12 @@ const fixed = { tag:"고정비  (Y1 → Y3, 억원)", bodySize:T.small,
 const varc = { tag:"변동비  (단위 원가)", bodySize:T.small,
   list:["팝업 건당 75만 (설치 35 · 인사이트 분석 25 · 추론 3 …)",
         "구독 매장당 월 7만 / 컨설팅 건당 400만 / RMN 매체 40%","→ 매출총이익률 77%  (Y1~Y3 동일)"] };
-const costH = spread([cardH(fixed, cwR-G.padX*2), cardH(varc, cwR-G.padX*2)], CH14 - 0.18, "S14 비용");
+const costH = spread([cardH(fixed, cwR-G.padX*2), cardH(varc, cwR-G.padX*2)], CH15 - 0.18, "S15 비용");
 drawCard(s, fixed, cx, G.top, cwR, costH[0]);
 drawCard(s, varc, cx, G.top+costH[0]+0.18, cwR, costH[1]);
 band(s, COST_BAND_Y, "경쟁사가 못 넘은 벽은 원가 구조였습니다.  매장이 10배 늘어도 비용은 10배 늘지 않습니다.", T.body);
 
-/* ============================================================ 15. 클로징 */
+/* ============================================================ 16. 클로징 */
 s = newSlide(true);
 tx(s, "실행 로드맵", { x:0.9, y:0.68, w:6.0, size:T.tag, bold:true, color:C.amber, cs:2 });
 const phases = [["Phase 0","0~3개월","롯데 내부 도입 · 10개점 파일럿"],
@@ -554,7 +615,7 @@ box(s, 9.46, 5.62, 2.97, 0.98, C.ink2);
 tx(s, "Lifetime\nValue Creator", { x:9.46, y:5.62, w:2.97, h:0.98, size:12.5, lh:17, bold:true,
   color:C.muteW, align:"center", valign:"middle" });
 
-/* ============================================================ 16. 백업 · 리스크 */
+/* ============================================================ 17. 백업 · 리스크 */
 s = newSlide();
 head(s, "Q&A", "리스크와 대응", "백업 슬라이드 — Q&A 대응용");
 const risks = [

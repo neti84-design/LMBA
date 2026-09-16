@@ -13,6 +13,10 @@
 우리는 **브랜드가 절대 스스로 알 수 없는 자기 고객의 정체와 니즈**를 알려주고,
 **그 처방이 실제로 통했는지 POS로 증명**한다.
 
+**입구(무상 티저)**: 계약 전에는 **유입률 좋은 스팟 3곳과 그 평균 유입률**만 무상으로 엽니다.
+구매 전환율·방문객 정체·미구매자 분석은 **팝업 패키지·구독·해당 매장 L.GA 운영 시** 열립니다.
+유입률은 **공간(롯데 자산)의 지표**라 공개할 수 있고, 전환율은 **그 브랜드의 성과**이기 때문입니다.
+
 **그룹 전략 정합성**: 결제한 순간에만 쌓이던 고객 가치를 사지 않은 순간까지 넓히는
 **Lifetime Value Creator의 데이터 실행**이자, 이미 깔린 CCTV 위에 AI를 얹는 **AI 트랜스포메이션** 과제,
 그리고 상품을 파는 유통에서 데이터를 파는 **뉴라이프플랫폼**으로의 전환입니다.
@@ -25,16 +29,16 @@
 | 문서 | 내용 |
 |---|---|
 | [docs/01_gap-analysis.md](docs/01_gap-analysis.md) | 현재 기획에서 **놓치고 있는 8가지**와 디벨롭 방향 |
-| [docs/02_business-model.md](docs/02_business-model.md) | 상품 설계(6단 솔루션 사다리) + 5단 수익구조, 단가, 원가 |
+| [docs/02_business-model.md](docs/02_business-model.md) | 상품 설계(L0 티저 + 6단 솔루션 사다리) + 5단 수익구조, 단가, 원가 |
 | [docs/03_financials.md](docs/03_financials.md) | 3개년 손익 추정, BEP, CAPEX, 민감도 |
 | [docs/04_pitch-10min.md](docs/04_pitch-10min.md) | 10분 발표 구성 + 대본 — **비즈니스 모델 캔버스 9블록 순서**, 정확히 600초 |
-| [docs/05_qna-prep.md](docs/05_qna-prep.md) | 예상 질문 16개와 답변 (Q13·Q14 그룹 전략·핵심가치 / **Q15 비회원 커버리지 · Q16 왜 더 깊게 안 하나**) |
+| [docs/05_qna-prep.md](docs/05_qna-prep.md) | 예상 질문 16개와 답변 (Q13·Q14 그룹 전략·핵심가치 / **Q15 비회원 커버리지 · Q16 왜 더 깊게 안 하나 · Q17 유입률 무상 공개**) |
 | [docs/06_action-plan.md](docs/06_action-plan.md) | 발표 전까지 확인·제작해야 할 항목 |
 | [docs/07_business-model-canvas.md](docs/07_business-model-canvas.md) | **비즈니스 모델 캔버스 9블록** — Step 1 가치 전달(01~05) → Step 2 효율적 운영(06~09) |
 | [docs/08_lotte-strategy-fit.md](docs/08_lotte-strategy-fit.md) | **그룹 비전·경영 방침·핵심가치와의 정합성** — 발표 3번 슬라이드 근거 |
 | [docs/financial_model.csv](docs/financial_model.csv) | 손익 추정 원본 데이터 |
-| **[LGA_롯데신사업_발표.pdf](LGA_롯데신사업_발표.pdf)** | **PDF — 글꼴이 파일 안에 박혀 있어 어느 PC에서나 똑같이 보입니다. 발표는 이걸 쓰는 게 가장 안전합니다** |
-| **[LGA_롯데신사업_발표.pptx](LGA_롯데신사업_발표.pptx)** | **발표용 PPT 15장 + 백업 1장 — BMC 9블록 순서 + 그룹 전략 정합성 1장, 전 슬라이드에 대본 노트 포함.** 글꼴 Pretendard |
+| **[LGA_롯데신사업_발표.pdf](LGA_롯데신사업_발표.pdf)** | **PDF — 글꼴이 파일 안에 박혀 있어 어느 PC에서나 똑같이 보입니다. 발표는 이걸 쓰는 게 가장 안전합니다**<br>⚠️ **현재 파일은 16장(유입률 스팟 장 추가 전) 버전입니다.** Pretendard가 설치된 PC에서 `soffice --headless --convert-to pdf LGA_롯데신사업_발표.pptx` 로 다시 뽑으십시오 |
+| **[LGA_롯데신사업_발표.pptx](LGA_롯데신사업_발표.pptx)** | **발표용 PPT 16장 + 백업 1장 — BMC 9블록 순서 + 그룹 전략 정합성 1장, 전 슬라이드에 대본 노트 포함.** 글꼴 Pretendard |
 | [LGA_롯데신사업_발표_맑은고딕.pptx](LGA_롯데신사업_발표_맑은고딕.pptx) | **같은 내용의 안전 글꼴 버전** — 발표 PC에 Pretendard가 없을 때 이걸 쓰십시오 |
 | **[site/index.html](site/index.html)** | **L.GA 홈페이지 시안** (메이아이 구조 참고) + **[파트너 포털](site/portal/index.html)** + **[예시 리포트](site/portal/reports/glowlab-jamsil-2026-08.html)** — 브라우저로 바로 열립니다. 설명: [site/README.md](site/README.md) |
 | [deck/build.js](deck/build.js) | 위 PPT를 생성하는 스크립트 (문구·수치 수정 후 재생성 가능) |
