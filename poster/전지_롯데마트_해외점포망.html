@@ -97,17 +97,17 @@
     aspect-ratio:1091/788;
     padding:2.3% 2.6%;
     display:grid;grid-template-columns:1fr 1fr;
-    font-size:clamp(8px,.95vw,13px);
+    font-size:clamp(7px,.83vw,11.5px);
     line-height:1.36;
   }
-  @supports (font-size:1cqi){ .sheet{font-size:1.02cqi} }
+  @supports (font-size:1cqi){ .sheet{font-size:.90cqi} }
   /* 여백 가이드 = 실제 5cm 마진 */
   .sheet::before{
     content:"";position:absolute;inset:2.3% 2.6%;
     border:1px dashed var(--rule);opacity:.55;pointer-events:none;
   }
   .col{padding:.85em 1.4em .85em 1.95em;display:flex;flex-direction:column;gap:.8em;min-width:0}
-  .col.left{border-right:3px solid var(--ink)}
+  .col.left{border-right:3px solid var(--ink);justify-content:space-between}
 
   .blk{position:relative;display:flex;flex-direction:column;gap:.3em}
   .tag{
@@ -154,7 +154,6 @@
     font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.62em;
     letter-spacing:.06em;font-variant-numeric:tabular-nums;display:block;margin-top:.25em;
   }
-  .blk.bridge-wrap{margin-top:auto}
   .bridge{font-size:.88em;color:var(--ink-2);
     border-left:3px solid var(--rule);padding-left:.6em;line-height:1.35;
   }
@@ -258,7 +257,7 @@
       <span class="spec">가로 놓기</span>
       <span class="spec">좌우 2단</span>
       <span class="spec">한 줄 22자 이내</span>
-      <span class="spec">본문 글자 ≈ 1.2 cm</span>
+      <span class="spec">본문 글자 ≈ 1.0 cm</span>
       <span class="spec">여백 5 cm</span>
     </div>
   </header>
@@ -351,43 +350,51 @@
 
       <div class="blk">
         <span class="tag">R1</span>
-        <svg class="chain" viewBox="0 0 600 212" role="img" aria-label="활동 사슬: 해외 점포에서 현지 바잉, 물류·콜드체인으로 이어지고, 국내 매대에서 고객 체감으로 가는 구간이 끊겨 있다">
+        <svg class="chain" viewBox="0 0 600 252" role="img" aria-label="활동 사슬: 해외 점포에서 현지 바잉, 물류로 이어지고, 국내 매대에서 고객 체감으로 가는 구간이 끊겨 있다. 사슬 전체를 사람과 조직이 떠받친다">
           <defs>
             <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
               <path d="M0 0 L10 5 L0 10 z" fill="currentColor"></path>
             </marker>
           </defs>
           <g style="color:var(--ink)" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="8"   y="8"   width="150" height="38" rx="4" fill="var(--paper)"></rect>
-            <rect x="225" y="8"   width="150" height="38" rx="4" fill="var(--paper)"></rect>
-            <rect x="442" y="8"   width="150" height="38" rx="4" fill="var(--paper)"></rect>
-            <rect x="8"   y="86"  width="150" height="38" rx="4" fill="var(--paper)"></rect>
-            <rect x="225" y="86"  width="150" height="38" rx="4" fill="var(--paper)"></rect>
-            <rect x="442" y="86"  width="150" height="38" rx="4" fill="var(--paper)"></rect>
-            <rect x="8"   y="164" width="150" height="38" rx="4" fill="var(--paper)"></rect>
-            <rect x="225" y="164" width="150" height="38" rx="4" fill="var(--paper)"></rect>
-            <path d="M162 27 H221" marker-end="url(#ah)"></path>
-            <path d="M379 27 H438" marker-end="url(#ah)"></path>
-            <path d="M83 48 V82" marker-end="url(#ah)"></path>
-            <path d="M379 105 H438" marker-end="url(#ah)"></path>
-            <path d="M162 183 H221" marker-end="url(#ah)"></path>
-            <path d="M83 162 V128" marker-end="url(#ah)"></path>
+            <rect x="8"   y="4"   width="150" height="34" rx="4" fill="var(--paper)"></rect>
+            <rect x="225" y="4"   width="150" height="34" rx="4" fill="var(--paper)"></rect>
+            <rect x="442" y="4"   width="150" height="34" rx="4" fill="var(--paper)"></rect>
+            <rect x="8"   y="72"  width="150" height="34" rx="4" fill="var(--paper)"></rect>
+            <rect x="225" y="72"  width="150" height="34" rx="4" fill="var(--paper)"></rect>
+            <rect x="442" y="72"  width="150" height="34" rx="4" fill="var(--paper)"></rect>
+            <rect x="8"   y="140" width="150" height="34" rx="4" fill="var(--paper)"></rect>
+            <rect x="225" y="140" width="150" height="34" rx="4" fill="var(--paper)"></rect>
+            <path d="M162 21 H221" marker-end="url(#ah)"></path>
+            <path d="M379 21 H438" marker-end="url(#ah)"></path>
+            <path d="M379 89 H438" marker-end="url(#ah)"></path>
+            <path d="M162 157 H221" marker-end="url(#ah)"></path>
+            <path d="M83 40 V68" marker-end="url(#ah)"></path>
+            <path d="M83 138 V112" marker-end="url(#ah)"></path>
           </g>
           <g style="color:var(--red)" fill="none" stroke="currentColor" stroke-width="2.4" stroke-dasharray="7 5">
-            <path d="M162 105 H221" marker-end="url(#ah)"></path>
+            <path d="M162 89 H221" marker-end="url(#ah)"></path>
           </g>
-          <text x="191" y="99" fill="var(--red)" font-size="18" text-anchor="middle">✂</text>
-          <text x="191" y="72" fill="var(--red)" font-size="12" font-weight="700" text-anchor="middle">끊긴 곳</text>
+          <text x="191" y="84" fill="var(--red)" font-size="17" text-anchor="middle">✂</text>
+          <text x="191" y="60" fill="var(--red)" font-size="12" font-weight="700" text-anchor="middle">끊긴 곳</text>
+          <g style="color:var(--ink-3)" fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="4 4">
+            <path d="M83 204 V180" marker-end="url(#ah)"></path>
+            <path d="M300 204 V180" marker-end="url(#ah)"></path>
+          </g>
+          <rect x="8" y="206" width="584" height="38" rx="4" fill="none" stroke="var(--red)" stroke-width="2" stroke-dasharray="6 4"></rect>
           <g fill="var(--ink)" font-size="15" text-anchor="middle">
-            <text x="83"  y="32">해외 점포</text>
-            <text x="300" y="32">현지 바잉</text>
-            <text x="517" y="32">물류 · 콜드체인</text>
-            <text x="83"  y="110">국내 매대</text>
-            <text x="300" y="110">고객 체감</text>
-            <text x="517" y="110">재구매</text>
-            <text x="83"  y="188">협력사 수출판로</text>
-            <text x="300" y="188">국내 바잉협상력</text>
+            <text x="83"  y="26">해외 점포</text>
+            <text x="300" y="26">현지 바잉</text>
+            <text x="517" y="26">물류 · 콜드체인</text>
+            <text x="83"  y="94">국내 매대</text>
+            <text x="300" y="94">고객 체감</text>
+            <text x="517" y="94">재구매</text>
+            <text x="83"  y="162">협력사 수출판로</text>
+            <text x="300" y="162">국내 바잉협상력</text>
           </g>
+          <text x="22" y="230" fill="var(--red)" font-size="14" font-weight="700">사람 · 조직</text>
+          <text x="108" y="230" fill="var(--ink)" font-size="14">해외전략 인력 · 주재원 · 협력사 수출 데스크</text>
+          <text x="584" y="200" fill="var(--red)" font-size="11.5" font-weight="700" text-anchor="end">이게 얇으면 위는 전부 멈춘다</text>
         </svg>
       </div>
 
@@ -407,6 +414,7 @@
             <ul>
               <li>소싱 성과를 SKU · 매대로 관리하는가</li>
               <li>콜드체인 리드타임 — 신선의 실질 제약</li>
+              <li><b>현지를 아는 사람이 충분한가</b> — 해외전략 인력 · 주재원</li>
             </ul>
           </div></div>
           <div class="lg bad"><span class="sym x">✕</span><div>
@@ -433,16 +441,20 @@
         <span class="tag">R4</span>
         <div class="three">
           <div class="item"><span class="num">①</span><div>
-            <b>번역한다</b>
+            <b>사람을 먼저 붙인다</b>
+            <span>해외전략 인원 확충 · 주재원 파견 강화 → 현지를 아는 소싱 MD 없이 직소싱은 안 는다</span>
+          </div></div>
+          <div class="item"><span class="num">②</span><div>
+            <b>매대로 번역한다</b>
             <span>전점 「글로벌 직소싱 존」 + 산지 표기 → 5분 안에 체감</span>
           </div></div>
-          <div class="item key"><span class="num">②</span><div>
+          <div class="item key"><span class="num">③</span><div>
             <b>지표를 교차시킨다</b>
             <span>해외본부 ← “국내 매대 기여” / 국내본부 ← “직소싱 비중”</span>
           </div></div>
-          <div class="item"><span class="num">③</span><div>
-            <b>무기로 쓴다</b>
-            <span>협력사 등급에 “롯데 해외 채널 입점 우선권”</span>
+          <div class="item"><span class="num">④</span><div>
+            <b>협력사에 판로를 연다</b>
+            <span>해외 채널 입점 우선권 + 수출 지원 데스크 → 좋은 상품이 먼저 온다</span>
           </div></div>
         </div>
       </div>
@@ -457,11 +469,11 @@
       <ol class="steps">
         <li><span class="n">01</span><span>연필로 칸을 나눈다 — 좌우 각 <b>50cm</b>, 사방 여백 <b>5cm</b></span></li>
         <li><span class="n">02</span><span>가운데 <b>굵은 세로선</b>을 자 대고 검정으로 긋는다</span></li>
-        <li><span class="n">03</span><span>파랑으로 양쪽 <b>제목</b>을 먼저 (글자 높이 약 <b>2.2cm</b>, 두 줄)</span></li>
-        <li><span class="n">04</span><span>검정으로 본문 (약 <b>1.2cm</b>) — <b>한 줄 22자를 넘기지 말 것</b></span></li>
+        <li><span class="n">03</span><span>파랑으로 양쪽 <b>제목</b>을 먼저 (글자 높이 약 <b>2.0cm</b>, 두 줄)</span></li>
+        <li><span class="n">04</span><span>검정으로 본문 (약 <b>1.0cm</b>) — <b>한 줄 22자를 넘기지 말 것</b></span></li>
         <li><span class="n">05</span><span>마지막에 빨강으로 <b>결론 두 칸과 ✂ 표시</b></span></li>
       </ol>
-      <p class="warn">빨강을 먼저 쓰면 전지가 빨개집니다. 결론은 반드시 맨 끝에.<br>글자를 더 크게 쓰고 싶으면 <b>왼쪽 · 오른쪽을 전지 2장으로 나누십시오</b> — 한 장에 다 넣으면 본문이 1.2cm를 넘길 수 없습니다.</p>
+      <p class="warn">빨강을 먼저 쓰면 전지가 빨개집니다. 결론은 반드시 맨 끝에.<br>글자를 더 크게 쓰고 싶으면 <b>왼쪽 · 오른쪽을 전지 2장으로 나누십시오</b> — 한 장에 다 넣으면 본문이 1.0cm를 넘길 수 없습니다.</p>
     </div>
     <div class="note">
       <h3>말로만 하고 쓰지 말 것</h3>
@@ -469,8 +481,9 @@
         <li><span class="n">L1</span><span>해외에서 <b>직접 점포를 운영하는 한국 마트는 롯데뿐</b>. 점포는 10년이 걸린다</span></li>
         <li><span class="n">L2</span><span>①③④는 롯데가 얻는 이익, <b>②는 협력사에게 주는 이익</b> — 경쟁사가 못 내미는 조건</span></li>
         <li><span class="n">R1</span><span>앞쪽 절반은 돈다. <b>끊긴 건 국내 매대 → 고객 체감 구간</b></span></li>
+        <li><span class="n">R1</span><span>맨 아래 칸이 토대다 — <b>현지 인력과 주재원이 얇으면 위 사슬은 전부 멈춘다</b></span></li>
         <li><span class="n">R2</span><span>의지 문제가 아니라 <b>평가 지표 문제</b></span></li>
-        <li><span class="n">R4</span><span><b>②번 하나만 해도</b> 나머지는 따라온다</span></li>
+        <li><span class="n">R4</span><span>①은 비용, ③은 무료. <b>③번 지표 한 줄이 나머지를 끌고 온다</b></span></li>
       </ol>
     </div>
     <div class="note">
