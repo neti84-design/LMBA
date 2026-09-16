@@ -213,7 +213,7 @@ PAINS.forEach((p,i)=>{
 foot(s, "온라인 쇼핑몰이라면 전부 남는 기록입니다.  오프라인에서만 사라집니다.",
   { color:C.amber, size:13 });
 
-/* ============================================================ 3. Problem ② (60초) */
+/* ============================================================ 3. Problem ② (50초) */
 s = newSlide();
 head(s, "01", "이 문제를 가진 고객은 누구인가",
   "성과 측정 니즈가 가장 절박한 곳부터, 안에서 밖으로",
@@ -269,7 +269,7 @@ five.forEach((f,i)=>{
 foot(s, "브랜드는 자기가 판 것만 압니다.  L.POINT 소비 이력과 롯데 전점 트래픽이 동시에 있어야만 나오는 답입니다.",
   { color:C.amber, size:13 });
 
-/* ============================================================ 5. Solution ② (60초) */
+/* ============================================================ 5. Solution ② (50초) */
 s = newSlide();
 head(s, "02", "그리고 그 처방이 통했는지 POS로 증명합니다",
   "경쟁사는 결제 데이터가 없어 자기 처방이 통했는지 증명할 수 없습니다",
@@ -378,7 +378,7 @@ tx(s, "그룹 비전 · Lifetime Value Creator",
 cardRow(s, KSF, ksY, { h:whyRows[1] });
 band(s, ksfBandY, "기술 경쟁이 아니라 자산 구조의 경쟁입니다.  카메라는 누구나 깔 수 있지만, 세 조각은 살 수 없습니다.", T.lead);
 
-/* ============================================================ 8. Business models ① (60초) */
+/* ============================================================ 8. Business models ① (50초) */
 s = newSlide();
 head(s, "04", "수익 모델  |  다섯 단으로 올라갑니다",
   "팝업은 매출 엔진이 아니라 유입 깔때기 — 3년차 매출의 51%가 반복 매출",
@@ -405,7 +405,69 @@ tiers.forEach((t,i)=>{
 });
 foot(s, "구글 애널리틱스는 무료입니다. 구글은 측정이 아니라 광고로 법니다. 저희도 같습니다.", { size:T.lead });
 
-/* ============================================================ 9. Business models ② (60초) */
+/* ============================================================ 9. Business models ② 무상 티저 (40초) */
+s = newSlide();
+head(s, "04", "입구  |  유입률 좋은 자리는 먼저 열어드립니다",
+  "브랜드가 가장 먼저 묻는 질문은 \"어디에 열어야 하나\"입니다. 계약 전에 그 답의 앞 세 줄을 무상으로 엽니다  ※ 스팟명·수치는 설명용 예시",
+  { block:"BUSINESS MODEL" });
+const SPOTS = [
+  ["TOP 1", "본점 2F · 에스컬레이터 정면", "9.4", "카테고리 평균 5.2% 대비 1.8배",
+   "주중 14~17시 통행 집중"],
+  ["TOP 2", "잠실 에비뉴엘 1F · 정문 리드존", "8.6", "카테고리 평균 5.2% 대비 1.7배",
+   "주말 통행량 전점 1위"],
+  ["TOP 3", "인천점 3F · 식음 동선 접점", "7.9", "카테고리 평균 5.2% 대비 1.5배",
+   "체류가 긴 동선 · 신규 방문 비중 높음"],
+];
+const spW = cols(3), spIn = spW - G.padX*2;
+const spH = 2.24;
+tx(s, "이번 달 유입률 상위 스팟  ·  샘플 3곳 무상 공개",
+  { x:G.M, y:G.top-0.30, w:7.0, size:12.5, bold:true, cs:1, color:C.red });
+tx(s, "유입률 = 앞을 지나간 사람 중 매장에 들어온 비율",
+  { x:7.2, y:G.top-0.30, w:G.CW-7.2+G.M, size:T.small, align:"right", color:C.slate });
+SPOTS.forEach((sp,i)=>{
+  const x = colX(i,3);
+  box(s, x, G.top, spW, spH, C.tint, { shadow:true });
+  s.addShape(pres.ShapeType.roundRect, { x:x+G.padX, y:G.top+0.22, w:0.80, h:0.32,
+    fill:{color:C.red}, rectRadius:0.05 });
+  tx(s, sp[0], { x:x+G.padX, y:G.top+0.22, w:0.80, h:0.32, size:T.micro, bold:true,
+    color:C.white, align:"center", valign:"middle", noCheck:true });
+  tx(s, sp[1], { x:x+G.padX, y:G.top+0.64, w:spIn, h:0.34, size:T.body, bold:true, valign:"middle" });
+  s.addText([{ text:sp[2], options:{ fontSize:34, bold:true, color:C.red }},
+             { text:"%", options:{ fontSize:17, bold:true, color:C.red }},
+             { text:"   유입률", options:{ fontSize:T.small, color:C.slate }}],
+    { x:x+G.padX, y:G.top+1.00, w:spIn, h:0.56, fontFace:F, valign:"bottom",
+      margin:0, isTextBox:true });
+  tx(s, sp[3], { x:x+G.padX, y:G.top+1.58, w:spIn, h:0.26, size:T.small, bold:true, valign:"middle" });
+  tx(s, sp[4], { x:x+G.padX, y:G.top+1.84, w:spIn, h:0.24, size:T.micro, color:C.slate, valign:"middle" });
+});
+const tzY = G.top + spH + 0.30, tzH = G.bottomF - tzY;
+const freeW = 4.46, lockX = G.M + freeW + 0.22, lockW = G.W - G.M - lockX;
+box(s, G.M, tzY, freeW, tzH, C.warm, { line:C.line });
+tx(s, "여기까지는 무상", { x:G.M+G.padX, y:tzY+G.padY, w:freeW-G.padX*2, size:12.5, bold:true, cs:1, color:C.red });
+bulletsTx(s, ["유입률 상위 스팟과 그 평균 유입률","스팟별 통행량 · 시간대 · 요일 패턴","카테고리 평균 대비 몇 배인지"],
+  { x:G.M+G.padX, y:tzY+0.62, w:freeW-G.padX*2, size:T.small });
+tx(s, "공간의 지표 — 롯데가 가진 자산이라 열 수 있습니다",
+  { x:G.M+G.padX, y:tzY+tzH-0.46, w:freeW-G.padX*2, h:0.26, size:T.micro, bold:true, color:C.slate });
+box(s, lockX, tzY, lockW, tzH, C.ink);
+tx(s, "여기부터는 L.GA 안에서", { x:lockX+G.padX, y:tzY+G.padY, w:2.60, size:12.5, bold:true, cs:1, color:C.amber });
+tx(s, "팝업 패키지 · 월 구독 · 해당 매장 L.GA 운영 시 공개",
+  { x:lockX+2.90, y:tzY+G.padY, w:lockW-2.90-G.padX, h:0.26, size:T.small, align:"right",
+    color:C.muteW, valign:"middle" });
+const LOCKED = [["그 스팟의 구매 전환율","■ ■ %"],["내 매장 방문객의 신규 비율","■ ■ %"],
+                ["들어왔는데 안 산 사람의 정체","■ ■ ■"],["집품률 · 체류시간 · 이탈 지점","■ ■ ■"]];
+const lkY = tzY + 0.62, lkH = (tzH - 0.62 - G.padY - 3*0.08)/4;
+LOCKED.forEach((l,i)=>{
+  const y = lkY + i*(lkH+0.08);
+  box(s, lockX+G.padX, y, lockW-G.padX*2, lkH, C.ink2);
+  tx(s, l[0], { x:lockX+G.padX+0.22, y:y, w:4.4, h:lkH, size:T.small, color:C.white, valign:"middle" });
+  tx(s, l[1], { x:lockX+lockW-G.padX-1.5, y:y, w:1.28, h:lkH, size:T.small, bold:true,
+    color:C.amber, align:"right", valign:"middle", noCheck:true });
+});
+foot(s, [{ text:"유입률은 공간의 지표라 공개할 수 있고,  ", options:{ color:C.ink }},
+         { text:"전환율은 그 브랜드의 성과라 계약 안에서만 열립니다.", options:{ bold:true, color:C.red }}],
+     { size:12.5 });
+
+/* ============================================================ 10. Business models ③ (50초) */
 s = newSlide();
 head(s, "04", "이해관계자 구조와 채널",
   "외부 영업이 아니라 팝업 계약 시점에 팔립니다 — 계약 시점 = 판매 시점",
@@ -436,7 +498,7 @@ tx(s, "채널 — 어떻게 도달하는가", { x:G.M, y:chY-0.36, w:6.0, size:1
 cardRow(s, chCards, chY, { h:bm2Rows[1] });
 band(s, bm2BandY, "첫 고객은 외부 브랜드가 아니라 롯데 자신입니다.  그룹 안에서 검증하고, 그룹 시너지로 확산합니다.", T.body);
 
-/* ============================================================ 10. Traction ① (30초) */
+/* ============================================================ 11. Traction ① (30초) */
 s = newSlide();
 head(s, "05", "핵심 지표  |  3개년 손익 — 24개월에 손익분기",
   "아직 매출이 없는 신사업이라 실적 대신 목표점을 말씀드립니다  ※ 내부 검증 전 추정치",
@@ -468,7 +530,7 @@ tx(s, "침투율 저조 + 구독 저조 + 광고 미실행이 동시에 일어�
     color:C.amber, valign:"middle" });
 foot(s, "파일럿 1.5억으로 시작해 24개월에 손익분기를 넘습니다.", { size:T.body });
 
-/* ============================================================ 11. Traction ② (30초) */
+/* ============================================================ 12. Traction ② (30초) */
 s = newSlide();
 head(s, "05", "실행 로드맵과 판정 기준",
   "각 단계마다 통과 조건을 미리 걸어두었습니다 — 하나라도 안 되면 다음 단계로 가지 않습니다",
@@ -501,7 +563,7 @@ tx(s, "판정 기준 — 무엇으로 성공을 확인하는가",
 cardRow(s, GATES, gtY, { h:trRows[1] });
 band(s, trBandY, "지불 의사를 가정하지 않습니다.  롯데가 먼저 쓰고, 무상으로 검증한 뒤에 과금합니다.", T.lead);
 
-/* ============================================================ 12. Team (20초) */
+/* ============================================================ 13. Team (20초) */
 s = newSlide();
 head(s, "06", "팀  |  3사 합작 구조 자체가 사업입니다",
   "각자 조각만 가지고 있었고, 합쳐본 적이 없습니다 — 그 조각을 한 팀으로 묶습니다",
@@ -530,7 +592,7 @@ tx(s, "조직 형태 · 3사 합작 TF → 성과 검증 후 분사(Spin-off) �
 cardRow(s, hrCards, hrY, { h:tmRows[1] });
 band(s, teamBandY, "한 사만으로는 만들 수 없습니다.  그룹이어야 가능한 사업이고, 그래서 지금까지 비어 있었습니다.", T.lead);
 
-/* ============================================================ 13. Ask (40초) */
+/* ============================================================ 14. Ask (40초) */
 s = newSlide();
 head(s, "07", "요청 사항  |  파일럿 1.5억으로 판단하십시오",
   "큰 투자를 요청드리는 것이 아닙니다 — 3개월 뒤 데이터로 계속할지 말지 결정하십시오",
@@ -560,7 +622,7 @@ tx(s, "자금 사용처", { x:G.M, y:useY-0.36, w:5.0, size:12.5, bold:true, cs:
 cardRow(s, USE, useY, { h:askRows[1] });
 band(s, askBandY, "CCTV가 이미 깔려 있어 가볍게 시작합니다.  실패해도 잃는 것이 작고, 성공하면 그룹 전체로 확장됩니다.", T.lead);
 
-/* ============================================================ 14. Last page (20초) */
+/* ============================================================ 15. Last page (20초) */
 s = newSlide(true);
 tx(s, "MISSION", { x:0.9, y:1.30, w:6.0, size:T.tag, bold:true, color:C.amber, cs:2 });
 tx(s, "브랜드는 자기가 판 것만 압니다.",

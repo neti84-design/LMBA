@@ -18,9 +18,9 @@ soffice --headless --convert-to pdf LGA_롯데신사업_발표.pptx
 
 | 파일 | 역할 |
 |---|---|
-| `build.js` | 슬라이드 18장(본편 14 + 백업 4)의 내용과 배치 — IR 덱 표준 9블록 순서 |
+| `build.js` | 슬라이드 19장(본편 15 + 백업 4)의 내용과 배치 — IR 덱 표준 9블록 순서 |
 | `design.js` | **디자인 시스템** — 글꼴·타입 스케일·줄간격·그리드·자동 높이·넘침 검사 |
-| `notes.js` | 발표 대본 18개 (본편 600초 + 백업). 슬라이드 노트로 삽입됩니다 |
+| `notes.js` | 발표 대본 19개 (본편 600초 + 백업). 슬라이드 노트로 삽입됩니다 |
 
 ## 글꼴
 
@@ -60,10 +60,10 @@ soffice --headless --convert-to pdf LGA_롯데신사업_발표.pptx
 
 ## 구성
 
-- 본편 14장 = First page · Problem ×2 · Solution ×2 · Market ×2 · Business models ×2 · Traction ×2 · Team · Ask · Last page
+- 본편 15장 = First page · Problem ×2 · Solution ×2 · Market ×2 · Business models ×3(수익 · 무상 티저 · 구조) · Traction ×2 · Team · Ask · Last page
 - 백업 4장 = B1 숫자의 근거 · B2 프라이버시 2계층 + 핵심가치 · B3 리스크 · B4 원가 구조
 - 칩 번호 01~07은 IR 블록 번호(Problem=01 … Ask=07), 우측 상단에 블록 이름
-- 네이티브 차트 3개(5·10·18번) — PowerPoint에서 데이터 수정이 그대로 됩니다
+- 네이티브 차트 3개(5·11·19번) — PowerPoint에서 데이터 수정이 그대로 됩니다
 - 6번(Market ①)의 TAM·SAM·SOM 입력값은 `MKT` 배열과 바로 아래 각주 두 곳에 있습니다 — 함께 고치십시오
 - 대본을 고치면 `notes.js` 의 `(N초)` 표기도 함께 고치고 `docs/04_pitch-10min.md` 를 재생성하십시오
 
@@ -71,7 +71,7 @@ soffice --headless --convert-to pdf LGA_롯데신사업_발표.pptx
 
 | 용도 | 코드 |
 |---|---|
-| 어두운 배경 (1·2·4·14번 및 강조 밴드) | `0E1420` / `1A2233` |
+| 어두운 배경 (1·2·4·15번 및 강조 밴드) | `0E1420` / `1A2233` |
 | 강조 (레드) | `E11D2E` |
 | 보조 강조 (앰버, 어두운 배경 위) | `F5A623` |
 | 본문 보조 텍스트 | `5E6979` |
