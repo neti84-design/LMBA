@@ -20,11 +20,12 @@
 | [docs/01_gap-analysis.md](docs/01_gap-analysis.md) | 현재 기획에서 **놓치고 있는 8가지**와 디벨롭 방향 |
 | [docs/02_business-model.md](docs/02_business-model.md) | 상품 설계(6단 솔루션 사다리) + 5단 수익구조, 단가, 원가 |
 | [docs/03_financials.md](docs/03_financials.md) | 3개년 손익 추정, BEP, CAPEX, 민감도 |
-| [docs/04_pitch-10min.md](docs/04_pitch-10min.md) | 10분 발표 14장 구성 + 대본(초 단위 배분) |
+| [docs/04_pitch-10min.md](docs/04_pitch-10min.md) | 10분 발표 구성 + 대본 — **비즈니스 모델 캔버스 9블록 순서** |
 | [docs/05_qna-prep.md](docs/05_qna-prep.md) | 예상 질문 12개와 답변 |
 | [docs/06_action-plan.md](docs/06_action-plan.md) | 발표 전까지 확인·제작해야 할 항목 |
+| [docs/07_business-model-canvas.md](docs/07_business-model-canvas.md) | **비즈니스 모델 캔버스 9블록** — Step 1 가치 전달(01~05) → Step 2 효율적 운영(06~09) |
 | [docs/financial_model.csv](docs/financial_model.csv) | 손익 추정 원본 데이터 |
-| **[LGA_롯데신사업_발표.pptx](LGA_롯데신사업_발표.pptx)** | **발표용 PPT 14장 — 전 슬라이드에 발표 대본이 노트로 포함** |
+| **[LGA_롯데신사업_발표.pptx](LGA_롯데신사업_발표.pptx)** | **발표용 PPT 14장 + 백업 1장 — BMC 9블록 순서, 전 슬라이드에 대본 노트 포함** |
 | [deck/build.js](deck/build.js) | 위 PPT를 생성하는 스크립트 (문구·수치 수정 후 재생성 가능) |
 
 ## ⚠️ 숫자에 대한 경고
