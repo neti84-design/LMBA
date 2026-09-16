@@ -13,6 +13,13 @@
 우리는 **브랜드가 절대 스스로 알 수 없는 자기 고객의 정체와 니즈**를 알려주고,
 **그 처방이 실제로 통했는지 POS로 증명**한다.
 
+**그룹 전략 정합성**: 결제한 순간에만 쌓이던 고객 가치를 사지 않은 순간까지 넓히는
+**Lifetime Value Creator의 데이터 실행**이자, 이미 깔린 CCTV 위에 AI를 얹는 **AI 트랜스포메이션** 과제,
+그리고 상품을 파는 유통에서 데이터를 파는 **뉴라이프플랫폼**으로의 전환입니다.
+핵심가치 4개(Beyond Customer Expectation · Challenge · Respect · Originality)는
+슬라이드 장식이 아니라 **상품 범위·프라이버시 설계·지표 정의를 실제로 바꾼 설계 원칙**입니다.
+→ [docs/08_lotte-strategy-fit.md](docs/08_lotte-strategy-fit.md)
+
 ## 문서 구성
 
 | 문서 | 내용 |
@@ -20,12 +27,13 @@
 | [docs/01_gap-analysis.md](docs/01_gap-analysis.md) | 현재 기획에서 **놓치고 있는 8가지**와 디벨롭 방향 |
 | [docs/02_business-model.md](docs/02_business-model.md) | 상품 설계(6단 솔루션 사다리) + 5단 수익구조, 단가, 원가 |
 | [docs/03_financials.md](docs/03_financials.md) | 3개년 손익 추정, BEP, CAPEX, 민감도 |
-| [docs/04_pitch-10min.md](docs/04_pitch-10min.md) | 10분 발표 구성 + 대본 — **비즈니스 모델 캔버스 9블록 순서** |
-| [docs/05_qna-prep.md](docs/05_qna-prep.md) | 예상 질문 12개와 답변 |
+| [docs/04_pitch-10min.md](docs/04_pitch-10min.md) | 10분 발표 구성 + 대본 — **비즈니스 모델 캔버스 9블록 순서**, 정확히 600초 |
+| [docs/05_qna-prep.md](docs/05_qna-prep.md) | 예상 질문 14개와 답변 (Q13·Q14 = 그룹 전략·핵심가치 정합성) |
 | [docs/06_action-plan.md](docs/06_action-plan.md) | 발표 전까지 확인·제작해야 할 항목 |
 | [docs/07_business-model-canvas.md](docs/07_business-model-canvas.md) | **비즈니스 모델 캔버스 9블록** — Step 1 가치 전달(01~05) → Step 2 효율적 운영(06~09) |
+| [docs/08_lotte-strategy-fit.md](docs/08_lotte-strategy-fit.md) | **그룹 비전·경영 방침·핵심가치와의 정합성** — 발표 3번 슬라이드 근거 |
 | [docs/financial_model.csv](docs/financial_model.csv) | 손익 추정 원본 데이터 |
-| **[LGA_롯데신사업_발표.pptx](LGA_롯데신사업_발표.pptx)** | **발표용 PPT 14장 + 백업 1장 — BMC 9블록 순서, 전 슬라이드에 대본 노트 포함** |
+| **[LGA_롯데신사업_발표.pptx](LGA_롯데신사업_발표.pptx)** | **발표용 PPT 15장 + 백업 1장 — BMC 9블록 순서 + 그룹 전략 정합성 1장, 전 슬라이드에 대본 노트 포함** |
 | [deck/build.js](deck/build.js) | 위 PPT를 생성하는 스크립트 (문구·수치 수정 후 재생성 가능) |
 
 ## ⚠️ 숫자에 대한 경고
@@ -33,3 +41,6 @@
 본 문서의 모든 재무 수치는 **공개정보와 업계 통상치를 근거로 한 가정값**입니다.
 롯데 내부 실제 데이터(연간 팝업 건수, L.POINT 결합 가능 범위, POS 연동 범위, CCTV 사양)로
 **반드시 검증 후 발표**하십시오. 검증 필요 항목은 각 문서에 `[검증필요]` 로 표시했습니다.
+
+같은 이유로, 발표 3번 슬라이드의 **그룹 비전·핵심가치·경영 방침 문구도 사내 최신 공식 표현과 대조**하십시오.
+표현이 다르면 `deck/build.js`의 3번 슬라이드 문구만 고치고 다시 빌드하면 됩니다.

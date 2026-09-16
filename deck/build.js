@@ -42,12 +42,15 @@ function bullets(arr){ return arr.map((t,i)=>({text:t,options:{bullet:true,break
 /* ============ 1. TITLE ============ */
 let s = pres.addSlide();
 s.background = { color: INK };
-s.addText("롯데그룹 신사업 제안  ·  비즈니스 모델 캔버스",{x:0.9,y:1.35,w:6.6,h:0.34,fontFace:F,fontSize:14,
+s.addText("롯데그룹 신사업 제안  ·  비즈니스 모델 캔버스",{x:0.9,y:1.35,w:7.0,h:0.34,fontFace:F,fontSize:14,
   bold:true,color:AMBER,charSpacing:2,margin:0,isTextBox:true});
 s.addText("L.GA",{x:0.85,y:1.75,w:6.4,h:1.25,fontFace:F,fontSize:68,bold:true,color:W,margin:0,isTextBox:true});
 s.addText("Lotte Growth Analytics",{x:0.9,y:3.02,w:6.4,h:0.4,fontFace:F,fontSize:19,color:MUTEDW,margin:0,isTextBox:true});
 s.addText("브랜드가 모르는 자기 고객을 알려주는\n오프라인 리테일 데이터 솔루션",
   {x:0.9,y:3.75,w:6.2,h:1.3,fontFace:F,fontSize:21,bold:true,color:W,lineSpacing:34,margin:0,isTextBox:true});
+s.addShape(pres.ShapeType.roundRect,{x:0.9,y:5.32,w:6.2,h:0.86,fill:{color:INK2},rectRadius:0.06});
+s.addText("Lifetime Value Creator",{x:1.25,y:5.45,w:5.6,h:0.3,fontFace:F,fontSize:12.5,bold:true,color:AMBER,margin:0,isTextBox:true});
+s.addText("결제한 순간에만 쌓이던 고객 가치를, 사지 않은 순간까지 넓힙니다.",{x:1.25,y:5.76,w:5.6,h:0.3,fontFace:F,fontSize:11.5,color:MUTEDW,margin:0,isTextBox:true});
 s.addText("롯데그룹 핵심인재 MBA 과정  |  최종 발표",{x:0.9,y:6.55,w:6.4,h:0.34,fontFace:F,fontSize:12,color:SLATE,margin:0,isTextBox:true});
 s.addShape(pres.ShapeType.roundRect,{x:7.85,y:1.55,w:4.85,h:4.4,fill:{color:INK2},rectRadius:0.08});
 s.addText("매장에 들어오는 100명 중",{x:8.3,y:2.0,w:4.0,h:0.36,fontFace:F,fontSize:15,color:MUTEDW,margin:0,isTextBox:true});
@@ -59,7 +62,7 @@ s.addNotes("백화점 매장에 100명이 들어옵니다. 그중 구매하는 �
 
 /* ============ 2. CANVAS OVERVIEW ============ */
 s = pres.addSlide();
-head(s,"BMC","한 장으로 보는 L.GA 비즈니스 모델","Step 1 가치 전달(01~05)을 먼저 확정하고, Step 2 효율적 운영(06~09)을 채웠습니다");
+head(s,"BMC","한 장으로 보는 L.GA 비즈니스 모델","Step 1 가치 전달(01~05)을 먼저 확정하고, Step 2 효율적 운영(06~09)을 채웠습니다 — 다음 장에서 그룹 전략과의 정합성을 먼저 보겠습니다");
 function block(x,y,w,h,num,title,lines,step,hi){
   const fill = hi?INK:(step===1?WARM:COOL);
   s.addShape(pres.ShapeType.roundRect,{x,y,w,h,fill:{color:fill},rectRadius:0.05,line:{color:hi?INK:LINE,width:1}});
@@ -80,9 +83,40 @@ block(0.6+4*(cw+g),top,cw,th,"01","고객 세그먼트",["롯데 팝업 브랜�
 const by=top+th+0.12, bh=6.95-by;
 block(0.6,by,6.0,bh,"09","비용 구조",["고정비: 인건비(컨설턴트) 중심 — Y3 판관비 53.7억","변동비: 팝업 건당 75만 · 엣지로 클라우드 1/10 → GM 77%"],2);
 block(0.6+6.0+0.13,by,6.0,bh,"05","수익원",["팝업 패키지 320만 · 구독 월 45만 · 컨설팅 1,500만+성과 · 리타게팅 · 라이선스","Y3 매출 128.6억 · 영업이익 44.9억 (35%) · 리커링 51%"],1);
-s.addNotes("전체 구조를 한 장으로 먼저 보여드립니다. 오른쪽 다섯 블록이 가치 전달 - 누구에게 무엇을. 왼쪽 네 블록이 효율적 운영 - 어떻게 만들 것인가. 가운데 가치 제안이 심장입니다. 브랜드가 모르는 자기 고객을 알려주고, 처방이 통했는지 POS로 증명한다. 이제 01번부터 순서대로 가겠습니다. (40초)");
+s.addNotes("전체 구조를 한 장으로 먼저 보여드립니다. 오른쪽 다섯 블록이 가치 전달 - 누구에게 무엇을. 왼쪽 네 블록이 효율적 운영 - 어떻게 만들 것인가. 가운데 가치 제안이 심장입니다. 브랜드가 모르는 자기 고객을 알려주고, 처방이 통했는지 POS로 증명한다. 이제 01번부터 순서대로 가겠습니다. (25초)");
 
-/* ============ 3. 01 고객 세그먼트 ============ */
+/* ============ 3. 롯데 전략 정합성 ============ */
+s = pres.addSlide();
+head(s,"FIT","왜 롯데인가  |  그룹 전략과 핵심가치에 맞는 사업입니다","신사업을 먼저 만들고 명분을 붙인 것이 아니라, 그룹이 가려는 방향에서 거꾸로 설계했습니다");
+const strat=[
+ ["그룹 비전","Lifetime Value Creator","고객의 '평생 가치'는 지금까지 결제한 순간에만 기록됐습니다.\nL.GA는 사지 않은 순간까지 가치로 바꿉니다.",false],
+ ["경영 방침","AI 트랜스포메이션","새 인프라를 사는 사업이 아닙니다.\n이미 깔려 있는 CCTV 위에 AI를 얹는 — 기존 자산의 AI 내재화 사례입니다.",true],
+ ["신성장 테마","뉴라이프플랫폼","상품을 파는 유통에서 데이터를 파는 플랫폼으로.\n롯데 리테일 자산의 플랫폼화 그 자체입니다.",false]];
+strat.forEach((t,i)=>{
+  const x=0.6+i*4.07, hi=t[3];
+  s.addShape(pres.ShapeType.roundRect,{x:x,y:1.62,w:3.86,h:2.12,fill:{color:hi?INK:TINT},rectRadius:0.07,line:{color:hi?INK:LINE,width:1},shadow:sh()});
+  s.addText(t[0],{x:x+0.32,y:1.8,w:3.22,h:0.3,fontFace:F,fontSize:11,bold:true,color:hi?AMBER:RED,charSpacing:1,margin:0,isTextBox:true});
+  s.addText(t[1],{x:x+0.32,y:2.12,w:3.22,h:0.44,fontFace:F,fontSize:17,bold:true,color:hi?W:INK,margin:0,isTextBox:true});
+  s.addText(t[2],{x:x+0.32,y:2.62,w:3.22,h:1.04,fontFace:F,fontSize:11,color:hi?MUTEDW:INK,lineSpacing:16,valign:"top",margin:0,isTextBox:true});
+});
+s.addText("그룹 핵심가치 = 이 사업의 설계 원칙",{x:0.6,y:3.9,w:6,h:0.34,fontFace:F,fontSize:13,bold:true,color:SLATE,charSpacing:1,margin:0,isTextBox:true});
+s.addText("미션 · 사랑과 신뢰를 받는 제품과 서비스",{x:6.8,y:3.9,w:5.93,h:0.34,align:"right",fontFace:F,fontSize:11.5,color:SLATE,margin:0,isTextBox:true});
+const vals=[
+ ["Beyond Customer\nExpectation","고객 기대 그 이상","리포트에서 멈추지 않습니다. 처방하고, POS로 증명까지 합니다."],
+ ["Challenge","도전","'사지 않은 고객'을 데이터화한 유통사는 아직 없습니다."],
+ ["Respect","존중","사람을 추적하지 않고 공간을 측정합니다. 동의 없이 개인을 연결하지 않습니다."],
+ ["Originality","독창성","GA를 옮기지 않고, 오프라인 고유 지표로 다시 정의했습니다."]];
+vals.forEach((v,i)=>{
+  const x=0.6+i*3.07;
+  s.addShape(pres.ShapeType.roundRect,{x:x,y:4.3,w:2.92,h:1.78,fill:{color:WARM},rectRadius:0.06,line:{color:WARM,width:1}});
+  s.addText(v[0],{x:x+0.26,y:4.44,w:2.4,h:0.56,fontFace:F,fontSize:12.5,bold:true,color:RED,lineSpacing:15,valign:"top",margin:0,isTextBox:true});
+  s.addText(v[1],{x:x+0.26,y:5.02,w:2.4,h:0.28,fontFace:F,fontSize:10.5,color:SLATE,margin:0,isTextBox:true});
+  s.addText(v[2],{x:x+0.26,y:5.34,w:2.42,h:0.68,fontFace:F,fontSize:10.5,color:INK,lineSpacing:15,valign:"top",margin:0,isTextBox:true});
+});
+band(s,6.25,0.85,"롯데가 '할 수 있는' 신사업이 아니라,  롯데만 할 수 있고 롯데의 약속에 맞는 신사업입니다.",16);
+s.addNotes("본론에 들어가기 전에 한 장만 더 보겠습니다. 이 사업이 왜 롯데의 사업이어야 하는가입니다.\n그룹 비전은 Lifetime Value Creator입니다. 그런데 지금까지 고객의 평생 가치는 결제한 순간에만 기록됐습니다. 저희는 사지 않은 순간까지 가치로 바꿉니다. 비전을 데이터로 실행하는 사업입니다.\n회장님이 강조해 오신 AI 트랜스포메이션 관점에서도, 이건 새 인프라를 사는 사업이 아니라 이미 깔린 CCTV 위에 AI를 얹는 사업입니다. 그리고 4대 신성장 테마 중 뉴라이프플랫폼, 상품을 파는 유통에서 데이터를 파는 플랫폼으로 가는 방향과 정확히 같습니다.\n핵심가치 네 가지는 그대로 이 사업의 설계 원칙이 됐습니다. 고객 기대 그 이상 - 리포트에서 멈추지 않고 증명까지. 도전 - 아무도 못 한 사지 않은 고객의 데이터화. 존중 - 사람을 추적하지 않고 공간을 측정한다. 독창성 - GA를 베끼지 않고 오프라인 지표로 다시 정의했다.\n롯데가 할 수 있는 신사업이 아니라, 롯데만 할 수 있고 롯데의 약속에 맞는 신사업입니다. (45초)");
+
+/* ============ 4. 01 고객 세그먼트 ============ */
 s = pres.addSlide();
 head(s,"01","고객 세그먼트  |  우리의 타겟 고객은 누구인가?","성과 측정 니즈가 가장 절박한 곳부터, 안에서 밖으로",{step:1});
 const segs=[
@@ -104,9 +138,11 @@ pains.forEach((p,i)=>{
   s.addText(String(i+1),{x:x+0.25,y:5.02,w:0.5,h:1.3,fontFace:F,fontSize:28,bold:true,color:RED,valign:"middle",margin:0,isTextBox:true});
   s.addText(p,{x:x+0.8,y:5.02,w:2.85,h:1.3,fontFace:F,fontSize:12,bold:true,color:INK,valign:"middle",lineSpacing:18,margin:0,isTextBox:true});
 });
-s.addNotes("첫 번째, 고객 세그먼트. 1차 타겟은 롯데백화점과 몰에 팝업을 여는 브랜드입니다. 연 2천 건 규모로 추정하고 있고, 특히 정규 입점을 노리는 신생 브랜드가 성과 측정에 가장 절박합니다. 2차는 상설 입점 매장 - 여기서 구독 매출이 나옵니다. 그리고 첫 고객은 사실 롯데 자신입니다. 백화점이 먼저 써서 데이터와 레퍼런스를 만듭니다. 이들의 고통은 명확합니다. 팝업이 끝나면 매출 총액과 해시태그 개수가 전부고, 온 사람이 신규인지 기존인지 모르고, 그래서 다음 팝업도 감으로 엽니다. (40초)");
+s.addText([{text:"Beyond Customer Expectation  —  ",options:{bold:true,color:RED}},{text:"브랜드가 기대하는 \u0027리포트\u0027를 넘어, \u0027그래서 무엇을 바꿔야 하는가\u0027까지 드립니다.",options:{color:INK}}],
+  {x:0.6,y:6.45,w:12.13,h:0.4,align:"center",fontFace:F,fontSize:12.5,bold:true,margin:0,isTextBox:true});
+s.addNotes("첫 번째, 고객 세그먼트. 1차 타겟은 롯데백화점과 몰에 팝업을 여는 브랜드입니다. 연 2천 건 규모로 추정하고 있고, 특히 정규 입점을 노리는 신생 브랜드가 성과 측정에 가장 절박합니다. 2차는 상설 입점 매장 - 여기서 구독 매출이 나옵니다. 그리고 첫 고객은 사실 롯데 자신입니다. 백화점이 먼저 써서 데이터와 레퍼런스를 만듭니다. 이들의 고통은 명확합니다. 팝업이 끝나면 매출 총액과 해시태그 개수가 전부고, 온 사람이 신규인지 기존인지 모르고, 그래서 다음 팝업도 감으로 엽니다. 고객의 기대 그 이상 - 브랜드가 기대하는 건 리포트지만, 저희는 그래서 무엇을 바꿔야 하는가까지 드립니다. (40초)");
 
-/* ============ 4. 02 가치 제안 ① (dark climax) ============ */
+/* ============ 5. 02 가치 제안 ① (dark climax) ============ */
 s = pres.addSlide();
 s.background = { color: INK };
 head(s,"02","가치 제안  |  브랜드가 모르는 자기 고객","팝업이 끝나면 브랜드에게 드리는 다섯 가지 — 스스로는 절대 알 수 없는 답",{step:1,dark:true});
@@ -128,7 +164,7 @@ s.addText("브랜드는 자기가 판 것만 압니다.  L.POINT 소비 이력�
   {x:0.62,y:6.55,w:12.1,h:0.42,align:"center",fontFace:F,fontSize:14,bold:true,color:AMBER,margin:0,isTextBox:true});
 s.addNotes("두 번째, 가치 제안. 이게 이 사업의 심장입니다. 브랜드는 자기가 판 것만 압니다. 자사 POS가 데이터의 끝이니까요. 저희는 팝업이 끝나면 이 다섯 가지를 드립니다.\n첫째, 이번에 온 사람 중 신규가 몇 퍼센트인가. 둘째, 들어왔는데 안 산 사람은 누구였나. 셋째, 우리 방문객이 평소 어디서 무엇을 사는가. 넷째, 집었는데 안 산 상품 - 온라인 장바구니 이탈과 똑같고 그대로 상품기획 피드백이 됩니다. 다섯째, 다음 팝업은 어디에, 언제, 어느 층에.\n(한 박자) 이 다섯 가지는 브랜드가 아무리 돈을 써도 스스로 알 수 없습니다. L.POINT 소비 이력과 롯데 전점 트래픽이 동시에 있어야만 나오는 답이기 때문입니다. (70초 — 손가락으로 꼽으며)");
 
-/* ============ 5. 02 가치 제안 ② 검증 ============ */
+/* ============ 6. 02 가치 제안 ② 검증 ============ */
 s = pres.addSlide();
 head(s,"02","가치 제안  |  처방의 효과를 POS로 증명합니다","경쟁사는 결제 데이터가 없어 자기 처방이 통했는지 증명할 수 없습니다",{step:1});
 s.addChart(pres.ChartType.bar,[
@@ -157,9 +193,9 @@ ga.forEach((p,i)=>{
   s.addText([{text:p[0]+"  →  ",options:{color:SLATE}},{text:p[1],options:{bold:true,color:p[1].includes("★")?RED:INK}}],
     {x:x,y:5.95,w:1.8,h:0.95,fontFace:F,fontSize:12,valign:"middle",margin:0,isTextBox:true});
 });
-s.addNotes("가치 제안의 두 번째 축입니다. 인사이트만으로는 부족합니다. 브랜드가 진짜 원하는 건 매출이니까요. 그래서 이렇게 바꾸세요까지 가고, 바꾼 다음 실제로 매출이 올랐는지를 POS로 증명합니다. 집품에서 구매로 가는 전환율이 8.1%에서 11.4%로 올랐습니다 - 이렇게요. 경쟁사는 결제 데이터가 없어서 이걸 못 합니다. 효과를 증명 못 하는 컨설팅은 한 번 팔리고 끝나고, 증명하는 컨설팅은 갱신됩니다. 지표 체계는 온라인 GA와 1:1입니다. 노출은 통행 수, 클릭률은 유입률, 장바구니는 집품률. (45초)");
+s.addNotes("가치 제안의 두 번째 축입니다. 인사이트만으로는 부족합니다. 브랜드가 진짜 원하는 건 매출이니까요. 그래서 이렇게 바꾸세요까지 가고, 바꾼 다음 실제로 매출이 올랐는지를 POS로 증명합니다. 집품에서 구매로 가는 전환율이 8.1%에서 11.4%로 올랐습니다 - 이렇게요. 경쟁사는 결제 데이터가 없어서 이걸 못 합니다. 효과를 증명 못 하는 컨설팅은 한 번 팔리고 끝나고, 증명하는 컨설팅은 갱신됩니다. 고객 기대 그 이상이라는 핵심가치를, 증명이라는 방식으로 지키는 구조입니다. 지표 체계는 온라인 GA와 1:1입니다. 노출은 통행 수, 클릭률은 유입률, 장바구니는 집품률. (45초)");
 
-/* ============ 6. 03 채널 ============ */
+/* ============ 7. 03 채널 ============ */
 s = pres.addSlide();
 head(s,"03","채널  |  고객에게 어떻게 접근하는가?","외부 영업이 아니라 계약 시점에 팔립니다 — 안에서 밖으로",{step:1});
 const chs=[
@@ -174,11 +210,11 @@ chs.forEach((c,i)=>{
   s.addText(c[1],{x:3.95,y:y+0.12,w:8.5,h:0.5,fontFace:F,fontSize:14,bold:true,color:c[3]?W:INK,valign:"middle",margin:0,isTextBox:true});
   s.addText(c[2],{x:3.95,y:y+0.6,w:8.5,h:0.36,fontFace:F,fontSize:11,color:c[3]?MUTEDW:SLATE,valign:"middle",margin:0,isTextBox:true});
 });
-s.addText("첫 고객은 외부 브랜드가 아니라 롯데 자신입니다.  레퍼런스 없이 밖에 팔면 팔리지 않습니다.",
+s.addText("첫 고객은 외부 브랜드가 아니라 롯데 자신입니다.  그룹 안에서 검증하고, 그룹 시너지로 확산합니다.",
   {x:0.6,y:6.6,w:12.13,h:0.4,align:"center",fontFace:F,fontSize:14,bold:true,color:INK,margin:0,isTextBox:true});
-s.addNotes("세 번째, 채널. 이 사업은 외부 영업을 하지 않습니다. 백화점 MD와 영업관리팀이 팝업 계약을 맺는 그 자리에서 번들로 제안합니다. 계약 시점이 곧 판매 시점이라 영업비용이 거의 없습니다. 제품은 포털 대시보드와, 팝업 종료 후 컨설턴트가 직접 리포트를 설명하는 미팅으로 전달됩니다. 확산은 안에서 밖으로 - 계열사, 해외 롯데몰, 그다음 외부 유통사입니다. 그리고 도달 채널, L.POINT 앱 푸시는 인사이트를 실행으로 연결하는 통로입니다. (35초)");
+s.addNotes("세 번째, 채널. 이 사업은 외부 영업을 하지 않습니다. 백화점 MD와 영업관리팀이 팝업 계약을 맺는 그 자리에서 번들로 제안합니다. 계약 시점이 곧 판매 시점이라 영업비용이 거의 없습니다. 제품은 포털 대시보드와, 팝업 종료 후 컨설턴트가 직접 리포트를 설명하는 미팅으로 전달됩니다. 확산은 안에서 밖으로 - 계열사, 해외 롯데몰, 그다음 외부 유통사입니다. 그리고 도달 채널, L.POINT 앱 푸시는 인사이트를 실행으로 연결하는 통로입니다. (30초)");
 
-/* ============ 7. 04 고객 관계 ============ */
+/* ============ 8. 04 고객 관계 ============ */
 s = pres.addSlide();
 head(s,"04","고객 관계  |  어떻게 확보·유지·성장시킬 것인가?","증명이 갱신의 근거입니다 — 리텐션 엔진",{step:1});
 const rel=[
@@ -194,9 +230,11 @@ rel.forEach((r,i)=>{
   if(i<2) s.addText("→",{x:x+3.86,y:3.1,w:0.21,h:0.5,align:"center",fontFace:F,fontSize:16,bold:true,color:SLATE,valign:"middle",margin:0,isTextBox:true});
 });
 band(s,5.45,1.0,"\"바꿨더니 전환율이 8.1% → 11.4%\"  —  이 문장이 다음 계약서입니다.",16);
-s.addNotes("네 번째, 고객 관계. 확보는 지불 의사를 가정하지 않습니다. 롯데가 먼저 쓰고, 파일럿 3건을 무상으로 하고, 검증된 뒤에 과금합니다. 유지가 핵심입니다. 바꿨더니 전환율이 8.1에서 11.4로 올랐다 - 이 POS 검증 리포트가 다음 계약의 근거가 됩니다. 성장은 깔때기입니다. 팝업에서 검증된 브랜드가 정규 매장을 열면 구독으로, 심층 니즈가 생기면 컨설팅과 성과연동으로, 그리고 리타게팅으로 올라갑니다. (40초)");
+s.addText([{text:"사랑과 신뢰를 받는 서비스  —  ",options:{bold:true,color:RED}},{text:"증명하기 전에는 청구하지 않습니다. 신뢰가 먼저 쌓이고, 갱신은 그 결과입니다.",options:{color:INK}}],
+  {x:0.6,y:6.6,w:12.13,h:0.4,align:"center",fontFace:F,fontSize:12.5,bold:true,margin:0,isTextBox:true});
+s.addNotes("네 번째, 고객 관계. 확보는 지불 의사를 가정하지 않습니다. 롯데가 먼저 쓰고, 파일럿 3건을 무상으로 하고, 검증된 뒤에 과금합니다. 유지가 핵심입니다. 바꿨더니 전환율이 8.1에서 11.4로 올랐다 - 이 POS 검증 리포트가 다음 계약의 근거가 됩니다. 성장은 깔때기입니다. 팝업에서 검증된 브랜드가 정규 매장을 열면 구독으로, 심층 니즈가 생기면 컨설팅과 성과연동으로, 그리고 리타게팅으로 올라갑니다. 사랑과 신뢰를 받는 서비스라는 그룹 미션 그대로, 증명하기 전에는 청구하지 않습니다. (45초)");
 
-/* ============ 8. 05 수익원 ① ============ */
+/* ============ 9. 05 수익원 ① ============ */
 s = pres.addSlide();
 head(s,"05","수익원  |  고객은 무엇에 기꺼이 돈을 지불하는가?","팝업은 매출 엔진이 아니라 유입 깔때기 — 3년차 매출의 51%가 반복 매출",{step:1});
 const tiers=[
@@ -217,9 +255,9 @@ tiers.forEach((t,i)=>{
 });
 s.addText("구글 애널리틱스는 무료입니다. 구글은 측정이 아니라 광고로 법니다. 저희도 같습니다.",
   {x:0.6,y:6.62,w:12.13,h:0.42,align:"center",fontFace:F,fontSize:15,bold:true,color:INK,margin:0,isTextBox:true});
-s.addNotes("다섯 번째, 수익원. 다섯 단계로 쌓입니다. 1단 팝업 패키지, 평균 320만원. 돈을 버는 상품이 아니라 브랜드를 데려오는 깔때기입니다. 2단 상설 구독 월 45만원 - 여기서 반복 매출이 생깁니다. 3단 성장 컨설팅 1,500만원에, 검증이 되니까 늘어난 매출의 5에서 10퍼센트를 성과 수수료로 받습니다. 4단 L.POINT 리타게팅 - 안 산 고객에게 앱으로 쿠폰을 보내 다시 부릅니다. 구글 애널리틱스는 무료입니다. 구글은 광고로 법니다. 저희도 같습니다. 5단 벤치마크 리포트 판매. 3년차 매출의 51%가 반복 매출입니다. (45초)");
+s.addNotes("다섯 번째, 수익원. 다섯 단계로 쌓입니다. 1단 팝업 패키지, 평균 320만원. 돈을 버는 상품이 아니라 브랜드를 데려오는 깔때기입니다. 2단 상설 구독 월 45만원 - 여기서 반복 매출이 생깁니다. 3단 성장 컨설팅 1,500만원에, 검증이 되니까 늘어난 매출의 5에서 10퍼센트를 성과 수수료로 받습니다. 4단 L.POINT 리타게팅 - 안 산 고객에게 앱으로 쿠폰을 보내 다시 부릅니다. 구글 애널리틱스는 무료입니다. 구글은 광고로 법니다. 저희도 같습니다. 5단 벤치마크 리포트 판매. 3년차 매출의 51%가 반복 매출입니다. (40초)");
 
-/* ============ 9. 05 수익원 ② 손익 ============ */
+/* ============ 10. 05 수익원 ② 손익 ============ */
 s = pres.addSlide();
 head(s,"05","수익원  |  3개년 손익 — 24개월에 손익분기","※ 내부 검증 전 추정치 — 롯데 내부 데이터로 재검증 필요",{step:1});
 s.addChart(pres.ChartType.bar,[
@@ -245,9 +283,9 @@ s.addText("침투율 저조 + 구독 저조 + 광고 미실행이\n동시에 일
 s.addText("파일럿 1.5억으로 시작해 24개월에 손익분기를 넘습니다.",{x:0.6,y:5.95,w:8.0,h:0.42,align:"center",fontFace:F,fontSize:14,bold:true,color:INK,margin:0,isTextBox:true});
 s.addNotes("숫자로 보면 이렇습니다. 먼저, 이 수치는 내부 검증 전 추정치입니다. 1년차 10개 점포 파일럿, 매출 13억, 영업손실 8억. 2년차 전점 확산, 매출 54억, 영업이익 9억 - 여기서 흑자 전환하고 누적 손익분기도 24개월에 넘습니다. 3년차 매출 129억, 영업이익 45억, 영업이익률 35%. 민감도도 돌렸습니다. 침투율이 떨어지고 구독이 반으로 줄고 광고를 못 해도 3년차는 흑자입니다. 수익원이 다섯 개로 분산돼 있기 때문입니다. 설비투자는 3년 11억, 파일럿은 1억 5천이면 시작합니다. (50초)");
 
-/* ============ 10. 06 핵심 자원 ============ */
+/* ============ 11. 06 핵심 자원 ============ */
 s = pres.addSlide();
-head(s,"06","핵심 자원  |  반드시 필요한 자산은?","물리적 · 지적 · 인적 · 금융 — 그중 데이터가 유일한 해자입니다",{step:2});
+head(s,"06","핵심 자원  |  반드시 필요한 자산은?","새로 사는 자산이 거의 없습니다 — 이미 가진 그룹 자산 위에 AI를 얹는 AI 트랜스포메이션 과제입니다",{step:2});
 const res=[
  ["물리적",["기존 CCTV · 전원 · 네트워크 · 보안망 재활용","팝업존 보완 카메라 (대당 약 25만원)","엣지박스 점포당 1식 (약 300만원)"],false],
  ["지적 · 데이터  ★",["L.POINT 소비 이력 · POS 결제 · 전점 트래픽","카테고리 벤치마크 DB — 시간으로만 쌓임","엣지 추론 모델 · 리포트 자동화 템플릿"],true],
@@ -261,9 +299,9 @@ res.forEach((r,i)=>{
 });
 s.addText("카메라는 누구나 깔 수 있습니다.  L.POINT와 POS와 전점 트래픽을 한 번에 가진 곳은 롯데뿐입니다.",
   {x:0.6,y:6.68,w:12.13,h:0.4,align:"center",fontFace:F,fontSize:14,bold:true,color:INK,margin:0,isTextBox:true});
-s.addNotes("이제 효율적 운영 영역입니다. 여섯 번째, 핵심 자원. 물리적 자원은 이미 있습니다. CCTV, 전원, 네트워크, 보안망. 팝업존에 보완 카메라와 점포당 엣지박스 하나만 더하면 됩니다. 지적 자원, 이게 해자입니다. L.POINT 소비 이력, POS, 전점 트래픽, 그리고 시간으로만 쌓이는 벤치마크 DB. 카메라는 누구나 깔 수 있지만 이 세 데이터를 한 번에 가진 곳은 롯데뿐입니다. 인적 자원은 42명 중 컨설턴트가 14명 - 처방과 검증이 상품이기 때문입니다. 금융은 3년 11억, 파일럿 1.5억으로 가볍습니다. (35초)");
+s.addNotes("이제 효율적 운영 영역입니다. 여섯 번째, 핵심 자원. 먼저 강조하고 싶은 건, 새로 사는 자산이 거의 없다는 점입니다. 이미 가진 그룹 자산 위에 AI를 얹는 AI 트랜스포메이션 과제입니다. 물리적 자원은 이미 있습니다. CCTV, 전원, 네트워크, 보안망. 팝업존에 보완 카메라와 점포당 엣지박스 하나만 더하면 됩니다. 지적 자원, 이게 해자입니다. L.POINT 소비 이력, POS, 전점 트래픽, 그리고 시간으로만 쌓이는 벤치마크 DB. 카메라는 누구나 깔 수 있지만 이 세 데이터를 한 번에 가진 곳은 롯데뿐입니다. 인적 자원은 42명 중 컨설턴트가 14명 - 처방과 검증이 상품이기 때문입니다. 금융은 3년 11억, 파일럿 1.5억으로 가볍습니다. (35초)");
 
-/* ============ 11. 07 핵심 활동 ============ */
+/* ============ 12. 07 핵심 활동 ============ */
 s = pres.addSlide();
 head(s,"07","핵심 활동  |  반드시 수행해야 하는 활동은?","생산은 기계가, 문제해결은 사람이, 플랫폼은 시간이 합니다",{step:2});
 const acts=[
@@ -277,7 +315,7 @@ acts.forEach((a,i)=>{
   s.addText(a[1],{x:x+0.32,y:2.38,w:3.22,h:0.32,fontFace:F,fontSize:11,bold:true,color:hi?MUTEDW:SLATE,margin:0,isTextBox:true});
   s.addText(bullets(a[2]),{x:x+0.32,y:2.85,w:3.22,h:1.8,fontFace:F,fontSize:12,color:hi?W:INK,paraSpaceAfter:8,valign:"top",margin:0,isTextBox:true});
 });
-s.addText("운영 원칙 — 사람을 추적하지 않습니다. 공간을 측정합니다.",{x:0.6,y:5.0,w:12.13,h:0.34,fontFace:F,fontSize:13,bold:true,color:SLATE,charSpacing:1,margin:0,isTextBox:true});
+s.addText("운영 원칙 · 핵심가치 Respect(존중) — 사람을 추적하지 않습니다. 공간을 측정합니다.",{x:0.6,y:5.0,w:12.13,h:0.34,fontFace:F,fontSize:13,bold:true,color:SLATE,charSpacing:1,margin:0,isTextBox:true});
 const lay=[["Layer 1 · 공간","완전 익명 — 영상은 카메라 안에서 좌표·숫자로 변환, 원본 미저장"],["Layer 2 · 고객","동의 기반 — L.POINT 앱 체크인·QR·결제 적립 시에만 연결"],["연결","개인 단위가 아니라 시간대 × 구역 × 세그먼트 집계 단위로만"]];
 lay.forEach((l,i)=>{
   const x=0.6+i*4.07;
@@ -285,12 +323,12 @@ lay.forEach((l,i)=>{
   s.addText(l[0],{x:x+0.28,y:5.52,w:3.3,h:0.32,fontFace:F,fontSize:12,bold:true,color:INK,margin:0,isTextBox:true});
   s.addText(l[1],{x:x+0.28,y:5.86,w:3.3,h:0.8,fontFace:F,fontSize:11,color:INK,lineSpacing:16,valign:"top",margin:0,isTextBox:true});
 });
-s.addNotes("일곱 번째, 핵심 활동. 세 가지로 나뉩니다. 생산은 시스템이 합니다. 영상을 클라우드로 올리지 않고 카메라 단에서 숫자로 바꾸고, 리포트의 90%는 자동 생성됩니다. 문제해결은 사람이 합니다. 이게 상품의 본체입니다 - 인사이트 분석, 처방, 그리고 POS 검증. 플랫폼은 시간이 합니다. 벤치마크 DB는 쌓일수록 강해집니다. 그리고 운영 원칙 하나. 저희는 사람을 추적하지 않습니다. 영상은 카메라 안에서 익명 숫자로 바뀌고, 개인 연결은 고객이 앱에서 동의한 경우에만, 그 사이는 세그먼트 집계 단위로만 연결합니다. 법적으로 안전하고 고객 신뢰를 잃지 않는 구조입니다. (40초)");
+s.addNotes("일곱 번째, 핵심 활동. 세 가지로 나뉩니다. 생산은 시스템이 합니다. 영상을 클라우드로 올리지 않고 카메라 단에서 숫자로 바꾸고, 리포트의 90%는 자동 생성됩니다. 문제해결은 사람이 합니다. 이게 상품의 본체입니다 - 인사이트 분석, 처방, 그리고 POS 검증. 플랫폼은 시간이 합니다. 벤치마크 DB는 쌓일수록 강해집니다. 그리고 운영 원칙 하나. 저희는 사람을 추적하지 않습니다. 영상은 카메라 안에서 익명 숫자로 바뀌고, 개인 연결은 고객이 앱에서 동의한 경우에만, 그 사이는 세그먼트 집계 단위로만 연결합니다. 이건 규제 대응이 아니라 핵심가치 존중을 설계에 넣은 것입니다. 법적으로 안전하고, 무엇보다 고객 신뢰를 잃지 않는 구조입니다. (45초)");
 
-/* ============ 12. 08 핵심 파트너 ============ */
+/* ============ 13. 08 핵심 파트너 ============ */
 s = pres.addSlide();
 head(s,"08","핵심 파트너  |  외부 파트너나 공급업체는 누구인가?","세 조각이 다 모여야 성립하는 사업입니다 — 그래서 지금까지 아무도 못 했습니다",{step:2});
-s.addText("내부 3사 합작",{x:0.6,y:1.68,w:4,h:0.34,fontFace:F,fontSize:13,bold:true,color:SLATE,charSpacing:1,margin:0,isTextBox:true});
+s.addText("내부 3사 합작 · 그룹 시너지",{x:0.6,y:1.68,w:5,h:0.34,fontFace:F,fontSize:13,bold:true,color:SLATE,charSpacing:1,margin:0,isTextBox:true});
 const org=[["롯데백화점","공간 · 트래픽 · POS · MD 지식","첫 고객이자 판매 채널"],["롯데이노베이트","비전 AI 엔진 · 엣지 인프라","생산 담당"],["롯데멤버스","L.POINT 소비 이력 · 도달 채널","인사이트와 실행 담당"]];
 org.forEach((o,i)=>{
   const x=0.6+i*4.07;
@@ -308,10 +346,10 @@ ext.forEach((e,i)=>{
   s.addText(e[0],{x:x+0.3,y:4.78,w:3.3,h:0.34,fontFace:F,fontSize:13,bold:true,color:RED,margin:0,isTextBox:true});
   s.addText(e[1],{x:x+0.3,y:5.15,w:3.3,h:0.9,fontFace:F,fontSize:11,color:INK,lineSpacing:16,valign:"top",margin:0,isTextBox:true});
 });
-s.addText("조직: 3사 합작 TF → 성과 검증 후 분사(Spin-off) 옵션",{x:0.6,y:6.4,w:12.13,h:0.4,align:"center",fontFace:F,fontSize:14,bold:true,color:INK,margin:0,isTextBox:true});
-s.addNotes("여덟 번째, 핵심 파트너. 이 사업은 롯데 안의 세 회사가 각자 조각을 가지고 있습니다. 백화점은 공간과 트래픽과 POS, 이노베이트는 비전 AI 엔진, 멤버스는 L.POINT 소비 이력. 세 조각이 다 모여야 성립하고, 그래서 지금까지 아무도 못 했습니다. 외부로는 비전 AI 엔진을 라이선스하거나 인수하는 옵션을 열어두고 있습니다 - 엔진은 사고, 데이터 결합과 검증 루프는 직접 만든다는 원칙입니다. 그리고 착수 전 법무와 개인정보 영향평가가 마일스톤 1번입니다. (35초)");
+s.addText("조직: 3사 합작 TF → 성과 검증 후 분사(Spin-off) 옵션   ·   한 사만으로는 만들 수 없는, 그룹이어야 가능한 사업입니다",{x:0.6,y:6.4,w:12.13,h:0.4,align:"center",fontFace:F,fontSize:14,bold:true,color:INK,margin:0,isTextBox:true});
+s.addNotes("여덟 번째, 핵심 파트너. 이 사업은 롯데 안의 세 회사가 각자 조각을 가지고 있습니다. 백화점은 공간과 트래픽과 POS, 이노베이트는 비전 AI 엔진, 멤버스는 L.POINT 소비 이력. 세 조각이 다 모여야 성립하고, 그래서 지금까지 아무도 못 했습니다. 한 사만으로는 만들 수 없는, 그룹이어야 가능한 사업입니다. 외부로는 비전 AI 엔진을 라이선스하거나 인수하는 옵션을 열어두고 있습니다 - 엔진은 사고, 데이터 결합과 검증 루프는 직접 만든다는 원칙입니다. 그리고 착수 전 법무와 개인정보 영향평가가 마일스톤 1번입니다. (30초)");
 
-/* ============ 13. 09 비용 구조 ============ */
+/* ============ 14. 09 비용 구조 ============ */
 s = pres.addSlide();
 head(s,"09","비용 구조  |  가장 큰 비용 항목은?","가장 큰 항목은 인건비 — 의도된 구조입니다. 클라우드 비용은 엣지로 1/10",{step:2});
 s.addChart(pres.ChartType.line,[
@@ -332,9 +370,9 @@ s.addText("변동비  (단위 원가)",{x:7.65,y:3.98,w:4.8,h:0.32,fontFace:F,fo
 s.addText(bullets(["팝업 건당 75만 (설치 35 · 인사이트 분석 25 · 추론 3 …)","구독 매장당 월 7만 / 컨설팅 건당 400만 / RMN 매체 40%","→ 매출총이익률 77%  (Y1~Y3 동일)"]),
   {x:7.65,y:4.35,w:4.85,h:1.4,fontFace:F,fontSize:11.5,color:INK,paraSpaceAfter:5,valign:"top",margin:0,isTextBox:true});
 band(s,6.05,0.85,"경쟁사가 못 넘은 벽은 원가 구조였습니다.  매장이 10배 늘어도 비용은 10배 늘지 않습니다.",15);
-s.addNotes("아홉 번째, 비용 구조. 가장 큰 항목은 인건비입니다. 그리고 이건 의도된 구조입니다 - 처방과 검증이 상품이니 컨설턴트에 씁니다. 반대로 경쟁사의 가장 큰 비용은 클라우드입니다. 영상을 전부 올리니 매장이 늘수록 비용이 그대로 따라 올라갑니다. 저희는 카메라 단에서 분석을 끝내고 숫자만 보냅니다. 클라우드 비용이 10분의 1이 되고, 매장이 10배 늘어도 비용은 10배 늘지 않습니다. 변동비는 팝업 건당 75만원 수준이라 매출총이익률 77%가 나옵니다. (45초)");
+s.addNotes("아홉 번째, 비용 구조. 가장 큰 항목은 인건비입니다. 그리고 이건 의도된 구조입니다 - 처방과 검증이 상품이니 컨설턴트에 씁니다. 반대로 경쟁사의 가장 큰 비용은 클라우드입니다. 영상을 전부 올리니 매장이 늘수록 비용이 그대로 따라 올라갑니다. 저희는 카메라 단에서 분석을 끝내고 숫자만 보냅니다. 클라우드 비용이 10분의 1이 되고, 매장이 10배 늘어도 비용은 10배 늘지 않습니다. 변동비는 팝업 건당 75만원 수준이라 매출총이익률 77%가 나옵니다. (40초)");
 
-/* ============ 14. CLOSING (roadmap + line) ============ */
+/* ============ 15. CLOSING (roadmap + line) ============ */
 s = pres.addSlide();
 s.background = { color: INK };
 s.addText("실행 로드맵",{x:0.9,y:0.7,w:6,h:0.34,fontFace:F,fontSize:12,bold:true,color:AMBER,charSpacing:2,margin:0,isTextBox:true});
@@ -348,13 +386,15 @@ ph.forEach((p,i)=>{
 });
 s.addText("브랜드는 자기가 판 것만 압니다.",{x:0.9,y:3.2,w:11.5,h:0.8,fontFace:F,fontSize:36,bold:true,color:MUTEDW,margin:0,isTextBox:true});
 s.addText("저희는 놓친 사람이 누구였는지 알려줍니다.",{x:0.9,y:4.0,w:11.5,h:0.9,fontFace:F,fontSize:36,bold:true,color:W,margin:0,isTextBox:true});
-s.addText("매일 삭제되던 97명의 데이터를, 브랜드에게는 성장의 답으로 · 롯데에게는 새로운 수익으로",
+s.addText("매일 삭제되던 97명의 데이터를 — 브랜드에게는 성장의 답으로 · 고객에게는 더 나은 매장 경험으로 · 롯데에게는 새로운 수익으로",
   {x:0.9,y:5.05,w:11.5,h:0.42,fontFace:F,fontSize:15,color:MUTEDW,margin:0,isTextBox:true});
 s.addShape(pres.ShapeType.roundRect,{x:0.9,y:5.8,w:8.4,h:0.95,fill:{color:INK2},rectRadius:0.06});
 s.addText("온라인에 GA가 있다면,  오프라인에는 L.GA가 있습니다.",{x:1.3,y:5.8,w:7.7,h:0.95,fontFace:F,fontSize:19,bold:true,color:AMBER,valign:"middle",margin:0,isTextBox:true});
-s.addNotes("실행은 안에서 시작합니다. 롯데가 먼저 쓰고, 유료 판매, 전점 확산, 그리고 계열사와 해외로. 매일 삭제되던 97명의 데이터를 브랜드에게는 성장의 답으로, 롯데에게는 새로운 수익으로 바꾸는 일입니다. 온라인에 GA가 있다면, 오프라인에는 L.GA가 있습니다. 감사합니다. (25초)");
+s.addShape(pres.ShapeType.roundRect,{x:9.55,y:5.8,w:2.85,h:0.95,fill:{color:INK2},rectRadius:0.06});
+s.addText("Lifetime\nValue Creator",{x:9.55,y:5.8,w:2.85,h:0.95,align:"center",fontFace:F,fontSize:12.5,bold:true,color:MUTEDW,lineSpacing:17,valign:"middle",margin:0,isTextBox:true});
+s.addNotes("실행은 안에서 시작합니다. 롯데가 먼저 쓰고, 유료 판매, 전점 확산, 그리고 계열사와 해외로. 매일 삭제되던 97명의 데이터를 브랜드에게는 성장의 답으로, 고객에게는 더 나은 매장 경험으로, 롯데에게는 새로운 수익으로 바꾸는 일입니다. 결제한 순간에만 쌓이던 고객 가치를 사지 않은 순간까지 넓히는 것 - 저희가 이해한 Lifetime Value Creator입니다. 온라인에 GA가 있다면, 오프라인에는 L.GA가 있습니다. 감사합니다. (30초)");
 
-/* ============ 15. BACKUP: RISK ============ */
+/* ============ 16. BACKUP: RISK ============ */
 s = pres.addSlide();
 head(s,"Q&A","리스크와 대응","백업 슬라이드 — Q&A 대응용");
 const risk=[["개인정보 규제","엣지 추론 · 원본 미저장 · 동의 기반 2계층 설계. 착수 전 법무·DPO 검토 및 영향평가"],
