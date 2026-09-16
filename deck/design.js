@@ -84,10 +84,15 @@ function textH(text, wIn, size, lhPt){
 }
 
 /* ---- 세로 분배: 블록들이 남는 공간을 나눠 가져 캔버스를 채웁니다 ---- */
-function spread(natural, avail){
+const TIGHT = [];
+function spread(natural, avail, tag){
   const sum = natural.reduce((a,b)=>a+b,0);
-  if (sum >= avail || sum <= 0) return natural.slice();
-  const k = avail / sum;
+  if (sum <= 0) return natural.slice();
+  if (sum > avail + 0.005) {          // 내용이 자리보다 큽니다 — 겹칩니다
+    TIGHT.push({ tag: tag || "?", need:+sum.toFixed(2), room:+avail.toFixed(2) });
+    return natural.slice();
+  }
+  const k = Math.min(avail / sum, 1.35);   // 과하게 늘어난 빈 카드를 막습니다
   return natural.map(n => n*k);
 }
 
@@ -99,12 +104,18 @@ function checkFit(tag, text, wIn, hIn, size, lhPt){
     lines:lineCount(text,wIn,size), size, text:plain(text).slice(0,44) });
 }
 function report(){
-  if (!OVERFLOW.length) { console.log("레이아웃 점검: 넘치는 텍스트 없음"); return true; }
+  for (const t of TIGHT)
+    console.log("  [" + t.tag + "] 블록 합계 " + t.need + '" > 배정 공간 ' + t.room + '"  → 아래 요소와 겹칩니다');
+  if (!OVERFLOW.length) {
+    if (!TIGHT.length) { console.log("레이아웃 점검: 넘치는 텍스트 없음"); return true; }
+    console.log("레이아웃 경고 " + TIGHT.length + "건 (자리 부족)");
+    return false;
+  }
   console.log("레이아웃 경고 " + OVERFLOW.length + "건");
   for (const o of OVERFLOW)
     console.log("  [" + o.tag + "] " + o.size + "pt " + o.lines + "줄  필요 " + o.need + '" > 박스 ' + o.box + '"  | ' + o.text);
   return false;
 }
 
-module.exports = { F, C, T, LH, LHt, G, cols, colX, spread,
+module.exports = { F, C, T, LH, LHt, G, cols, colX, spread, TIGHT,
                    emWidth, plain, lineCount, textH, checkFit, report, OVERFLOW };

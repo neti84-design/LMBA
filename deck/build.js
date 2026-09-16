@@ -103,10 +103,10 @@ function cardH(it, iw){
   if (it.foot)  h += 0.14 + textH(it.foot, iw, T.micro);
   return h + G.padY;
 }
-function drawCard(s, it, x, y, w, h){
+function drawCard(s, it, x, y, w, h, off){
   const iw = w - G.padX*2, dark = !!it.dark;
   box(s, x, y, w, h, dark ? C.ink : (it.fill || C.tint), { shadow:!it.flat });
-  let cy = y + G.padY;
+  let cy = y + G.padY + (off || 0);
   if (it.tag)   cy += tx(s, it.tag, { x:x+G.padX, y:cy, w:iw, size:T.tag, bold:true, cs:1,
                     color: dark ? C.amber : C.red }) + 0.08;
   if (it.title) cy += tx(s, it.title, { x:x+G.padX, y:cy, w:iw, size:it.titleSize||T.h3,
@@ -126,8 +126,10 @@ function rowNat(items, w){
 }
 function cardRow(s, items, y, opt){
   const o = opt || {}, n = items.length, w = o.w || cols(n);
-  const h = o.h || rowNat(items, w);
-  items.forEach((it,i)=> drawCard(s, it, o.x ? o.x(i) : colX(i,n), y, w, h));
+  const nat = rowNat(items, w);
+  const h = o.h || nat;
+  const off = Math.max(0, (h - nat) / 2);
+  items.forEach((it,i)=> drawCard(s, it, o.x ? o.x(i) : colX(i,n), y, w, h, off));
   return h;
 }
 /* 가로 목록 행 — 모든 행 같은 높이 */
@@ -195,25 +197,25 @@ head(s, "FIT", "왜 롯데인가  |  그룹 전략과 핵심가치에 맞는 사
   "신사업을 먼저 만들고 명분을 붙인 것이 아니라, 그룹이 가려는 방향에서 거꾸로 설계했습니다");
 const FIT_STRAT = [
   { tag:"그룹 비전", title:"Lifetime Value Creator",
-    body:"고객의 '평생 가치'는 지금까지 결제한 순간에만 기록됐습니다. L.GA는 사지 않은 순간까지 가치로 바꿉니다." },
+    body:"고객의 '평생 가치'가 결제 순간에만 기록돼 왔습니다. 사지 않은 순간까지 넓힙니다." },
   { tag:"경영 방침", title:"AI 트랜스포메이션", dark:true,
-    body:"새 인프라를 사는 사업이 아닙니다. 이미 깔려 있는 CCTV 위에 AI를 얹는 기존 자산의 AI 내재화 사례입니다." },
+    body:"새 인프라를 사는 사업이 아닙니다. 이미 깔린 CCTV 위에 AI를 얹습니다." },
   { tag:"신성장 테마", title:"뉴라이프플랫폼",
-    body:"상품을 파는 유통에서 데이터를 파는 플랫폼으로. 롯데 리테일 자산의 플랫폼화 그 자체입니다." },
+    body:"상품을 파는 유통에서 데이터를 파는 플랫폼으로. 롯데 리테일 자산의 플랫폼화입니다." },
 ];
 const FIT_VALS = [
-  { title:"Beyond Customer\nExpectation", titleSize:12.5, sub:"고객 기대 그 이상", fill:C.warm, flat:true,
+  { title:"고객 기대 그 이상", titleSize:13.5, sub:"Beyond Customer Expectation", fill:C.warm, flat:true,
     body:"리포트에서 멈추지 않습니다. 처방하고, POS로 증명까지 합니다.", bodySize:T.micro },
-  { title:"Challenge", titleSize:12.5, sub:"도전", fill:C.warm, flat:true,
+  { title:"도전", titleSize:13.5, sub:"Challenge", fill:C.warm, flat:true,
     body:"'사지 않은 고객'을 데이터화한 유통사는 아직 없습니다.", bodySize:T.micro },
-  { title:"Respect", titleSize:12.5, sub:"존중", fill:C.warm, flat:true,
-    body:"사람을 추적하지 않고 공간을 측정합니다. 동의 없이 개인을 연결하지 않습니다.", bodySize:T.micro },
-  { title:"Originality", titleSize:12.5, sub:"독창성", fill:C.warm, flat:true,
+  { title:"존중", titleSize:13.5, sub:"Respect", fill:C.warm, flat:true,
+    body:"사람을 추적하지 않고 공간을 측정합니다. 개인 연결은 동의 시에만.", bodySize:T.micro },
+  { title:"독창성", titleSize:13.5, sub:"Originality", fill:C.warm, flat:true,
     body:"GA를 옮기지 않고, 오프라인 고유 지표로 다시 정의했습니다.", bodySize:T.micro },
 ];
 const fitBandY = G.bottom - 0.84;
 const fitRows  = spread([rowNat(FIT_STRAT, cols(3)), rowNat(FIT_VALS, cols(4))],
-                        fitBandY - 0.32 - G.top - 0.56);
+                        fitBandY - 0.30 - G.top - 0.56, "S3 FIT");
 cardRow(s, FIT_STRAT, G.top, { h:fitRows[0] });
 const fitVY = G.top + fitRows[0] + 0.56;
 tx(s, "그룹 핵심가치 = 이 사업의 설계 원칙",
@@ -241,7 +243,7 @@ const pains = ["팝업이 끝나면 손에 쥐는 건 매출 총액과 인스타
 const pw = cols(3), pIn = pw - 0.30 - 0.80;
 const segRows = spread([rowNat(SEGS, cols(3)),
                         Math.max(...pains.map(p => textH(p, pIn, T.small) + 0.44), 1.10)],
-                       G.bottomF - G.top - 0.56);
+                       G.bottomF - G.top - 0.56, "S4 세그먼트");
 const segH = cardRow(s, SEGS, G.top, { h:segRows[0] }), ph = segRows[1];
 const py = G.top + segH + 0.56;
 tx(s, "이들의 Pain", { x:G.M, y:py-0.36, w:3.0, size:12.5, bold:true, cs:1, color:C.slate });
@@ -434,7 +436,8 @@ const res = [
 ];
 const rw2 = cols(2);
 const resH = Math.max(rowNat(res, rw2), (G.bottomF - G.top - 0.18)/2);
-res.forEach((r,i)=> drawCard(s, r, colX(i%2,2), G.top + Math.floor(i/2)*(resH+0.18), rw2, resH));
+const resOff = Math.max(0, (resH - rowNat(res, rw2))/2);
+res.forEach((r,i)=> drawCard(s, r, colX(i%2,2), G.top + Math.floor(i/2)*(resH+0.18), rw2, resH, resOff));
 foot(s, "카메라는 누구나 깔 수 있습니다.  L.POINT와 POS와 전점 트래픽을 한 번에 가진 곳은 롯데뿐입니다.");
 
 /* ============================================================ 12. 07 핵심 활동 */
@@ -460,7 +463,7 @@ const LAYERS = [
     body:"개인 단위가 아니라 시간대 × 구역 × 세그먼트 집계 단위로만",
     foot:"최소 집계 5명 미만 셀은 미표시" },
 ];
-const actRows = spread([rowNat(ACTS,cols(3)), rowNat(LAYERS,cols(3))], G.bottom - G.top - 0.56);
+const actRows = spread([rowNat(ACTS,cols(3)), rowNat(LAYERS,cols(3))], G.bottom - G.top - 0.56, "S12 핵심활동");
 const actH = cardRow(s, ACTS, G.top, { h:actRows[0] });
 const ly = G.top + actH + 0.56;
 tx(s, "운영 원칙 · 핵심가치 Respect(존중) — 사람을 추적하지 않습니다. 공간을 측정합니다.",
@@ -486,7 +489,7 @@ const EXT = [
     body:"착수 전 마일스톤 1번. 2계층 설계의 법적 검토" },
 ];
 const orgY = G.top + 0.34;
-const parRows = spread([rowNat(ORG,cols(3)), rowNat(EXT,cols(3))], G.bottomF - orgY - 0.56);
+const parRows = spread([rowNat(ORG,cols(3)), rowNat(EXT,cols(3))], G.bottomF - orgY - 0.56, "S13 파트너");
 const orgH = cardRow(s, ORG, orgY, { h:parRows[0] });
 [0,1].forEach(i => tx(s, "+", { x:colX(i,3)+cols(3), y:orgY+orgH/2-0.28, w:G.gap, h:0.56,
   size:20, bold:true, color:C.red, align:"center", valign:"middle", noCheck:true }));
@@ -518,7 +521,7 @@ const fixed = { tag:"고정비  (Y1 → Y3, 억원)", bodySize:T.small,
 const varc = { tag:"변동비  (단위 원가)", bodySize:T.small,
   list:["팝업 건당 75만 (설치 35 · 인사이트 분석 25 · 추론 3 …)",
         "구독 매장당 월 7만 / 컨설팅 건당 400만 / RMN 매체 40%","→ 매출총이익률 77%  (Y1~Y3 동일)"] };
-const costH = spread([cardH(fixed, cwR-G.padX*2), cardH(varc, cwR-G.padX*2)], CH14 - 0.18);
+const costH = spread([cardH(fixed, cwR-G.padX*2), cardH(varc, cwR-G.padX*2)], CH14 - 0.18, "S14 비용");
 drawCard(s, fixed, cx, G.top, cwR, costH[0]);
 drawCard(s, varc, cx, G.top+costH[0]+0.18, cwR, costH[1]);
 band(s, COST_BAND_Y, "경쟁사가 못 넘은 벽은 원가 구조였습니다.  매장이 10배 늘어도 비용은 10배 늘지 않습니다.", T.body);
