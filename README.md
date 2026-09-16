@@ -33,8 +33,11 @@
 | [docs/07_business-model-canvas.md](docs/07_business-model-canvas.md) | **비즈니스 모델 캔버스 9블록** — Step 1 가치 전달(01~05) → Step 2 효율적 운영(06~09) |
 | [docs/08_lotte-strategy-fit.md](docs/08_lotte-strategy-fit.md) | **그룹 비전·경영 방침·핵심가치와의 정합성** — 발표 3번 슬라이드 근거 |
 | [docs/financial_model.csv](docs/financial_model.csv) | 손익 추정 원본 데이터 |
-| **[LGA_롯데신사업_발표.pptx](LGA_롯데신사업_발표.pptx)** | **발표용 PPT 15장 + 백업 1장 — BMC 9블록 순서 + 그룹 전략 정합성 1장, 전 슬라이드에 대본 노트 포함** |
+| **[LGA_롯데신사업_발표.pptx](LGA_롯데신사업_발표.pptx)** | **발표용 PPT 15장 + 백업 1장 — BMC 9블록 순서 + 그룹 전략 정합성 1장, 전 슬라이드에 대본 노트 포함.** 글꼴 Pretendard |
+| [LGA_롯데신사업_발표_맑은고딕.pptx](LGA_롯데신사업_발표_맑은고딕.pptx) | **같은 내용의 안전 글꼴 버전** — 발표 PC에 Pretendard가 없을 때 이걸 쓰십시오 |
 | [deck/build.js](deck/build.js) | 위 PPT를 생성하는 스크립트 (문구·수치 수정 후 재생성 가능) |
+| [deck/design.js](deck/design.js) | **디자인 시스템** — 타입 스케일·줄간격·그리드·자동 높이·넘침 검사 |
+| [deck/notes.js](deck/notes.js) | 발표 대본 16개 (합계 600초) |
 
 ## ⚠️ 숫자에 대한 경고
 
