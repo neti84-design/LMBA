@@ -28,7 +28,7 @@
 | [docs/02_business-model.md](docs/02_business-model.md) | 상품 설계(6단 솔루션 사다리) + 5단 수익구조, 단가, 원가 |
 | [docs/03_financials.md](docs/03_financials.md) | 3개년 손익 추정, BEP, CAPEX, 민감도 |
 | [docs/04_pitch-10min.md](docs/04_pitch-10min.md) | 10분 발표 구성 + 대본 — **비즈니스 모델 캔버스 9블록 순서**, 정확히 600초 |
-| [docs/05_qna-prep.md](docs/05_qna-prep.md) | 예상 질문 14개와 답변 (Q13·Q14 = 그룹 전략·핵심가치 정합성) |
+| [docs/05_qna-prep.md](docs/05_qna-prep.md) | 예상 질문 16개와 답변 (Q13·Q14 그룹 전략·핵심가치 / **Q15 비회원 커버리지 · Q16 왜 더 깊게 안 하나**) |
 | [docs/06_action-plan.md](docs/06_action-plan.md) | 발표 전까지 확인·제작해야 할 항목 |
 | [docs/07_business-model-canvas.md](docs/07_business-model-canvas.md) | **비즈니스 모델 캔버스 9블록** — Step 1 가치 전달(01~05) → Step 2 효율적 운영(06~09) |
 | [docs/08_lotte-strategy-fit.md](docs/08_lotte-strategy-fit.md) | **그룹 비전·경영 방침·핵심가치와의 정합성** — 발표 3번 슬라이드 근거 |

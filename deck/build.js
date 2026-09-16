@@ -316,14 +316,15 @@ acts.forEach((a,i)=>{
   s.addText(bullets(a[2]),{x:x+0.32,y:2.85,w:3.22,h:1.8,fontFace:F,fontSize:12,color:hi?W:INK,paraSpaceAfter:8,valign:"top",margin:0,isTextBox:true});
 });
 s.addText("운영 원칙 · 핵심가치 Respect(존중) — 사람을 추적하지 않습니다. 공간을 측정합니다.",{x:0.6,y:5.0,w:12.13,h:0.34,fontFace:F,fontSize:13,bold:true,color:SLATE,charSpacing:1,margin:0,isTextBox:true});
-const lay=[["Layer 1 · 공간","완전 익명 — 영상은 카메라 안에서 좌표·숫자로 변환, 원본 미저장"],["Layer 2 · 고객","동의 기반 — L.POINT 앱 체크인·QR·결제 적립 시에만 연결"],["연결","개인 단위가 아니라 시간대 × 구역 × 세그먼트 집계 단위로만"]];
+const lay=[["Layer 1 · 공간","완전 익명 — 원본 미저장, 카메라 안에서 좌표·숫자로 변환.\n연령대·성별은 특징값 없이 속성값만 추출","커버리지 = 방문자 100% (비회원 포함)"],["Layer 2 · 고객","동의 기반 — L.POINT 앱 체크인·QR·결제 적립 시에만 연결.\n여기서만 소비 이력·교차구매가 붙습니다","커버리지 = 동의 회원"],["연결","개인 단위가 아니라 시간대 × 구역 × 세그먼트 집계 단위로만","최소 집계 5명 미만 셀은 미표시"]];
 lay.forEach((l,i)=>{
   const x=0.6+i*4.07;
-  s.addShape(pres.ShapeType.roundRect,{x:x,y:5.42,w:3.86,h:1.3,fill:{color:COOL},rectRadius:0.05,line:{color:COOL,width:1}});
-  s.addText(l[0],{x:x+0.28,y:5.52,w:3.3,h:0.32,fontFace:F,fontSize:12,bold:true,color:INK,margin:0,isTextBox:true});
-  s.addText(l[1],{x:x+0.28,y:5.86,w:3.3,h:0.8,fontFace:F,fontSize:11,color:INK,lineSpacing:16,valign:"top",margin:0,isTextBox:true});
+  s.addShape(pres.ShapeType.roundRect,{x:x,y:5.42,w:3.86,h:1.52,fill:{color:COOL},rectRadius:0.05,line:{color:COOL,width:1}});
+  s.addText(l[0],{x:x+0.28,y:5.5,w:3.3,h:0.3,fontFace:F,fontSize:12,bold:true,color:INK,margin:0,isTextBox:true});
+  s.addText(l[1],{x:x+0.28,y:5.8,w:3.3,h:0.72,fontFace:F,fontSize:10.5,color:INK,lineSpacing:15,valign:"top",margin:0,isTextBox:true});
+  s.addText(l[2],{x:x+0.28,y:6.56,w:3.3,h:0.28,fontFace:F,fontSize:10.5,bold:true,color:RED,valign:"middle",margin:0,isTextBox:true});
 });
-s.addNotes("일곱 번째, 핵심 활동. 세 가지로 나뉩니다. 생산은 시스템이 합니다. 영상을 클라우드로 올리지 않고 카메라 단에서 숫자로 바꾸고, 리포트의 90%는 자동 생성됩니다. 문제해결은 사람이 합니다. 이게 상품의 본체입니다 - 인사이트 분석, 처방, 그리고 POS 검증. 플랫폼은 시간이 합니다. 벤치마크 DB는 쌓일수록 강해집니다. 그리고 운영 원칙 하나. 저희는 사람을 추적하지 않습니다. 영상은 카메라 안에서 익명 숫자로 바뀌고, 개인 연결은 고객이 앱에서 동의한 경우에만, 그 사이는 세그먼트 집계 단위로만 연결합니다. 이건 규제 대응이 아니라 핵심가치 존중을 설계에 넣은 것입니다. 법적으로 안전하고, 무엇보다 고객 신뢰를 잃지 않는 구조입니다. (45초)");
+s.addNotes("일곱 번째, 핵심 활동. 세 가지로 나뉩니다. 생산은 시스템이 합니다. 영상을 클라우드로 올리지 않고 카메라 단에서 숫자로 바꾸고, 리포트의 90%는 자동 생성됩니다. 문제해결은 사람이 합니다. 이게 상품의 본체입니다 - 인사이트 분석, 처방, 그리고 POS 검증. 플랫폼은 시간이 합니다. 벤치마크 DB는 쌓일수록 강해집니다. 그리고 운영 원칙 하나. 저희는 사람을 추적하지 않습니다. 영상은 카메라 안에서 익명 숫자로 바뀌고, 개인 연결은 고객이 앱에서 동의한 경우에만, 그 사이는 세그먼트 집계 단위로만 연결합니다. 이건 규제 대응이 아니라 핵심가치 존중을 설계에 넣은 것입니다.\n두 층의 커버리지가 다르다는 점을 봐주십시오. 1층은 비회원을 포함한 방문자 100%입니다. 얼굴 특징값을 저장하지 않고 연령대와 성별 속성값만 뽑기 때문에 익명이고, 그래서 전수로 쓸 수 있습니다. 2층은 동의한 회원만이고, 소비 이력은 여기서만 붙습니다. 리포트는 두 층을 구분해 표기하고, 5명 미만 셀은 표시하지 않습니다. (50초)");
 
 /* ============ 13. 08 핵심 파트너 ============ */
 s = pres.addSlide();
@@ -370,7 +371,7 @@ s.addText("변동비  (단위 원가)",{x:7.65,y:3.98,w:4.8,h:0.32,fontFace:F,fo
 s.addText(bullets(["팝업 건당 75만 (설치 35 · 인사이트 분석 25 · 추론 3 …)","구독 매장당 월 7만 / 컨설팅 건당 400만 / RMN 매체 40%","→ 매출총이익률 77%  (Y1~Y3 동일)"]),
   {x:7.65,y:4.35,w:4.85,h:1.4,fontFace:F,fontSize:11.5,color:INK,paraSpaceAfter:5,valign:"top",margin:0,isTextBox:true});
 band(s,6.05,0.85,"경쟁사가 못 넘은 벽은 원가 구조였습니다.  매장이 10배 늘어도 비용은 10배 늘지 않습니다.",15);
-s.addNotes("아홉 번째, 비용 구조. 가장 큰 항목은 인건비입니다. 그리고 이건 의도된 구조입니다 - 처방과 검증이 상품이니 컨설턴트에 씁니다. 반대로 경쟁사의 가장 큰 비용은 클라우드입니다. 영상을 전부 올리니 매장이 늘수록 비용이 그대로 따라 올라갑니다. 저희는 카메라 단에서 분석을 끝내고 숫자만 보냅니다. 클라우드 비용이 10분의 1이 되고, 매장이 10배 늘어도 비용은 10배 늘지 않습니다. 변동비는 팝업 건당 75만원 수준이라 매출총이익률 77%가 나옵니다. (40초)");
+s.addNotes("아홉 번째, 비용 구조. 가장 큰 항목은 인건비입니다. 그리고 이건 의도된 구조입니다 - 처방과 검증이 상품이니 컨설턴트에 씁니다. 반대로 경쟁사의 가장 큰 비용은 클라우드입니다. 영상을 전부 올리니 매장이 늘수록 비용이 그대로 따라 올라갑니다. 저희는 카메라 단에서 분석을 끝내고 숫자만 보냅니다. 클라우드 비용이 10분의 1이 되고, 매장이 10배 늘어도 비용은 10배 늘지 않습니다. 변동비는 팝업 건당 75만원 수준이라 매출총이익률 77%가 나옵니다. (35초)");
 
 /* ============ 15. CLOSING (roadmap + line) ============ */
 s = pres.addSlide();
