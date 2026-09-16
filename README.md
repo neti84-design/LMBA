@@ -24,6 +24,8 @@
 | [docs/05_qna-prep.md](docs/05_qna-prep.md) | 예상 질문 12개와 답변 |
 | [docs/06_action-plan.md](docs/06_action-plan.md) | 발표 전까지 확인·제작해야 할 항목 |
 | [docs/financial_model.csv](docs/financial_model.csv) | 손익 추정 원본 데이터 |
+| **[LGA_롯데신사업_발표.pptx](LGA_롯데신사업_발표.pptx)** | **발표용 PPT 14장 — 전 슬라이드에 발표 대본이 노트로 포함** |
+| [deck/build.js](deck/build.js) | 위 PPT를 생성하는 스크립트 (문구·수치 수정 후 재생성 가능) |
 
 ## ⚠️ 숫자에 대한 경고
 
