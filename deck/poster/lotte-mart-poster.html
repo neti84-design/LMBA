@@ -103,8 +103,8 @@
     border-bottom: 0.55cqw solid var(--pen-black);
     padding: 1.1cqw 0; text-align: center;
   }
-  .crit { font-size: 2.5cqw; line-height: 1.5; font-weight: 700; }
-  .crit em { display: block; font-style: normal; font-weight: 500; }
+  .crit { font-size: 2.4cqw; line-height: 1.5; font-weight: 500; }
+  .crit em { display: block; font-style: normal; }
 
   .head {
     font-size: 3.1cqw; font-weight: 900; line-height: 1.2;
@@ -118,17 +118,18 @@
 
   ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 1.1cqw; }
   li { font-size: 2.45cqw; line-height: 1.38; font-weight: 500; }
+  .col.left li { font-size: 3cqw; line-height: 1.45; }
   li .sub { display: block; padding-left: 1.6cqw; font-weight: 700; }
-  .num { font-weight: 900; font-size: 2.7cqw; }
+  .num { font-weight: 900; font-size: 3.4cqw; }
   .arrow { color: var(--pen-blue); font-weight: 700; }
 
   .promise {
-    font-size: 2.85cqw; line-height: 1.5; font-weight: 700;
+    font-size: 3.2cqw; line-height: 1.5; font-weight: 700;
     border: 0.28cqw solid var(--pen-blue); color: var(--pen-blue);
     padding: 1.6cqw 1.4cqw; text-align: center;
   }
   .warn {
-    font-size: 2.75cqw; line-height: 1.45; font-weight: 900;
+    font-size: 3.1cqw; line-height: 1.45; font-weight: 900;
     color: var(--pen-red); border-top: 0.28cqw dashed var(--pen-red);
     border-bottom: 0.28cqw dashed var(--pen-red); padding: 1.2cqw 0;
   }
@@ -231,19 +232,10 @@
         <div class="banner">롯데마트<br>우리만의 유일한 가치</div>
 
         <div class="crit">
-          ◆ 판단 기준
-          <em>“경쟁사가 따라 하면<br>자기 것을 포기해야 하는가?”</em>
+          <em>“따라 하려면 자기 것을 포기해야 하는 것”<br>— 이 기준으로 남은 둘</em>
         </div>
 
-        <div class="head no">✕ 따라 할 수 있는 것</div>
-        <ul>
-          <li>· 최저가 PB <span class="sub">→ 이마트 · 쿠팡 동일</span></li>
-          <li>· 신선 특화 <span class="sub">→ 이마트 · 홈플러스 동일 구호</span></li>
-          <li>· 마트＋슈퍼 통합소싱 <span class="sub">→ 이마트도 보유</span></li>
-          <li>· 오카도 자동화 <span class="sub">→ 산 라이선스 · 기간 한정</span></li>
-        </ul>
-
-        <div class="head yes">○ 따라 할 수 없는 것</div>
+        <div class="head yes">▶ 경쟁사가 못 가진 것</div>
         <ul>
           <li><span class="num">①</span> 동남아 직영망
             <span class="sub">인니 48점 · 베트남 16점</span>
@@ -325,8 +317,8 @@
   <h2>마커 3색만 쓰기</h2>
   <div class="pens">
     <div class="pen"><i style="background:#14120E"></i><b>검정</b><span>본문 전부</span></div>
-    <div class="pen"><i style="background:#BE3527"></i><b>빨강</b><span>✕ 제목 · △566억 · ⚠ 블록 · 마지막 한 줄</span></div>
-    <div class="pen"><i style="background:#1B5C9B"></i><b>파랑</b><span>○ 제목 · ▶ 제목 · 화살표 · +496억 · 약속 테두리</span></div>
+    <div class="pen"><i style="background:#BE3527"></i><b>빨강</b><span>✕ 국내 제목 · △566억 · ⚠ 블록 · 마지막 한 줄</span></div>
+    <div class="pen"><i style="background:#1B5C9B"></i><b>파랑</b><span>○·▶ 제목 · 화살표 · +496억 · 약속 테두리</span></div>
   </div>
 
   <h2>글자 크기 (전지 실측 기준)</h2>
@@ -335,8 +327,9 @@
       <thead><tr><th>구분</th><th>예시</th><th>높이</th></tr></thead>
       <tbody>
         <tr><td>단 제목 (띠 안)</td><td>롯데마트 우리만의 유일한 가치</td><td>4.5 cm</td></tr>
-        <tr><td>소제목</td><td>✕ 따라 할 수 있는 것</td><td>3.2 cm</td></tr>
-        <tr><td>본문</td><td>· 최저가 PB → 이마트·쿠팡 동일</td><td>2.5 cm</td></tr>
+        <tr><td>소제목</td><td>▶ 경쟁사가 못 가진 것</td><td>3.2 cm</td></tr>
+        <tr><td>본문 — 왼쪽</td><td>① 동남아 직영망</td><td>3.0 cm</td></tr>
+        <tr><td>본문 — 오른쪽</td><td>· 저가 ↔ 미식</td><td>2.5 cm</td></tr>
         <tr><td>강조 숫자</td><td>△566억 / +496억</td><td>4.5 cm</td></tr>
         <tr><td>띠·테두리 선 굵기</td><td>—</td><td>0.5 cm</td></tr>
       </tbody>
@@ -357,7 +350,7 @@
     <div class="note">
       <h3>먼저 빼도 되는 줄</h3>
       <ul>
-        <li>왼쪽 ✕ 의 <b>“오카도 자동화”</b> 줄 — 질문 나오면 말로 답하면 됩니다.</li>
+        <li>왼쪽 맨 위 <b>기준 한 줄</b> — 말로 하면 됩니다.</li>
         <li>오른쪽 사슬의 <b>“그랩 1시간 배송 · 물류센터”</b> — 사슬이 8단에서 7단이 돼도 논리는 그대로입니다.</li>
         <li>오른쪽 ✕ 의 <b>“오카도 CFC ↔ 점포배송”</b> 줄.</li>
       </ul>
@@ -367,7 +360,7 @@
       <ul>
         <li>왼쪽 맨 아래 <b>⚠ 블록</b> — 1번의 결론이자 가장 센 한 방입니다.</li>
         <li>오른쪽 <b>△566억 / +496억</b> 과 “정합성의 차이” — 2번 답 전체를 이 대비 하나가 증명합니다.</li>
-        <li><b>○ 따라 할 수 없는 것 ① ②</b> — 여기가 1번의 실제 답입니다.</li>
+        <li><b>▶ 경쟁사가 못 가진 것 ① ②</b> — 여기가 1번의 실제 답입니다.</li>
       </ul>
     </div>
     <div class="note">
