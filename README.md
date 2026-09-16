@@ -36,6 +36,7 @@
 | **[LGA_롯데신사업_발표.pdf](LGA_롯데신사업_발표.pdf)** | **PDF — 글꼴이 파일 안에 박혀 있어 어느 PC에서나 똑같이 보입니다. 발표는 이걸 쓰는 게 가장 안전합니다** |
 | **[LGA_롯데신사업_발표.pptx](LGA_롯데신사업_발표.pptx)** | **발표용 PPT 15장 + 백업 1장 — BMC 9블록 순서 + 그룹 전략 정합성 1장, 전 슬라이드에 대본 노트 포함.** 글꼴 Pretendard |
 | [LGA_롯데신사업_발표_맑은고딕.pptx](LGA_롯데신사업_발표_맑은고딕.pptx) | **같은 내용의 안전 글꼴 버전** — 발표 PC에 Pretendard가 없을 때 이걸 쓰십시오 |
+| **[site/index.html](site/index.html)** | **L.GA 홈페이지 시안** (메이아이 구조 참고) + **[파트너 포털](site/portal/index.html)** + **[예시 리포트](site/portal/reports/glowlab-jamsil-2026-08.html)** — 브라우저로 바로 열립니다. 설명: [site/README.md](site/README.md) |
 | [deck/build.js](deck/build.js) | 위 PPT를 생성하는 스크립트 (문구·수치 수정 후 재생성 가능) |
 | [deck/design.js](deck/design.js) | **디자인 시스템** — 타입 스케일·줄간격·그리드·자동 높이·넘침 검사 |
 | [deck/notes.js](deck/notes.js) | 발표 대본 16개 (합계 600초) |

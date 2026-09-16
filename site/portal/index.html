@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>L.GA 파트너 포털 — GLOWLAB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ink:#0E1420;--ink-2:#1A2233;--ink-3:#2A3446;--paper:#FFFFFF;--tint:#F5F6F8;--tint-2:#EEF1F5;--line:#E1E5EB;--slate:#5E6979;--mute:#8C97A8;
+  --red:#E11D2E;--red-soft:#FCEDEE;--on-accent:#fff;
+  --blue:#2A78D6;--blue-soft:#E4EFFC;--good:#008300;--good-soft:#E3F3E3;--warn:#B86E00;--warn-soft:#FFF1D6;--info-soft:#EEF1F5;
+  --sans:"Pretendard Variable",Pretendard,"Noto Sans KR",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ink:#F3F5F8;--ink-2:#E4E8EE;--ink-3:#C9D0DA;--paper:#151C2A;--tint:#0E1420;--tint-2:#1C2434;--line:#2A3446;--slate:#AEB8C7;--mute:#7F8A9B;
+  --red:#F0475A;--red-soft:#3A1A20;--blue:#3987E5;--blue-soft:#17304F;--good:#3FB950;--good-soft:#173321;--warn:#F5A623;--warn-soft:#3A2A10;--info-soft:#1C2434;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --ink:#F3F5F8;--ink-2:#E4E8EE;--ink-3:#C9D0DA;--paper:#151C2A;--tint:#0E1420;--tint-2:#1C2434;--line:#2A3446;--slate:#AEB8C7;--mute:#7F8A9B;
+  --red:#F0475A;--red-soft:#3A1A20;--blue:#3987E5;--blue-soft:#17304F;--good:#3FB950;--good-soft:#173321;--warn:#F5A623;--warn-soft:#3A2A10;--info-soft:#1C2434;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--tint);color:var(--ink);font-family:var(--sans);font-size:14.5px;line-height:1.6;word-break:keep-all;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+h1,h2,h3{margin:0;letter-spacing:-0.02em}
+.app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+/* sidebar */
+.sb{background:var(--ink);color:#E4E8EE;padding:22px 16px;display:flex;flex-direction:column;gap:22px;position:sticky;top:0;height:100vh}
+:root[data-theme="dark"] .sb{background:#0B111C}
+.logo{display:inline-flex;align-items:baseline;font-weight:900;font-size:22px;letter-spacing:-0.04em;color:#fff;padding-inline:8px}
+.logo .dot{width:7px;height:7px;background:var(--red);border-radius:50%;display:inline-block;margin-inline:2px}
+.logo small{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.12em;color:#AEB8C7;margin-left:8px}
+.brand{background:#151C2A;border:1px solid #2A3446;border-radius:10px;padding:12px;display:flex;gap:10px;align-items:center}
+.brand .av{width:34px;height:34px;border-radius:8px;background:linear-gradient(140deg,#F0475A,#F5A623);display:grid;place-items:center;font-weight:900;color:#fff;font-size:13px;letter-spacing:-0.02em}
+.brand b{display:block;font-size:14px;color:#fff}
+.brand span{font-size:11.5px;color:#AEB8C7;font-family:var(--mono)}
+.sb nav ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.sb nav a{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;font-size:14px;color:#C9D0DA}
+.sb nav a:hover{background:#1C2434;color:#fff}
+.sb nav a.on{background:#1C2434;color:#fff;font-weight:700}
+.sb nav a .ic{width:18px;height:18px;display:inline-block;flex:none;opacity:.9}
+.sb nav a .cnt{margin-left:auto;font-family:var(--mono);font-size:11px;background:var(--red);color:#fff;padding:1px 7px;border-radius:999px}
+.sb .grp{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:#7F8A9B;text-transform:uppercase;padding:0 10px;margin-bottom:6px;display:block}
+.sb .bottom{margin-top:auto;font-size:12px;color:#7F8A9B;padding-inline:8px;display:grid;gap:6px}
+.sb .bottom a{color:#AEB8C7}
+/* main */
+.main{padding:22px clamp(16px,3vw,36px) 48px;min-width:0}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.topbar h1{font-size:22px;font-weight:800}
+.topbar .sub{color:var(--slate);font-size:13.5px;margin-top:2px}
+.topbar .right{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.search{display:flex;align-items:center;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:13.5px;color:var(--mute);min-width:220px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;font-weight:700;font-size:13.5px;border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;font-family:inherit}
+.btn.primary{background:var(--red);color:var(--on-accent);border-color:transparent}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+.tile{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.tile .l{font-size:12.5px;color:var(--slate)}
+.tile .v{font-size:30px;font-weight:800;letter-spacing:-0.03em;line-height:1.15;margin-top:6px;font-variant-numeric:tabular-nums}
+.tile .v small{font-size:13px;font-weight:500;color:var(--slate);margin-left:4px}
+.tile .d{font-size:12.5px;margin-top:8px;color:var(--slate)}
+.tile .d b{color:var(--good);font-weight:700}
+.tile .d b.warn{color:var(--warn)}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:18px;align-items:start}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.panel .hd{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.panel .hd h2{font-size:16px;font-weight:800}
+.panel .hd .tabs{display:flex;gap:4px;background:var(--tint);border-radius:999px;padding:3px}
+.panel .hd .tabs button{border:0;background:transparent;font-family:inherit;font-size:12.5px;padding:5px 12px;border-radius:999px;color:var(--slate);cursor:pointer;font-weight:500}
+.panel .hd .tabs button.on{background:var(--paper);color:var(--ink);font-weight:700;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.tbl{width:100%;overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:760px}
+th:first-child{width:38%}
+td:nth-child(3),td:last-child{white-space:nowrap}
+th,td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);font-weight:600;background:var(--tint)}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:var(--tint)}
+td .t{font-weight:700;display:block}
+td .m{font-size:12.5px;color:var(--slate);display:block;margin-top:2px}
+td.num{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}
+.pill i{width:7px;height:7px;border-radius:50%;display:inline-block;background:currentColor}
+.pill.done{background:var(--good-soft);color:var(--good)}
+.pill.verify{background:var(--blue-soft);color:var(--blue)}
+.pill.wait{background:var(--warn-soft);color:var(--warn)}
+.pill.plan{background:var(--info-soft);color:var(--slate)}
+.tag{font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:6px;border:1px solid var(--line);color:var(--slate);white-space:nowrap}
+.open{font-weight:700;color:var(--red);white-space:nowrap}
+.open.dis{color:var(--mute);font-weight:500;cursor:not-allowed}
+/* right column */
+.side-stack{display:grid;gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.card h3{font-size:14px;font-weight:800;margin-bottom:12px}
+.next{display:grid;gap:12px}
+.next .it{display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:start}
+.next .dt{font-family:var(--mono);font-size:11.5px;color:var(--slate);line-height:1.3;padding-top:2px}
+.next .dt b{display:block;font-size:16px;color:var(--ink);font-weight:600}
+.next .it p{margin:0;font-size:13.5px;font-weight:700}
+.next .it span{font-size:12.5px;color:var(--slate)}
+.consult{display:flex;gap:12px;align-items:center}
+.consult .av{width:42px;height:42px;border-radius:50%;background:var(--tint-2);display:grid;place-items:center;font-weight:800;color:var(--ink-3)}
+.consult b{display:block;font-size:14px}
+.consult span{font-size:12.5px;color:var(--slate)}
+.consult .btn{margin-left:auto;padding:7px 12px;font-size:12.5px}
+.seg{display:grid;gap:8px}
+.seg .r{display:grid;grid-template-columns:1fr 46px;gap:10px;align-items:center;font-size:12.5px}
+.seg .bar{height:8px;background:var(--tint-2);border-radius:0 4px 4px 0;overflow:hidden;margin-top:4px}
+.seg .bar i{display:block;height:100%;background:var(--blue);border-radius:0 4px 4px 0}
+.seg .v{font-family:var(--mono);text-align:right;font-variant-numeric:tabular-nums}
+.card .foot{font-size:12px;color:var(--mute);margin-top:12px}
+.notice{margin-top:18px;padding:12px 16px;border:1px dashed var(--line);border-radius:10px;font-size:12.5px;color:var(--slate);font-family:var(--mono)}
+@media (max-width:1320px){.cols{grid-template-columns:1fr}}
+@media (max-width:1100px){.tiles{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:820px){.app{grid-template-columns:1fr} .sb{position:static;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center;gap:12px} .sb nav,.sb .bottom,.sb .grp{display:none} .brand{margin-left:auto}}
+@media (max-width:520px){.tiles{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sb">
+    <a class="logo" href="../index.html">L<span class="dot"></span>GA <small>PARTNER</small></a>
+    <div class="brand"><div class="av">GL</div><div><b>글로우랩 GLOWLAB</b><span>brand · K-BEAUTY</span></div></div>
+    <nav aria-label="포털 메뉴">
+      <span class="grp">Workspace</span>
+      <ul>
+        <li><a class="on" href="index.html"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="6" height="6" rx="1.5"/><rect x="11" y="3" width="6" height="6" rx="1.5"/><rect x="3" y="11" width="6" height="6" rx="1.5"/><rect x="11" y="11" width="6" height="6" rx="1.5"/></svg>대시보드</a></li>
+        <li><a href="#reports"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 3h7l4 4v10H5z"/><path d="M12 3v4h4M8 11h5M8 14h5"/></svg>리포트<span class="cnt">1</span></a></li>
+        <li><a href="#"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 15l4-6 4 4 3-5 3 3"/><path d="M3 17h14"/></svg>캠페인</a></li>
+        <li><a href="#"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8l7-4 7 4-7 4z"/><path d="M3 12l7 4 7-4"/></svg>상설 매장 구독</a></li>
+        <li><a href="#"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 16V9M10 16V4M16 16v-6"/></svg>벤치마크</a></li>
+      </ul>
+      <span class="grp" style="margin-top:16px">Actions</span>
+      <ul>
+        <li><a href="#"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 10h14M10 3l7 7-7 7"/></svg>리타게팅 발송</a></li>
+        <li><a href="#"><svg class="ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="3"/><path d="M10 2v3M10 15v3M2 10h3M15 10h3"/></svg>설정</a></li>
+      </ul>
+    </nav>
+    <div class="bottom"><span>team@glowlab.kr</span><a href="login.html">로그아웃</a></div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div><h1>대시보드</h1><p class="sub">2026년 9월 16일 (수) · 잠실점 팝업 검증 리포트가 발행되었습니다.</p></div>
+      <div class="right">
+        <div class="search" role="search">🔍 리포트 · 매장 검색</div>
+        <a class="btn" href="../index.html#pricing">패키지 추가</a>
+        <a class="btn primary" href="reports/glowlab-jamsil-2026-08.html">최신 리포트 열기</a>
+      </div>
+    </div>
+
+    <div class="tiles">
+      <div class="tile"><div class="l">진행 중 캠페인</div><div class="v">1<small>건</small></div><div class="d">본점 팝업 · 10.02 측정 시작</div></div>
+      <div class="tile"><div class="l">발행된 리포트</div><div class="v">3<small>건</small></div><div class="d"><b>+1</b> 이번 주 · 검증 리포트</div></div>
+      <div class="tile"><div class="l">최근 집품→구매 전환 (검증 후)</div><div class="v">11.4<small>%</small></div><div class="d"><b>+3.3%p</b> 처방 적용 전 대비</div></div>
+      <div class="tile"><div class="l">리타게팅 대상 세그먼트</div><div class="v">4,120<small>명</small></div><div class="d"><b class="warn">발송 대기</b> · 미구매 방문객 (동의 회원)</div></div>
+    </div>
+
+    <div class="cols">
+      <section class="panel" id="reports">
+        <div class="hd">
+          <h2>리포트</h2>
+          <div class="tabs"><button class="on" type="button">전체</button><button type="button">팝업</button><button type="button">상설 구독</button><button type="button">벤치마크</button></div>
+        </div>
+        <div class="tbl">
+          <table>
+            <thead><tr><th>리포트</th><th>패키지</th><th>기간</th><th>상태</th><th>발행일</th><th></th></tr></thead>
+            <tbody>
+              <tr>
+                <td><span class="t">롯데백화점 잠실점 팝업 성과 리포트</span><span class="m">팝업존 B · 2F 뷰티 · 인사이트 + 처방 + POS 검증 포함</span></td>
+                <td><span class="tag">Standard</span></td>
+                <td class="num">08.14 – 08.27</td>
+                <td><span class="pill done"><i></i>검증 완료</span></td>
+                <td class="num">2026-09-10</td>
+                <td><a class="open" href="reports/glowlab-jamsil-2026-08.html">열기 →</a></td>
+              </tr>
+              <tr>
+                <td><span class="t">잠실점 팝업 — 리타게팅 실행 결과</span><span class="m">미구매 세그먼트 L.POINT 앱 쿠폰 발송 후 재방문·구매 집계</span></td>
+                <td><span class="tag">Add-on</span></td>
+                <td class="num">09.20 – 10.03</td>
+                <td><span class="pill wait"><i></i>발송 대기</span></td>
+                <td class="num">—</td>
+                <td><span class="open dis">발송 후 생성</span></td>
+              </tr>
+              <tr>
+                <td><span class="t">롯데백화점 본점 팝업 성과 리포트</span><span class="m">본관 1F 이벤트홀 · 잠실 처방 반영 검증 포함</span></td>
+                <td><span class="tag">Premium</span></td>
+                <td class="num">10.02 – 10.15</td>
+                <td><span class="pill plan"><i></i>측정 예정</span></td>
+                <td class="num">—</td>
+                <td><span class="open dis">10.22 발행 예정</span></td>
+              </tr>
+              <tr>
+                <td><span class="t">롯데월드몰 상설매장 8월 월간 처방 리포트</span><span class="m">구독 매장 · 월간 처방 + 분기 검증</span></td>
+                <td><span class="tag">구독</span></td>
+                <td class="num">08.01 – 08.31</td>
+                <td><span class="pill verify"><i></i>검수 중</span></td>
+                <td class="num">2026-09-18</td>
+                <td><span class="open dis">검수 후 공개</span></td>
+              </tr>
+              <tr>
+                <td><span class="t">2026 상반기 K-뷰티 팝업 벤치마크</span><span class="m">롯데 전점 뷰티 팝업 집계 · 카테고리 기준치 (샘플)</span></td>
+                <td><span class="tag">라이선스</span></td>
+                <td class="num">01.01 – 06.30</td>
+                <td><span class="pill done"><i></i>열람 가능</span></td>
+                <td class="num">2026-07-15</td>
+                <td><a class="open" href="reports/glowlab-jamsil-2026-08.html#benchmark">벤치마크 보기 →</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="side-stack">
+        <div class="card">
+          <h3>다음 일정</h3>
+          <div class="next">
+            <div class="it"><div class="dt">SEP<b>18</b></div><div><p>리타게팅 발송 승인</p><span>미구매 세그먼트 4,120명 · 쿠폰 문안 확정 필요</span></div></div>
+            <div class="it"><div class="dt">SEP<b>24</b></div><div><p>본점 팝업 사전 미팅</p><span>잠실 처방 3건 반영 여부 · VMD 시안 검토</span></div></div>
+            <div class="it"><div class="dt">OCT<b>02</b></div><div><p>본점 팝업 측정 시작</p><span>보완 카메라 2대 · 엣지박스 설치 (1일)</span></div></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>전담 컨설턴트</h3>
+          <div class="consult"><div class="av">서</div><div><b>서지우 컨설턴트</b><span>리테일 컨설팅 · 뷰티 카테고리</span></div><a class="btn" href="#">메시지</a></div>
+        </div>
+        <div class="card">
+          <h3>잠실점 방문객 세그먼트 Top 4</h3>
+          <div class="seg">
+            <div class="r"><div>20대 후반 · 뷰티 고관여<div class="bar"><i style="width:100%"></i></div></div><span class="v">42%</span></div>
+            <div class="r"><div>30대 초반 · 패션 교차구매<div class="bar"><i style="width:52%"></i></div></div><span class="v">22%</span></div>
+            <div class="r"><div>20대 초반 · 저관여 탐색<div class="bar"><i style="width:40%"></i></div></div><span class="v">17%</span></div>
+            <div class="r"><div>30대 후반+ · 프리미엄 뷰티<div class="bar"><i style="width:29%"></i></div></div><span class="v">12%</span></div>
+          </div>
+          <p class="foot">L.POINT 동의 회원 집계 · 개인 미식별</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="notice">// DEMO · 이 포털은 신사업 제안용 시안입니다. 브랜드·수치·일정은 모두 예시입니다.</p>
+  </main>
+</div>
+</body>
+</html>
