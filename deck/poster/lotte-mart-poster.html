@@ -1,0 +1,383 @@
+<title>롯데마트 전지 시안</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Gothic+A1:wght@500;700;900&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+  :root {
+    /* page chrome — light */
+    --ground: #EBE7DE;
+    --surface: #FBF9F5;
+    --text: #1E1B16;
+    --muted: #6C6558;
+    --rule: #D6D0C3;
+    --chip: #E2DCCE;
+
+    /* the sheet — fixed in both themes, it is white poster paper */
+    --paper: #FCFBF7;
+    --paper-edge: #CFC8B8;
+    --pen-black: #14120E;
+    --pen-red: #BE3527;
+    --pen-blue: #1B5C9B;
+    --pencil: #B3AB9B;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #17150F;
+      --surface: #211E17;
+      --text: #ECE7DB;
+      --muted: #9E9686;
+      --rule: #37322A;
+      --chip: #2D2920;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #17150F;
+    --surface: #211E17;
+    --text: #ECE7DB;
+    --muted: #9E9686;
+    --rule: #37322A;
+    --chip: #2D2920;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--text);
+    font-family: "Noto Sans KR", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding-inline: 16px;
+    padding-block: 40px 72px;
+  }
+
+  /* ---------- masthead ---------- */
+  .masthead { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 16px 28px; margin-bottom: 10px; }
+  h1 {
+    font-family: "Black Han Sans", "Gothic A1", sans-serif;
+    font-size: clamp(30px, 5.2vw, 48px);
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  .spec { display: flex; flex-wrap: wrap; gap: 6px; }
+  .spec span {
+    font-size: 12px; font-weight: 500; color: var(--muted);
+    background: var(--chip); border-radius: 3px; padding: 4px 9px;
+    font-variant-numeric: tabular-nums;
+  }
+  .lede {
+    max-width: 62ch; color: var(--muted); font-size: 15px; line-height: 1.75;
+    margin: 0 0 34px;
+  }
+  .lede b { color: var(--text); font-weight: 700; }
+
+  /* ---------- the sheet ---------- */
+  .sheet-frame { margin-bottom: 14px; }
+  .sheet {
+    container-type: inline-size;
+    aspect-ratio: 788 / 1091;
+    background: var(--paper);
+    border: 1px solid var(--paper-edge);
+    box-shadow: 0 18px 40px -22px rgba(20,18,14,.55);
+    display: grid;
+    grid-template-columns: 40fr 60fr;
+    color: var(--pen-black);
+    overflow: hidden;
+  }
+  .col { padding: 3.4cqw 3cqw; display: flex; flex-direction: column; gap: 2.4cqw; }
+  .col.right { border-left: 0.28cqw solid var(--pen-black); }
+
+  /* poster typography, sized against the sheet's own width */
+  .sheet { font-family: "Gothic A1", "Noto Sans KR", sans-serif; }
+  .banner {
+    font-family: "Black Han Sans", "Gothic A1", sans-serif;
+    font-size: 4.3cqw; line-height: 1.22;
+    border-top: 0.55cqw solid var(--pen-black);
+    border-bottom: 0.55cqw solid var(--pen-black);
+    padding: 1.1cqw 0; text-align: center;
+  }
+  .crit { font-size: 2.5cqw; line-height: 1.5; font-weight: 700; }
+  .crit em { display: block; font-style: normal; font-weight: 500; }
+
+  .head {
+    font-size: 3.1cqw; font-weight: 900; line-height: 1.2;
+    border-top: 0.18cqw solid currentColor;
+    border-bottom: 0.18cqw solid currentColor;
+    padding: 0.7cqw 0;
+  }
+  .head.no { color: var(--pen-red); }
+  .head.yes { color: var(--pen-blue); }
+  .head.mark { color: var(--pen-blue); border: 0; border-top: 0.18cqw solid currentColor; padding-bottom: 0; }
+
+  ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 1.1cqw; }
+  li { font-size: 2.45cqw; line-height: 1.38; font-weight: 500; }
+  li .sub { display: block; padding-left: 1.6cqw; font-weight: 700; }
+  .num { font-weight: 900; font-size: 2.7cqw; }
+  .arrow { color: var(--pen-blue); font-weight: 700; }
+
+  .promise {
+    font-size: 2.85cqw; line-height: 1.5; font-weight: 700;
+    border: 0.28cqw solid var(--pen-blue); color: var(--pen-blue);
+    padding: 1.6cqw 1.4cqw; text-align: center;
+  }
+  .warn {
+    font-size: 2.75cqw; line-height: 1.45; font-weight: 900;
+    color: var(--pen-red); border-top: 0.28cqw dashed var(--pen-red);
+    border-bottom: 0.28cqw dashed var(--pen-red); padding: 1.2cqw 0;
+  }
+
+  /* chain */
+  .chain { display: flex; flex-direction: column; gap: 0.35cqw; }
+  .chain .step { font-size: 2.35cqw; line-height: 1.32; font-weight: 700; }
+  .chain .step small { display: block; font-size: 2cqw; font-weight: 500; color: var(--pen-blue); }
+  .chain .tick { font-size: 2.1cqw; color: var(--pen-blue); line-height: 1; padding-left: 1.2cqw; }
+  .chain-out { font-size: 2.5cqw; font-weight: 900; color: var(--pen-blue); line-height: 1.3; margin-top: 0.8cqw; }
+
+  .verdict { display: flex; flex-direction: column; gap: 0.9cqw; align-items: center; text-align: center; }
+  .fig { display: flex; gap: 3cqw; font-variant-numeric: tabular-nums; }
+  .fig div { font-size: 2.2cqw; font-weight: 700; line-height: 1.25; }
+  .fig b { display: block; font-family: "Black Han Sans", sans-serif; font-size: 4.4cqw; font-weight: 400; }
+  .fig .dom b { color: var(--pen-red); }
+  .fig .ovs b { color: var(--pen-blue); }
+  .equals { font-size: 2.6cqw; font-weight: 900; letter-spacing: 0.22em; }
+
+  .ask { font-size: 2.4cqw; line-height: 1.45; font-weight: 700; }
+  .ask .punch { display: block; margin-top: 0.8cqw; color: var(--pen-red); font-weight: 900; }
+
+  /* ---------- notes below ---------- */
+  .caption { font-size: 12px; color: var(--muted); text-align: center; margin: 0 0 44px; }
+
+  h2 {
+    font-family: "Black Han Sans", "Gothic A1", sans-serif;
+    font-size: 22px; margin: 0 0 16px; letter-spacing: -0.01em;
+  }
+  .notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 18px; margin-bottom: 40px; }
+  .note { background: var(--surface); border: 1px solid var(--rule); padding: 20px 20px 22px; }
+  .note h3 { font-size: 14px; margin: 0 0 10px; letter-spacing: .02em; }
+  .note p, .note li { font-size: 13.5px; line-height: 1.7; color: var(--muted); margin: 0; }
+  .note ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+  .note li { padding-left: 15px; position: relative; }
+  .note li::before { content: ""; position: absolute; left: 0; top: 9px; width: 6px; height: 1px; background: var(--muted); }
+  .note b { color: var(--text); font-weight: 700; }
+
+  /* marker legend */
+  .pens { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+  .pen { display: flex; align-items: center; gap: 9px; background: var(--surface); border: 1px solid var(--rule); padding: 9px 14px; font-size: 13px; }
+  .pen i { width: 22px; height: 5px; border-radius: 2px; display: block; }
+  .pen span { color: var(--muted); }
+
+  /* order of writing — a real sequence */
+  ol.order { counter-reset: s; list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  ol.order li {
+    counter-increment: s; background: var(--surface); padding: 14px 18px 14px 52px;
+    position: relative; font-size: 13.5px; line-height: 1.6;
+  }
+  ol.order li::before {
+    content: counter(s); position: absolute; left: 18px; top: 13px;
+    font-family: "Black Han Sans", sans-serif; font-size: 16px; color: var(--muted);
+  }
+  ol.order b { font-weight: 700; }
+
+  .sizes { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  .sizes th, .sizes td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--rule); }
+  .sizes th { font-size: 11.5px; letter-spacing: .06em; color: var(--muted); font-weight: 500; text-transform: uppercase; }
+  .sizes td:last-child, .sizes th:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+  .table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--rule); margin-bottom: 40px; }
+
+  @media (max-width: 720px) {
+    .sheet { aspect-ratio: auto; grid-template-columns: 1fr; }
+    .col.right { border-left: 0; border-top: 0.6cqw solid var(--pen-black); }
+    .col { padding: 5cqw 4.5cqw; gap: 4cqw; }
+    .banner { font-size: 7cqw; }
+    .crit, li, .chain .step { font-size: 4.2cqw; }
+    .chain .step small { font-size: 3.6cqw; }
+    .head { font-size: 5.2cqw; }
+    .promise, .warn, .chain-out, .ask { font-size: 4.6cqw; }
+    .fig b { font-size: 8cqw; }
+    .fig div { font-size: 3.8cqw; }
+    .equals { font-size: 4.6cqw; }
+    .num { font-size: 4.6cqw; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <h1>롯데마트 전지 시안</h1>
+    <div class="spec">
+      <span>전지 788 × 1091 mm</span>
+      <span>좌 4 : 우 6</span>
+      <span>마커 3색</span>
+    </div>
+  </header>
+  <p class="lede">
+    아래는 <b>실제 전지 비율 그대로</b> 배치한 시안입니다. 글자 크기도 전지 폭에 대한 실제 비율로 맞춰
+    두었으니, 보이는 대로 옮겨 쓰면 분량이 맞습니다. 왼쪽이 <b>1번(유일한 가치)</b>,
+    오른쪽이 <b>2번(활동 정합성)</b>입니다.
+  </p>
+
+  <div class="sheet-frame">
+    <div class="sheet">
+
+      <!-- ================= LEFT : Q1 ================= -->
+      <div class="col left">
+        <div class="banner">롯데마트<br>우리만의 유일한 가치</div>
+
+        <div class="crit">
+          ◆ 판단 기준
+          <em>“경쟁사가 따라 하면<br>자기 것을 포기해야 하는가?”</em>
+        </div>
+
+        <div class="head no">✕ 따라 할 수 있는 것</div>
+        <ul>
+          <li>· 최저가 PB <span class="sub">→ 이마트 · 쿠팡 동일</span></li>
+          <li>· 신선 특화 <span class="sub">→ 이마트 · 홈플러스 동일 구호</span></li>
+          <li>· 마트＋슈퍼 통합소싱 <span class="sub">→ 이마트도 보유</span></li>
+          <li>· 오카도 자동화 <span class="sub">→ 산 라이선스 · 기간 한정</span></li>
+        </ul>
+
+        <div class="head yes">○ 따라 할 수 없는 것</div>
+        <ul>
+          <li><span class="num">①</span> 동남아 직영망
+            <span class="sub">인니 48점 · 베트남 16점</span>
+            <span class="sub arrow">→ 복제에 15년</span>
+          </li>
+          <li><span class="num">②</span> 그룹 식품 제조
+            <span class="sub">롯데웰푸드 · 칠성 · GRS</span>
+            <span class="sub arrow">→ 경쟁사엔 제조 기반 없음</span>
+          </li>
+        </ul>
+
+        <div class="head mark">▶ 우리의 약속</div>
+        <div class="promise">
+          “ 롯데에서만 살 수 있는 먹거리를<br>
+          직접 소싱하고 직접 만들어<br>
+          한국과 동남아에 동시에 판다 ”
+        </div>
+
+        <div class="warn">
+          ⚠ 그러나 지금은 —<br>
+          유일한 “자산”은 있고<br>
+          유일한 “약속”은 없다
+        </div>
+      </div>
+
+      <!-- ================= RIGHT : Q2 ================= -->
+      <div class="col right">
+        <div class="banner">모든 활동이<br>그 약속에 정렬됐는가?</div>
+
+        <div class="head yes">○ 해외 : 정렬되어 있다</div>
+        <div class="chain">
+          <div class="step">국내 그랑그로서리 포맷 검증</div>
+          <div class="tick">↓</div>
+          <div class="step">베트남 신규점 — 식품 88%</div>
+          <div class="tick">↓</div>
+          <div class="step">인니 도매 → 하이브리드 전환<small>매출 +60% · 고객 4배</small></div>
+          <div class="tick">↓</div>
+          <div class="step">요리하다 키친 — 베 7 · 인니 5</div>
+          <div class="tick">↓</div>
+          <div class="step">PB 수출 — 13개국 500품목</div>
+          <div class="tick">↓</div>
+          <div class="step">싱가포르 페어프라이스 100여점</div>
+          <div class="tick">↓</div>
+          <div class="step">그랩 1시간 배송 · 물류센터</div>
+          <div class="tick">↓</div>
+          <div class="step">웨스트레이크 누적 6,000억</div>
+          <div class="chain-out">→ 모든 활동이 K-그로서리 한 방향</div>
+        </div>
+
+        <div class="head no">✕ 국내 : 갈라져 있다</div>
+        <ul>
+          <li>· 저가(오늘좋은) ↔ 미식(제타플렉스)</li>
+          <li>· 롯데온 ↔ 제타 <span class="sub">— 장 보는 길이 둘</span></li>
+          <li>· 오카도 CFC ↔ 점포배송 <span class="sub">— 미결정</span></li>
+          <li>· 가전 · 패션 · 리빙 못 버림</li>
+        </ul>
+
+        <div class="head mark">▶ 결론</div>
+        <div class="verdict">
+          <div class="fig">
+            <div class="dom">국내<b>△566억</b>적자</div>
+            <div class="ovs">해외<b>+496억</b>흑자</div>
+          </div>
+          <div class="equals">= 정 합 성 의 차 이</div>
+        </div>
+
+        <div class="head mark">▶ 마지막 질문</div>
+        <div class="ask">
+          해외 활동 19개가 모두 “내보내기” 일방향<br>
+          현지 소싱 → 국내 판매 축이 없다
+          <span class="punch">⇒ 아시아 밸류체인인가? 그냥 수출 사업인가?</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <p class="caption">시안은 전지 실물 비율(788 × 1091 mm). 화면 폭이 좁으면 위아래로 풀려 보이지만, 실제로는 좌우 2단입니다.</p>
+
+  <h2>마커 3색만 쓰기</h2>
+  <div class="pens">
+    <div class="pen"><i style="background:#14120E"></i><b>검정</b><span>본문 전부</span></div>
+    <div class="pen"><i style="background:#BE3527"></i><b>빨강</b><span>✕ 제목 · △566억 · ⚠ 블록 · 마지막 한 줄</span></div>
+    <div class="pen"><i style="background:#1B5C9B"></i><b>파랑</b><span>○ 제목 · ▶ 제목 · 화살표 · +496억 · 약속 테두리</span></div>
+  </div>
+
+  <h2>글자 크기 (전지 실측 기준)</h2>
+  <div class="table-wrap">
+    <table class="sizes">
+      <thead><tr><th>구분</th><th>예시</th><th>높이</th></tr></thead>
+      <tbody>
+        <tr><td>단 제목 (띠 안)</td><td>롯데마트 우리만의 유일한 가치</td><td>4.5 cm</td></tr>
+        <tr><td>소제목</td><td>✕ 따라 할 수 있는 것</td><td>3.2 cm</td></tr>
+        <tr><td>본문</td><td>· 최저가 PB → 이마트·쿠팡 동일</td><td>2.5 cm</td></tr>
+        <tr><td>강조 숫자</td><td>△566억 / +496억</td><td>4.5 cm</td></tr>
+        <tr><td>띠·테두리 선 굵기</td><td>—</td><td>0.5 cm</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>쓰는 순서</h2>
+  <ol class="order">
+    <li><b>연필로 뼈대부터.</b> 좌우 분할선(왼쪽 40% 지점)을 세로로 긋고, 각 단의 가로 기준선을 옅게 긋습니다. 지우개로 지울 것이므로 세게 누르지 마세요.</li>
+    <li><b>띠 제목 두 개.</b> 위아래 굵은 가로줄을 자로 먼저 긋고 그 안에 글씨를 채웁니다. 글씨부터 쓰면 줄이 안 맞습니다.</li>
+    <li><b>검정 본문 전부.</b> 색을 바꾸지 말고 검정으로 끝까지 씁니다. 마커를 바꿔 쥐는 횟수를 줄이는 게 시간을 가장 많이 아낍니다.</li>
+    <li><b>빨강 → 파랑 순으로 얹기.</b> 소제목, 화살표, 테두리, 숫자를 색으로 덮습니다.</li>
+    <li><b>마지막에 숫자만 한 번 더 굵게.</b> △566억 / +496억 / 48 / 16 / 88% / +60% — 사람은 숫자를 먼저 봅니다.</li>
+  </ol>
+
+  <h2 style="margin-top:40px">공간이 모자랄 때</h2>
+  <div class="notes">
+    <div class="note">
+      <h3>먼저 빼도 되는 줄</h3>
+      <ul>
+        <li>왼쪽 ✕ 의 <b>“오카도 자동화”</b> 줄 — 질문 나오면 말로 답하면 됩니다.</li>
+        <li>오른쪽 사슬의 <b>“그랩 1시간 배송 · 물류센터”</b> — 사슬이 8단에서 7단이 돼도 논리는 그대로입니다.</li>
+        <li>오른쪽 ✕ 의 <b>“오카도 CFC ↔ 점포배송”</b> 줄.</li>
+      </ul>
+    </div>
+    <div class="note">
+      <h3>끝까지 살릴 것</h3>
+      <ul>
+        <li>왼쪽 맨 아래 <b>⚠ 블록</b> — 1번의 결론이자 가장 센 한 방입니다.</li>
+        <li>오른쪽 <b>△566억 / +496억</b> 과 “정합성의 차이” — 2번 답 전체를 이 대비 하나가 증명합니다.</li>
+        <li><b>○ 따라 할 수 없는 것 ① ②</b> — 여기가 1번의 실제 답입니다.</li>
+      </ul>
+    </div>
+    <div class="note">
+      <h3>쓰면서 기억할 것</h3>
+      <ul>
+        <li>본문 2.5cm가 뒷줄 가독 하한입니다. 더 작아지면 내용을 줄이지, 글씨를 줄이지 마세요.</li>
+        <li>사슬의 화살표(↓)는 <b>굵고 길게</b>. 활동들이 서로를 밀어준다는 게 이 그림의 전부입니다.</li>
+        <li>“정 합 성 의 차 이”는 <b>자간을 띄워</b> 쓰면 시선이 거기서 멈춥니다.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
