@@ -150,6 +150,43 @@ section{padding-block:clamp(64px,9vw,120px)}
 .stat span{display:block;font-size:14px;color:var(--slate);margin-top:8px}
 @media (max-width:860px){.stats .wrap{grid-template-columns:repeat(2,1fr)}}
 
+/* free preview — 유입률 상위 스팟 */
+.spots .cards{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.spots .spot{border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);padding:24px;display:flex;flex-direction:column}
+.spots .spot .head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.spots .rank{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;background:var(--red);color:var(--on-accent);padding:4px 9px;border-radius:999px}
+.spots .cat{font-family:var(--mono);font-size:11.5px;color:var(--mute)}
+.spots .spot h3{font-size:18px;font-weight:700;margin-top:16px;letter-spacing:-0.01em}
+.spots .rate{display:flex;align-items:baseline;gap:3px;margin-top:14px}
+.spots .rate b{font-size:44px;font-weight:800;line-height:1;letter-spacing:-0.03em;color:var(--red);font-variant-numeric:tabular-nums}
+.spots .rate span{font-size:20px;font-weight:700;color:var(--red)}
+.spots .rate small{font-size:12.5px;color:var(--slate);margin-left:8px}
+.spots .vs{margin-top:10px;font-size:14.5px;color:var(--slate)}
+.spots .vs b{color:var(--ink);font-weight:700}
+.spots .meta{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);display:grid;gap:6px;list-style:none;font-size:13.5px;color:var(--slate)}
+.spots .meta b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.spots .lock{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--tint);border:1px dashed var(--line);border-radius:10px;padding:11px 14px;font-size:13.5px;color:var(--slate)}
+.spots .lock b{font-family:var(--mono);font-size:14px;letter-spacing:.16em;color:var(--mute)}
+.spots .spot .lock{margin-top:18px}
+.spots .gate{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.spots .gate > div{border-radius:var(--radius);padding:28px}
+.spots .gate .open{background:var(--red-soft);border:1px solid var(--line);display:flex;flex-direction:column}
+.spots .gate .open p{margin-top:auto;padding-top:16px}
+.spots .gate .shut{background:#0E1420;border:1px solid #2A3446;color:#F3F5F8}
+.spots .gate h4{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.spots .gate .open h4{color:var(--red)}
+.spots .gate .shut h4{color:var(--amber)}
+.spots .gate ul{margin-top:16px;display:grid;gap:9px;list-style:none;font-size:15px}
+.spots .gate .shut ul{color:#E4E8EE}
+.spots .gate li{display:flex;gap:10px;align-items:flex-start}
+.spots .gate li::before{content:"";flex:0 0 6px;height:6px;border-radius:50%;margin-top:8px;background:var(--red)}
+.spots .gate .shut li::before{background:#5E6979}
+.spots .gate p{margin-top:16px;font-size:13.5px;color:var(--slate)}
+.spots .gate .shut p{color:#AEB8C7}
+.spots .gate .actions{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap}
+.spots .fine{margin-top:20px;font-family:var(--mono);font-size:11.5px;line-height:1.7;color:var(--mute)}
+@media (max-width:900px){.spots .cards{grid-template-columns:1fr} .spots .gate{grid-template-columns:1fr}}
+
 /* pain */
 .pain .grid{grid-template-columns:repeat(3,1fr);margin-top:44px}
 .pain .card{padding:28px;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper)}
@@ -300,6 +337,7 @@ footer .legal{grid-column:1/-1;padding-top:24px;border-top:1px solid var(--line)
     <a class="logo" href="#top" aria-label="L.GA 홈">L<span class="dot"></span>GA <small>LOTTE GROWTH ANALYTICS</small></a>
     <nav aria-label="주요 메뉴">
       <ul>
+        <li><a href="#spots">유입 스팟</a></li>
         <li><a href="#solution">솔루션</a></li>
         <li><a href="#insight">고객 인사이트</a></li>
         <li><a href="#metrics">지표</a></li>
@@ -379,6 +417,78 @@ footer .legal{grid-column:1/-1;padding-top:24px;border-top:1px solid var(--line)
     <div class="stat"><b>+3.3<small>%p</small></b><span>처방 적용 후 집품→구매 전환 개선 (파일럿 예시)</span></div>
   </div>
 </div>
+
+<section class="spots" id="spots">
+  <div class="wrap">
+    <span class="eyebrow">Free Preview</span>
+    <h2 class="h2">유입률 좋은 자리는,<br>계약 전에 먼저 보여드립니다.</h2>
+    <p class="lead">브랜드가 우리에게 가장 먼저 묻는 질문은 "어디에 열어야 하나"입니다. 이번 달 롯데 전점에서 유입률이 가장 높았던 스팟 세 곳과 그 평균 유입률을 그대로 공개합니다. 로그인도, 문의도 필요 없습니다.</p>
+    <div class="cards">
+      <article class="spot">
+        <div class="head"><span class="rank">TOP 1</span><span class="cat">뷰티 · 팝업존</span></div>
+        <h3>본점 2F · 에스컬레이터 정면</h3>
+        <div class="rate"><b>9.4</b><span>%</span><small>평균 유입률</small></div>
+        <p class="vs">카테고리 평균 5.2% 대비 <b>1.8배</b></p>
+        <ul class="meta">
+          <li>일 평균 통행 <b>12,400명</b></li>
+          <li>유입 피크 <b>주중 14~17시</b></li>
+        </ul>
+        <div class="lock"><span>구매 전환율</span><b>■ ■ %</b></div>
+      </article>
+      <article class="spot">
+        <div class="head"><span class="rank">TOP 2</span><span class="cat">패션 · 팝업존</span></div>
+        <h3>잠실 에비뉴엘 1F · 정문 리드존</h3>
+        <div class="rate"><b>8.6</b><span>%</span><small>평균 유입률</small></div>
+        <p class="vs">카테고리 평균 5.2% 대비 <b>1.7배</b></p>
+        <ul class="meta">
+          <li>일 평균 통행 <b>18,900명</b></li>
+          <li>유입 피크 <b>주말 12~15시</b></li>
+        </ul>
+        <div class="lock"><span>구매 전환율</span><b>■ ■ %</b></div>
+      </article>
+      <article class="spot">
+        <div class="head"><span class="rank">TOP 3</span><span class="cat">라이프스타일 · 팝업존</span></div>
+        <h3>인천점 3F · 식음 동선 접점</h3>
+        <div class="rate"><b>7.9</b><span>%</span><small>평균 유입률</small></div>
+        <p class="vs">카테고리 평균 5.2% 대비 <b>1.5배</b></p>
+        <ul class="meta">
+          <li>일 평균 통행 <b>7,600명</b></li>
+          <li>유입 피크 <b>주중 저녁 18~20시</b></li>
+        </ul>
+        <div class="lock"><span>구매 전환율</span><b>■ ■ %</b></div>
+      </article>
+    </div>
+
+    <div class="gate">
+      <div class="open">
+        <h4>여기까지는 무료</h4>
+        <ul>
+          <li>유입률 상위 스팟 세 곳과 각각의 <b>평균 유입률</b></li>
+          <li>스팟별 <b>일 평균 통행량 · 시간대 · 요일 패턴</b></li>
+          <li>카테고리 평균 대비 <b>몇 배</b>인지</li>
+        </ul>
+        <p>유입률과 통행량은 <b>공간의 지표</b>입니다. 그 자리를 운영하는 롯데의 데이터이므로 저희가 열 수 있습니다.</p>
+      </div>
+      <div class="shut">
+        <h4>L.GA를 운영하면 열립니다</h4>
+        <ul>
+          <li>그 스팟의 <b>구매 전환율과 객단가</b></li>
+          <li>내 매장에 온 사람 중 <b>신규 비율</b></li>
+          <li>들어왔는데 안 산 사람의 <b>소비 프로파일</b></li>
+          <li><b>집품률 · 체류시간 · 이탈 지점</b></li>
+          <li>다음 팝업 <b>자리 · 시기 처방</b></li>
+        </ul>
+        <p>전환율과 객단가는 그 자리에 있던 <b>브랜드의 성과</b>입니다. 팝업 솔루션 패키지 · 월 구독 · 해당 매장에서 L.GA를 운영할 때만 열립니다.</p>
+        <div class="actions">
+          <a class="btn primary" href="#contact">도입 문의하기 <span class="arrow">→</span></a>
+          <a class="btn ghost" href="#pricing">요금 보기</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="fine">※ 이 페이지의 스팟명과 수치는 예시입니다. 실제 공개 값은 해당 월 실측 데이터로 산출하며, 브랜드 한 곳이 특정되는 전용 구역은 제외하고 복수 브랜드 운영 이력이 있는 구역만 집계합니다.</p>
+  </div>
+</section>
 
 <section class="pain" id="problem">
   <div class="wrap">
