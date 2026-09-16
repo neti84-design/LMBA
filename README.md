@@ -29,6 +29,8 @@
 | [docs/06_action-plan.md](docs/06_action-plan.md) | 발표 전까지 확인·제작해야 할 항목 |
 | [docs/07_business-model-canvas.md](docs/07_business-model-canvas.md) | **비즈니스 모델 캔버스 9블록** — Step 1 가치 전달(01~05) → Step 2 효율적 운영(06~09) |
 | [docs/08_strategy-debate.md](docs/08_strategy-debate.md) | **사업전략 토론** — 롯데마트·롯데백화점의 유일한 가치와 활동 정합성 (포터 프레임) |
+| [docs/09_poster-script.md](docs/09_poster-script.md) | **전지 작성 스크립트** — 토론 1번·2번을 손으로 옮겨 쓸 텍스트 + 발표자 노트 |
+| [deck/poster/lotte-mart-poster.html](deck/poster/lotte-mart-poster.html) | 위 전지의 **실물 비율 시안** (브라우저로 열기) |
 | [docs/financial_model.csv](docs/financial_model.csv) | 손익 추정 원본 데이터 |
 | **[LGA_롯데신사업_발표.pptx](LGA_롯데신사업_발표.pptx)** | **발표용 PPT 14장 + 백업 1장 — BMC 9블록 순서, 전 슬라이드에 대본 노트 포함** |
 | [deck/build.js](deck/build.js) | 위 PPT를 생성하는 스크립트 (문구·수치 수정 후 재생성 가능) |
