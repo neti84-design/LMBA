@@ -28,6 +28,7 @@
 | [docs/05_qna-prep.md](docs/05_qna-prep.md) | 예상 질문 12개와 답변 |
 | [docs/06_action-plan.md](docs/06_action-plan.md) | 발표 전까지 확인·제작해야 할 항목 |
 | [docs/07_business-model-canvas.md](docs/07_business-model-canvas.md) | **비즈니스 모델 캔버스 9블록** — Step 1 가치 전달(01~05) → Step 2 효율적 운영(06~09) |
+| [docs/08_전지_롯데마트_고유가치와_활동정합성.md](docs/08_%EC%A0%84%EC%A7%80_%EB%A1%AF%EB%8D%B0%EB%A7%88%ED%8A%B8_%EA%B3%A0%EC%9C%A0%EA%B0%80%EC%B9%98%EC%99%80_%ED%99%9C%EB%8F%99%EC%A0%95%ED%95%A9%EC%84%B1.md) | **[별도 과제] 롯데마트 전략 진단 전지 작성안** — 고유 가치제안 + 활동 정합성(포터 Fit), 전지 레이아웃·문구·대본 |
 | [docs/financial_model.csv](docs/financial_model.csv) | 손익 추정 원본 데이터 |
 | **[LGA_롯데신사업_발표.pptx](LGA_롯데신사업_발표.pptx)** | **발표용 PPT 14장 + 백업 1장 — BMC 9블록 순서, 전 슬라이드에 대본 노트 포함** |
 | [deck/build.js](deck/build.js) | 위 PPT를 생성하는 스크립트 (문구·수치 수정 후 재생성 가능) |
