@@ -9,7 +9,9 @@
     "build:logo": "node brand/build.js",
     "build:deck": "node deck/build.js",
     "preview:deck": "node deck/preview.js",
-    "build:deck-script": "node deck/build-script.js"
+    "build:deck-script": "node deck/build-script.js",
+    "build:summary": "node docs/md-to-docx.js docs/07_business-summary.md 넛츠_사업정리.docx \"사업 정리\" \"IR 덱 10장 기준 · 2026. 09 개정\"",
+    "build:qna": "node docs/md-to-docx.js docs/08_qna-judges.md 넛츠_예상질문_답변.docx \"심사위원 예상 질문 · 답변\" \"발표 전날 굵은 글씨만 읽으십시오\""
   },
   "dependencies": {
     "docx": "^9.7.1",
