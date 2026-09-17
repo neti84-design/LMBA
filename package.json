@@ -11,5 +11,8 @@
   "dependencies": {
     "docx": "^9.7.1",
     "opentype.js": "^2.0.0"
+  },
+  "devDependencies": {
+    "pptxgenjs": "^4.0.1"
   }
 }
