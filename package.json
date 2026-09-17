@@ -6,7 +6,10 @@
     "build:proposal": "node docs/build-docx.js",
     "build:script": "node docs/build-script-docx.js",
     "build": "npm run build:proposal && npm run build:script",
-    "build:logo": "node brand/build.js"
+    "build:logo": "node brand/build.js",
+    "build:deck": "node deck/build.js",
+    "preview:deck": "node deck/preview.js",
+    "build:deck-script": "node deck/build-script.js"
   },
   "dependencies": {
     "docx": "^9.7.1",
