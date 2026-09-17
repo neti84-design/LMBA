@@ -1,0 +1,13 @@
+{
+  "name": "nowunbooked-proposal",
+  "private": true,
+  "description": "신사업 제안서·발표대본 문서 생성 스크립트",
+  "scripts": {
+    "build:proposal": "node docs/build-docx.js",
+    "build:script": "node docs/build-script-docx.js",
+    "build": "npm run build:proposal && npm run build:script"
+  },
+  "dependencies": {
+    "docx": "^9.7.1"
+  }
+}
