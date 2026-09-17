@@ -2,10 +2,10 @@ const d = require('docx');
 const fs = require('fs');
 const { Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, WidthType,
         ShadingType, BorderStyle, AlignmentType, HeadingLevel, PageBreak, LevelFormat,
-        convertMillimetersToTwip, ImageRun } = d;
+        convertMillimetersToTwip } = d;
 
 const FONT = '맑은 고딕';
-const NAVY = '1F3864', BLUE = '2E5C8A', GREY = '595959', LIGHT = 'F2F5F9', RED = 'B02A2A', SHELL = '3B2314';
+const NAVY = '1F3864', BLUE = '2E5C8A', GREY = '595959', LIGHT = 'F2F5F9', RED = 'B02A2A';
 const MARGIN = convertMillimetersToTwip(18);
 const PAGE_W = 11906;
 const TW = PAGE_W - MARGIN * 2;   // 10,886
@@ -108,13 +108,11 @@ const BREAK = () => new Paragraph({ children: [new PageBreak()] });
 const c = [];
 
 /* 표지 */
-const LOGO = require('path').join(__dirname, '..', 'brand', 'nuts-mark-1024.png');
-c.push(new Paragraph({ children: [], spacing: { after: 1500 } }));
-c.push(new Paragraph({ children: [new ImageRun({ type: 'png', data: fs.readFileSync(LOGO), transformation: { width: 62, height: 101 } })], alignment: AlignmentType.CENTER, spacing: { after: 300 } }));
+c.push(new Paragraph({ children: [], spacing: { after: 2000 } }));
 c.push(new Paragraph({ children: [new TextRun({ text: '10분 발표 대본', font: FONT, size: 22, color: GREY, characterSpacing: 60 })], alignment: AlignmentType.CENTER, spacing: { after: 260 } }));
-c.push(new Paragraph({ children: [new TextRun({ text: '넛츠', font: FONT, size: 84, bold: true, color: SHELL })], alignment: AlignmentType.CENTER, spacing: { after: 120 } }));
+c.push(new Paragraph({ children: [new TextRun({ text: '채움', font: FONT, size: 84, bold: true, color: NAVY })], alignment: AlignmentType.CENTER, spacing: { after: 120 } }));
 c.push(new Paragraph({ children: [new TextRun({ text: '비어 있는 예약 한 자리를, 지금 갈 수 있는 사람에게', font: FONT, size: 24, color: '1A1A1A' })], alignment: AlignmentType.CENTER, spacing: { after: 700 } }));
-c.push(new Paragraph({ children: [new TextRun({ text: '슬라이드 12장  ·  실측 9:16  ·  10:00까지 여유 44초', font: FONT, size: 22, bold: true, color: BLUE })], alignment: AlignmentType.CENTER, spacing: { after: 240 } }));
+c.push(new Paragraph({ children: [new TextRun({ text: '슬라이드 12장  ·  실측 9:00  ·  10:00까지 여유 59초', font: FONT, size: 22, bold: true, color: BLUE })], alignment: AlignmentType.CENTER, spacing: { after: 240 } }));
 c.push(new Paragraph({ children: [new TextRun({ text: '기준 속도 300자/분 (발표용 호흡 포함)', font: FONT, size: 19, color: GREY })], alignment: AlignmentType.CENTER, spacing: { after: 1400 } }));
 c.push(new Paragraph({
   children: [
@@ -130,17 +128,17 @@ c.push(H1('시간 배분'));
 c.push(TBL(['슬라이드', '누적', '분량', '비고'], [
   ['S1 두 사람', '0:00', '1:00', '천천히. 여기서 서두르면 전부 무너집니다'],
   [{ t: '**S2 이 조합이 시장에 없다**', color: RED }, { t: '1:00', color: RED }, { t: '**1:15**', color: RED }, { t: '**가장 중요한 주장. "왜 아직 없나"까지 답할 것**', color: RED }],
-  ['S3 넛츠 — 무엇을 파는가', '2:15', '0:47', ''],
-  [{ t: '**S4 도달 계산 — 내 주변을 진짜 갈 수 있는 곳으로**', color: RED }, { t: '3:02', color: RED }, { t: '**1:12**', color: RED }, { t: '**작동 원리. 애니메이션 타이밍에 맞춰**', color: RED }],
-  ['S5 세 가지 효과', '4:15', '0:28', ''],
-  ['S6 사장님 화면', '4:44', '0:23', ''],
-  ['S7 확장', '5:08', '0:53', ''],
-  ['S8 운영 3원칙', '6:01', '0:38', ''],
-  ['S9 수익 — 언제, 얼마', '6:39', '1:02', '표를 손으로 짚으며'],
-  ['S10 요청', '7:42', '0:20', '또박또박'],
-  ['S11 정면으로 받는 두 가지 지적', '8:03', '0:35', ''],
-  ['S12 클로징 — 두 사람', '8:39', '0:37', '마지막 2초 침묵'],
-  [{ t: '**합계**', color: NAVY }, '', { t: '**9:16**', color: NAVY }, { t: '10:00까지 여유 44초', color: NAVY }],
+  ['S3 채움 — 무엇을 파는가', '2:15', '0:31', ''],
+  [{ t: '**S4 도달 계산 — 내 주변을 진짜 갈 수 있는 곳으로**', color: RED }, { t: '2:46', color: RED }, { t: '**1:12**', color: RED }, { t: '**작동 원리. 애니메이션 타이밍에 맞춰**', color: RED }],
+  ['S5 세 가지 효과', '3:59', '0:28', ''],
+  ['S6 사장님 화면', '4:28', '0:23', ''],
+  ['S7 확장', '4:52', '0:53', ''],
+  ['S8 운영 3원칙', '5:45', '0:38', ''],
+  ['S9 수익 — 언제, 얼마', '6:23', '1:02', '표를 손으로 짚으며'],
+  ['S10 요청', '7:26', '0:20', '또박또박'],
+  ['S11 정면으로 받는 두 가지 지적', '7:47', '0:35', ''],
+  ['S12 클로징 — 두 사람', '8:23', '0:37', '마지막 2초 침묵'],
+  [{ t: '**합계**', color: NAVY }, '', { t: '**9:00**', color: NAVY }, { t: '10:00까지 여유 59초', color: NAVY }],
 ], [3300, 1100, 1100, 5386]));
 c.push(BREAK());
 
@@ -182,13 +180,12 @@ S(2, '이 조합이 시장에 없다', '1:15',
   '빈 칸이 채워지며 → S3',
   '★ 이 슬라이드가 이 발표의 주장입니다. 마감히어로 · 당근 · 네이버예약을 같은 리듬으로 세 번 짚고, "왜 비어 있는가"까지 답하고 넘어가십시오.');
 
-S(3, '넛츠 — 무엇을 파는가', '0:47',
-  '앱 메인 화면 한 장. 내 위치 중심 지도에 빈 슬롯 카드 서너 개. 하단에 한 줄 정의. **로고가 처음 등장하는 슬라이드.**',
-  ['그 자리를 저희가 만들려고 합니다. 이름은 **넛츠**입니다. /',
-   '**심심풀이 땅콩**이라는 말이 있죠. 심심한 시간에, 한 줌, 가볍게. 저희가 파는 게 정확히 그겁니다. /',
+S(3, '채움 — 무엇을 파는가', '0:31',
+  '앱 메인 화면 한 장. 내 위치 중심 지도에 빈 슬롯 카드 서너 개. 하단에 한 줄 정의.',
+  ['그 자리를 저희가 만들려고 합니다. 이름은 **채움**입니다. /',
    '사장님은 오늘 비어버린 한 시간을 올립니다. 정가 사만 원짜리 네일 케어를 이만 사천 원에. /',
    '저는 지금 강남역에 있고 두 시간이 비었습니다. 앱을 열면 **내 주변에서 지금 바로 받을 수 있는 자리들**이 뜹니다. /',
-   '그리고 이 네 글자에 저희가 하는 일이 다 들어 있습니다. Now, Unbooked, Time, Saver. **지금, 예약되지 않은 시간을 살린다.**'],
+   '지금, 내 주변에서, 비어 있는 예약 한 자리를 채운다. **이게 채움입니다.**'],
   '"그런데 여기서 문제가 하나 생깁니다" → S4');
 
 c.push(BREAK());
@@ -196,7 +193,7 @@ S(4, '도달 계산 — 내 주변을 진짜 갈 수 있는 곳으로', '1:12',
   '3단 애니메이션. ① 마감 카운트다운 ② 도보/자전거/차량 버튼 ③ 버튼을 누를 때마다 목록이 바뀌는 장면. **애니메이션에 가장 공을 들일 슬라이드.**',
   ['**내 주변에 있다고 해서, 내가 정말 갈 수 있을까요.** /',
    '마감이 38분 남았는데 걸어서 40분이면, 그건 내 주변에 있어도 **없는 겁니다.** /',
-   '기존 앱들은 거리순으로만 보여줍니다. 1킬로, 2킬로. 제시간에 도착할 수 있는지는 사용자가 알아서 계산해야 합니다. **넛츠는 갈 수 있는 것만 보여줍니다.** /',
+   '기존 앱들은 거리순으로만 보여줍니다. 1킬로, 2킬로. 제시간에 도착할 수 있는지는 사용자가 알아서 계산해야 합니다. **채움은 갈 수 있는 것만 보여줍니다.** /',
    '보시죠. 마감까지 **38분.** 이 숫자는 실시간으로 줄어듭니다. 그리고 버튼이 세 개 있습니다. 도보, 자전거, 차량. 지금 이 가게까지 2.5킬로입니다. /',
    '**도보**를 누르면 38분, 준비 시간까지 43분. 못 갑니다. **화면에서 사라집니다.** /',
    '**자전거**를 누르면 10분. 여유가 23분 남습니다. **보입니다.** /',
@@ -242,7 +239,7 @@ S(8, '운영 3원칙', '0:38',
 c.push(BREAK());
 S(9, '수익 — 언제, 얼마', '1:02',
   '4개년 표(거래액 / 매출 / 영업손익 / 누적)와 꺾은선 하나. **3년차에 0선을 통과하는 지점**을 굵게 표시.',
-  ['**수수료는 첫날부터 받습니다.** 당근은 못 받았죠. 중고 직거래에는 우리를 지나가는 돈이 없으니까요. 넛츠는 선결제라 돈이 지나갑니다. /',
+  ['**수수료는 첫날부터 받습니다.** 당근은 못 받았죠. 중고 직거래에는 우리를 지나가는 돈이 없으니까요. 채움은 선결제라 돈이 지나갑니다. /',
    '그리고 더 중요한 게 있습니다. **사장님이 비교하는 건 정가가 아니라 0원입니다.** 안 팔리면 0원인 슬롯에서 받는 10%는, 뺏는 게 아니라 나누는 겁니다. /',
    '1년차는 강남구에서 입점 400개, 거래액 5억, 매출 3천만 원. 거의 없는 거나 마찬가지입니다. /',
    '2년차에 서울 다섯 개 구로 넓히면 거래액 43억, 매출 4억. /',
@@ -279,7 +276,7 @@ S(12, '클로징 — 두 사람', '0:37',
    '반차를 낸 사람은 오후 두 시에 휴대폰을 엽니다. 자전거를 고릅니다. **12분 거리에 한 자리가 떠 있습니다.** /',
    '그 시간, 취소 전화를 받았던 사장님의 한 시간이 채워집니다. /',
    '두 사람은 여전히 서로를 몰랐습니다. **저희가 그걸 알고 있었을 뿐입니다.** /',
-   '넛츠는 할인 앱이 아닙니다. **버려지는 시간을 거래 가능하게 만드는 인프라입니다.** /',
+   '채움은 할인 앱이 아닙니다. **버려지는 시간을 거래 가능하게 만드는 인프라입니다.** /',
    '감사합니다.'],
   null,
   '"감사합니다" 전에 2초 멈추십시오. "인프라"라는 단어가 착지할 시간을 주십시오.');
@@ -334,8 +331,8 @@ c.push(GAP());
 c.push(NOTE('**답변 원칙** — 지적을 먼저 인정하고("맞는 지적입니다", "정확합니다"), 그다음 설계로 답하십시오. **방어하면 집니다.**'));
 
 const doc = new Document({
-  creator: '넛츠 TF', title: '넛츠 — 10분 발표 대본',
-  description: '슬라이드 12장 · 실측 9:16',
+  creator: '채움 TF', title: '채움 — 10분 발표 대본',
+  description: '슬라이드 12장 · 실측 9:00',
   styles: { default: { document: { run: { font: FONT, size: 22, color: '1A1A1A' } } } },
   numbering: { config: [{ reference: 'bul', levels: [
     { level: 0, format: LevelFormat.BULLET, text: '•', alignment: AlignmentType.LEFT,
@@ -343,4 +340,4 @@ const doc = new Document({
   sections: [{ properties: { page: { size: { width: PAGE_W, height: 16838 },
     margin: { top: MARGIN, bottom: MARGIN, left: MARGIN, right: MARGIN } } }, children: c }],
 });
-Packer.toBuffer(doc).then(b => { fs.writeFileSync(require('path').join(__dirname, '..', '넛츠_발표대본.docx'), b); console.log('written', b.length); });
+Packer.toBuffer(doc).then(b => { fs.writeFileSync(require('path').join(__dirname, '..', '발표대본.docx'), b); console.log('written', b.length); });
