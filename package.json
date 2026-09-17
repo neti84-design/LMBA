@@ -5,9 +5,11 @@
   "scripts": {
     "build:proposal": "node docs/build-docx.js",
     "build:script": "node docs/build-script-docx.js",
-    "build": "npm run build:proposal && npm run build:script"
+    "build": "npm run build:proposal && npm run build:script",
+    "build:logo": "node brand/build.js"
   },
   "dependencies": {
-    "docx": "^9.7.1"
+    "docx": "^9.7.1",
+    "opentype.js": "^2.0.0"
   }
 }
