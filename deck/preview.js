@@ -34,7 +34,10 @@ function toHtml(sh) {
 
 (async () => {
   fs.mkdirSync(OUT, { recursive: true });
-  const browser = await chromium.launch();
+  // 이 환경에는 playwright 가 기대하는 빌드와 다른 크로미움이 깔려 있을 수 있습니다.
+  // CHROMIUM_PATH 로 실행 파일을 직접 지정하면 그걸 씁니다.
+  const exe = process.env.CHROMIUM_PATH;
+  const browser = await chromium.launch(exe ? { executablePath: exe } : {});
   const page = await browser.newPage({ viewport: { width: Math.round(D.W * PX), height: Math.round(D.H * PX) }, deviceScaleFactor: 1 });
   for (let i = 0; i < D.S.length; i++) {
     const s = D.S[i];

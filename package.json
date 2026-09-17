@@ -16,6 +16,7 @@
     "opentype.js": "^2.0.0"
   },
   "devDependencies": {
+    "playwright": "^1.63.0",
     "pptxgenjs": "^4.0.1"
   }
 }

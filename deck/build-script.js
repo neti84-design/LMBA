@@ -10,6 +10,7 @@ const FONT = '맑은 고딕';
 const SHELL = '3B2314', GOLD = '8A6420', GREY = '595959', LIGHT = 'FBF5EA';
 const mmss = (s) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
 const TOTAL = D.S.reduce((a, s) => a + s.secs, 0);
+const TARGET = 300;   // IR 표준 템플릿 배분 합계 5:00 (백업 슬라이드는 0초)
 
 /* 누적 시간 */
 let acc = 0;
@@ -20,8 +21,8 @@ const rows = D.S.map((s, i) => {
 
 /* ---------- 마크다운 ---------- */
 const md = [];
-md.push('# 넛츠 IR 덱 — 10분 발표 대본\n');
-md.push(`> 슬라이드 **${D.S.length}장** · 실측 **${mmss(TOTAL)}** · 10:00까지 여유 **${600 - TOTAL}초**`);
+md.push('# 넛츠 IR 덱 — 발표 대본\n');
+md.push(`> 슬라이드 **${D.S.length}장**(백업 1장 포함) · 실측 **${mmss(TOTAL)}** · IR 표준 배분 ${mmss(TARGET)} 대비 **${TOTAL - TARGET > 0 ? '+' : ''}${TOTAL - TARGET}초**`);
 md.push('> 기준 속도 300자/분(발표용 호흡 포함). **/** 는 한 박자 쉬는 지점, **굵은 글씨**는 힘주어 말할 지점입니다.');
 md.push('> 같은 대본이 PPT 슬라이드 노트에도 그대로 들어 있습니다.\n');
 md.push('| # | 슬라이드 | 누적 | 분량 |');
@@ -39,16 +40,17 @@ md.push('## 시간이 밀릴 때 버릴 순서\n');
 md.push('**S5(시장의 빈칸) · S7(도달 필터) · S11(재무) · S15(요청)는 어떤 경우에도 건드리지 않습니다.**\n');
 md.push('| 순서 | 버릴 것 | 회수 |');
 md.push('|---|---|---|');
-md.push('| 1 | S8의 셋째 항목(광고 트래픽) — S10에서 어차피 다시 나옵니다 | 약 8초 |');
-md.push('| 2 | S9(타깃) 전체 — 질문으로 받아도 됩니다 | 약 30초 |');
-md.push('| 3 | S12(확장)의 3·4단계 설명 한 문장 | 약 12초 |');
-md.push('| 4 | S13의 지적 둘 중 두 번째(자전거) | 약 12초 |');
-md.push(`\n전부 빼면 약 **${mmss(TOTAL - 62)}**.\n`);
+md.push('| 1 | S6(타깃 · 시장 규모)의 타깃 카드 설명 — 질문으로 받아도 됩니다 | 약 8초 |');
+md.push('| 2 | S5(포지셔닝)의 인접 앱 4개 중 당근 · 캐치테이블 | 약 8초 |');
+md.push('| 3 | S8(트랙션)의 지표 타일 설명 한 문장 | 약 8초 |');
+md.push('| 4 | S9(KPI · 로드맵)의 3단계 설명 | 약 10초 |');
+md.push(`\n전부 빼면 약 **${mmss(TOTAL - 34)}**.\n`);
 md.push('## 전달 지침\n');
-md.push('- **S2·S3은 사진을 먼저 3초 보여주고** 말을 시작하십시오. 두 사람의 표정이 곧 문제 정의입니다.');
-md.push('- **S5에서 서두르지 마십시오.** 이 발표의 주장은 "합쳐진 칸만 비어 있다"입니다.');
-md.push('- **S7은 숫자를 손으로 짚으며.** 38분 · 43분 · 10분 세 숫자만 또렷하면 됩니다.');
-md.push('- **S11은 3년차 열 하나만** 짚으십시오. 나머지는 질문으로 받습니다.');
+md.push('- **S2는 사진 두 장을 먼저 3초 보여주고** 말을 시작하십시오. 두 사람의 표정이 곧 문제 정의입니다.');
+md.push('- **S3의 도달 가능성 필터는 한 문장으로만.** 중요한 장치지만 코어가 아니라고 분명히 말하고 넘어가십시오.');
+md.push('- **S4에서 한 문장 정의를 그대로 읽으십시오.** 이 발표에서 외워 갈 문장은 그것 하나입니다.');
+md.push('- **S7은 3%를 두 번 말하십시오.** 사장님이 비교하는 건 정가가 아니라 0원이라는 말과 함께.');
+md.push('- **S13은 백업**입니다. 질문을 받으면 엽니다.');
 md.push('- 마지막 문장 뒤에는 **2초 침묵**.');
 fs.writeFileSync(path.join(__dirname, '..', 'docs', '06_ir-pitch-10min.md'), md.join('\n') + '\n');
 
@@ -79,7 +81,7 @@ const c = [];
 c.push(new Paragraph({ children: [], spacing: { after: 1200 } }));
 c.push(new Paragraph({ children: [new TextRun({ text: 'IR 덱 발표 대본', font: FONT, size: 22, color: GREY, characterSpacing: 60 })], alignment: AlignmentType.CENTER, spacing: { after: 240 } }));
 c.push(new Paragraph({ children: [new TextRun({ text: '넛츠', font: FONT, size: 80, bold: true, color: SHELL })], alignment: AlignmentType.CENTER, spacing: { after: 160 } }));
-c.push(new Paragraph({ children: [new TextRun({ text: `슬라이드 ${D.S.length}장  ·  실측 ${mmss(TOTAL)}  ·  10:00까지 여유 ${600 - TOTAL}초`, font: FONT, size: 22, bold: true, color: GOLD })], alignment: AlignmentType.CENTER, spacing: { after: 200 } }));
+c.push(new Paragraph({ children: [new TextRun({ text: `슬라이드 ${D.S.length}장  ·  실측 ${mmss(TOTAL)}  ·  IR 표준 배분 ${mmss(TARGET)}`, font: FONT, size: 22, bold: true, color: GOLD })], alignment: AlignmentType.CENTER, spacing: { after: 200 } }));
 c.push(new Paragraph({ children: [new TextRun({ text: '기준 속도 300자/분 (발표용 호흡 포함)  ·  / 는 한 박자 쉬는 지점', font: FONT, size: 19, color: GREY })], alignment: AlignmentType.CENTER, spacing: { after: 1400 } }));
 c.push(new Paragraph({ children: [new PageBreak()] }));
 
@@ -116,7 +118,7 @@ rows.forEach((r, i) => {
 });
 
 const doc = new Document({
-  creator: '넛츠 TF', title: '넛츠 IR 덱 — 10분 발표 대본', description: `슬라이드 ${D.S.length}장 · 실측 ${mmss(TOTAL)}`,
+  creator: '넛츠 TF', title: '넛츠 IR 덱 — 발표 대본', description: `슬라이드 ${D.S.length}장 · 실측 ${mmss(TOTAL)}`,
   styles: { default: { document: { run: { font: FONT, size: 22, color: '1A1A1A' } } } },
   sections: [{ properties: { page: { size: { width: 11906, height: 16838 }, margin: {
     top: convertMillimetersToTwip(22), bottom: convertMillimetersToTwip(22),
