@@ -51,6 +51,7 @@
 | **[넛츠_예상질문_답변.docx](넛츠_예상질문_답변.docx)** | **심사위원 예상 질문 28개와 답변** — 30초 답 + 근거 · 원본 [docs/08_qna-judges.md](docs/08_qna-judges.md) |
 | **[넛츠_심사피드백_정리.docx](넛츠_심사피드백_정리.docx)** | **발표 현장 피드백 8건** — 질문자의 의도 · 그때 답의 문제 · 다시 답한다면 · 다음까지 할 일 · 원본 [docs/09_review-feedback.md](docs/09_review-feedback.md) |
 | [deck/](deck/) | 덱 생성기 — 내용·좌표 한 곳에서 PPT·대본·미리보기를 뽑습니다 |
+| [research/](research/) | **현장 조사 도구** — 관찰 기록 폼 · 사장님 설문 폼을 만드는 구글 Apps Script + 관찰 프로토콜 |
 
 ---
 
