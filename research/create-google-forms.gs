@@ -40,8 +40,6 @@ function 전체생성() {
   var f1 = 관찰기록폼만들기(ss);
   var f2 = 사장님설문폼만들기(ss);
 
-  안내시트만들기(ss, f1, f2);
-
   var msg = [
     '',
     '===== 생성 완료 =====',
@@ -60,7 +58,16 @@ function 전체생성() {
     '링크는 스프레드시트의 "안내" 탭에도 적어 두었습니다.',
     '',
   ].join('\n');
+
+  // 링크는 먼저 찍는다. 뒤에서 무슨 일이 생겨도 이건 남는다.
   Logger.log(msg);
+
+  // 안내 시트는 있으면 편한 것일 뿐이라, 실패해도 폼까지 버리지 않는다.
+  try {
+    안내시트만들기(ss, f1, f2);
+  } catch (e) {
+    Logger.log('안내 시트를 쓰는 중 문제가 있었습니다. 폼과 스프레드시트는 정상입니다: ' + e);
+  }
   return msg;
 }
 
@@ -139,8 +146,8 @@ function 미리채운링크(f1) {
   TEAM.forEach(function (name) {
     ROUNDS.forEach(function (round) {
       var r = f1.form.createResponse();
-      r.withItemResponse(f1.기록자.asListItem().createResponse(name));
-      r.withItemResponse(f1.회차.asMultipleChoiceItem().createResponse(round));
+      r.withItemResponse(f1.기록자.createResponse(name));
+      r.withItemResponse(f1.회차.createResponse(round));
       rows.push([name, round, r.toPrefilledUrl()]);
     });
   });
