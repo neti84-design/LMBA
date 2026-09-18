@@ -5,7 +5,7 @@
  * 아래 두 개가 본인 구글 드라이브에 생성됩니다.
  *
  *   ① 관찰 기록 폼   — 팀원 6명이 매일 3회 네이버 예약 잔여 슬롯을 찍는 폼
- *   ② 사장님 설문 폼 — 인스타 DM 으로 보낼 3분 설문 (로그인 없이 응답)
+ *   ② 사장님 설문 폼 — 인스타 DM 으로 보낼 17문항 설문 (로그인 없이 응답, 1~2분)
  *
  * 두 폼의 응답은 모두 "넛츠 현장조사 응답" 스프레드시트 한 곳에 모입니다.
  * 실행한 계정이 소유자가 되므로, 응답도 그 계정으로 들어옵니다.
@@ -27,7 +27,7 @@ var SHOP_COUNT = 50;
 
 var SHEET_NAME = '넛츠 현장조사 응답';
 var FORM1_TITLE = '넛츠 · 관찰 기록 (네이버 예약 잔여 슬롯)';
-var FORM2_TITLE = '넛츠 · 예약 공실 관련 설문 (사장님용)';
+var FORM2_TITLE = '예약 취소 · 공실 시간에 대한 사장님 설문 (1~2분)';
 
 /* ────────────────────────────────────────────────────────────
    실행 — 이 함수 하나만 돌리면 됩니다
@@ -151,88 +151,283 @@ function 미리채운링크(f1) {
    ② 사장님 설문 폼 (인스타 DM 발송용)
    ──────────────────────────────────────────────────────────── */
 
+/** 소속을 적으면 응답률이 눈에 띄게 올라갑니다.
+ *  다만 회사를 대표하는 사업으로 오인되지 않도록, 과정·과제임이 드러나게 적으십시오. */
+var 소속 = '롯데그룹 신사업 과정 17조';
+
 function 사장님설문폼만들기(ss) {
   var form = FormApp.create(FORM2_TITLE);
 
   form.setDescription(
     [
-      '안녕하세요 원장님. 롯데 MBA 과정에서 "예약 서비스업의 비는 시간"을 주제로 연구 중인 학생입니다.',
+      '안녕하세요, 원장님.',
       '',
-      '영업이나 홍보 목적이 전혀 아니며, 답변은 익명으로 처리해 과제 발표에만 사용합니다.',
-      '문항은 8개, 1~2분이면 끝납니다. 로그인 없이 바로 응답하실 수 있습니다.',
+      '저희는 ' + 소속 + '에서 강남구의 예약 기반 서비스 업종을 대상으로',
+      '새로운 서비스를 준비하고 있는 팀입니다.',
       '',
-      '끝까지 답해 주신 분께는 작은 기프티콘을 보내드리고, 원하시면 결과 요약본도 보내드립니다.',
+      '갑작스러운 노쇼나 당일 취소, 그리고 손님이 뜸한 낮 시간대처럼',
+      '그냥 흘려보내게 되는 시간을, 지금 근처에서 바로 갈 수 있는 손님과',
+      '연결해 드리는 앱을 만들고자 합니다.',
+      '',
+      '· 비어버린 자리를 올리시면, 30분 안에 도착할 수 있는 손님에게만 보입니다',
+      '· 정가보다 낮은 가격으로 그 자리에서 바로 예약과 결제가 이뤄집니다',
+      '· 리뷰가 좋은 우수 사업자께는 앱이 쿠폰을 지원해 드릴 계획입니다',
+      '',
+      '다만 이 서비스가 정말 필요한 것인지, 먼저 현장에서 여쭙는 것이 순서라고 생각했습니다.',
+      '그래서 원장님께 여쭙습니다.',
+      '',
+      '문항은 17개이고 대부분 고르기만 하시면 되어 1~2분이면 충분합니다.',
+      '답변은 익명으로 처리되며 통계 목적 외에는 사용하지 않습니다. 로그인도 필요 없습니다.',
+      '',
+      '바쁘신 중에 시간 내어 주셔서 진심으로 감사드립니다.',
+      '끝까지 답해 주신 분께는 작은 기프티콘을 보내드리고,',
+      '원하시면 강남 지역 동종 업계 응답을 정리한 결과 요약본도 보내드리겠습니다.',
     ].join('\n')
   );
 
   기본설정(form);
   form.setConfirmationMessage(
-    '답변 감사합니다. 기프티콘은 영업일 기준 3일 안에 보내드리겠습니다.\n연락처는 발송 후 폐기합니다.'
+    [
+      '소중한 답변 감사드립니다.',
+      '',
+      '기프티콘은 영업일 기준 3일 안에 보내드리겠습니다.',
+      '남겨 주신 연락처는 발송 후 폐기합니다.',
+      '',
+      '원장님의 답변이 저희에게 큰 도움이 됩니다. 감사합니다.',
+    ].join('\n')
   );
+
+  /* ── 1. 매장에 대해 ─────────────────────────────── */
+  form
+    .addSectionHeaderItem()
+    .setTitle('1. 매장에 대해 여쭙겠습니다')
+    .setHelpText('통계를 나누는 데만 씁니다. 매장을 특정하지 않습니다.');
 
   form
     .addMultipleChoiceItem()
-    .setTitle('1. 운영하시는 업종은 무엇인가요?')
+    .setTitle('Q1. 운영하시는 업종은 무엇인가요?')
     .setChoiceValues(['네일 · 페디큐어', '속눈썹 · 왁싱', '헤어', '마사지 · 스파', '피부관리 · 에스테틱'])
     .showOtherOption(true)
     .setRequired(true);
 
   form
     .addMultipleChoiceItem()
-    .setTitle('2. 지난 한 달, 당일 예약 취소가 대략 몇 건이었나요?')
-    .setHelpText('정확하지 않아도 괜찮습니다. 감으로 답해 주세요.')
-    .setChoiceValues(['0건', '1~3건', '4~10건', '11~20건', '21건 이상'])
+    .setTitle('Q2. 매장 규모는 어떻게 되시나요?')
+    .setChoiceValues(['원장님 혼자 (1인샵)', '2~3인', '4인 이상'])
     .setRequired(true);
 
   form
-    .addMultipleChoiceItem()
-    .setTitle('3. 하루 평균, 예약이 차지 않아 비는 시간이 얼마나 되나요?')
-    .setChoiceValues(['거의 없음', '1시간 이하', '1~3시간', '3~5시간', '5시간 이상'])
-    .setRequired(true);
-
-  form
-    .addMultipleChoiceItem()
-    .setTitle('4. 그렇게 비어버린 자리를 30~40% 할인해서라도 채울 생각이 있으신가요?')
-    .setChoiceValues(['예, 채우고 싶습니다', '조건이 맞으면 가능합니다', '아니요, 생각 없습니다'])
-    .setRequired(true);
-
-  form
-    .addParagraphTextItem()
-    .setTitle('5. 4번에서 "조건부" 또는 "아니요"를 고르셨다면, 이유나 조건을 알려주세요.')
-    .setHelpText('이 답이 저희에게 가장 도움이 됩니다. 한 줄이면 충분합니다.');
-
-  form
-    .addMultipleChoiceItem()
-    .setTitle('6. "기존 단골에게는 그 할인 자리가 보이지 않는다"면, 결정이 달라지시나요?')
+    .addCheckboxItem()
+    .setTitle('Q3. 예약은 주로 어디로 받으시나요? (복수 선택 가능)')
     .setChoiceValues([
-      '네, 그게 조건입니다',
-      '조금 낫지만 결정적이진 않습니다',
-      '상관없습니다',
+      '전화',
+      '인스타그램 DM',
+      '네이버 예약',
+      '카카오톡 채널',
+      '캐치테이블 등 예약 앱',
+      '따로 예약 없이 방문 순서대로',
+    ])
+    .showOtherOption(true)
+    .setRequired(true);
+
+  /* ── 2. 노쇼와 당일 취소 (핵심) ───────────────────── */
+  form
+    .addSectionHeaderItem()
+    .setTitle('2. 노쇼와 당일 취소에 대해 여쭙겠습니다')
+    .setHelpText(
+      [
+        '저희가 가장 궁금한 부분입니다.',
+        '정확한 숫자가 아니어도 괜찮습니다. 대략의 감으로 적어 주시면 충분합니다.',
+        '',
+        '예) 일주일에 30건쯤 받는데 노쇼가 2건, 당일 취소가 4건 정도 → 30 / 2 / 4',
+      ].join('\n')
+    );
+
+  var 숫자만 = FormApp.createTextValidation()
+    .setHelpText('숫자만 적어 주세요 (0 도 괜찮습니다)')
+    .requireNumberGreaterThanOrEqualTo(0)
+    .build();
+
+  form
+    .addTextItem()
+    .setTitle('Q4. 일주일에 예약을 대략 몇 건쯤 받으시나요?')
+    .setHelpText('숫자만 적어 주세요. 예) 30')
+    .setValidation(숫자만)
+    .setRequired(true);
+
+  form
+    .addTextItem()
+    .setTitle('Q5. 그중 노쇼 — 예약해 놓고 연락 없이 안 오시는 경우는 몇 건인가요?')
+    .setHelpText('일주일 기준입니다. 없으시면 0 을 적어 주세요.')
+    .setValidation(숫자만)
+    .setRequired(true);
+
+  form
+    .addTextItem()
+    .setTitle('Q6. 그중 당일 취소 — 당일에 연락 주고 취소하시는 경우는 몇 건인가요?')
+    .setHelpText('일주일 기준입니다. 없으시면 0 을 적어 주세요.')
+    .setValidation(숫자만)
+    .setRequired(true);
+
+  form
+    .addCheckboxItem()
+    .setTitle('Q7. 예약이 잘 차지 않는 시간대는 언제인가요? (복수 선택 가능)')
+    .setChoiceValues([
+      '평일 오전',
+      '평일 점심~오후',
+      '평일 저녁',
+      '주말 오전',
+      '주말 오후~저녁',
+      '특별히 비는 시간대는 없습니다',
+    ])
+    .setRequired(true);
+
+  form
+    .addCheckboxItem()
+    .setTitle('Q8. 지금은 자리가 갑자기 비면 어떻게 하시나요? (복수 선택 가능)')
+    .setChoiceValues([
+      '그냥 비워 둡니다',
+      '인스타그램 · SNS 에 올립니다',
+      '단골 손님께 직접 연락드립니다',
+      '워크인(예약 없이 오시는 손님)을 기다립니다',
+      '다른 업무나 휴식 시간으로 씁니다',
+    ])
+    .showOtherOption(true)
+    .setRequired(true);
+
+  /* ── 3. 서비스 이용 의향 ─────────────────────────── */
+  form
+    .addSectionHeaderItem()
+    .setTitle('3. 이런 서비스라면 어떠실지 여쭙겠습니다')
+    .setHelpText(
+      [
+        '다시 한번 정리해 드리면 이런 서비스입니다.',
+        '',
+        '비어버린 자리를 올리시면 → 30분 안에 도착할 수 있는 손님에게만 보이고',
+        '→ 정가보다 낮은 가격에 그 자리에서 바로 예약·결제가 이뤄집니다.',
+        '',
+        '편하신 대로 솔직하게 답해 주시면 저희에게 가장 도움이 됩니다.',
+      ].join('\n')
+    );
+
+  form
+    .addMultipleChoiceItem()
+    .setTitle('Q9. 그냥 두면 0원이 될 자리를, 정가보다 조금 낮은 가격에라도 채우실 의향이 있으신가요?')
+    .setChoiceValues([
+      '네, 채우고 싶습니다',
+      '조건이 맞으면 해보겠습니다',
+      '아니요, 생각이 없습니다',
     ])
     .setRequired(true);
 
   form
     .addMultipleChoiceItem()
-    .setTitle('7. 지금 매장에서 쓰시는 예약 · 결제 · 정산 앱은 몇 개인가요?')
-    .setChoiceValues(['없음', '1~2개', '3~4개', '5개 이상'])
+    .setTitle('Q10. 가능하시다면, 할인은 어느 정도까지 생각해 보실 수 있을까요?')
+    .setChoiceValues([
+      '할인 없이 정가만',
+      '10% 정도',
+      '20% 정도',
+      '30% 정도',
+      '40% 이상도 가능',
+    ])
     .setRequired(true);
 
   form
     .addMultipleChoiceItem()
-    .setTitle('8. 앱을 새로 설치하지 않고, 문자 한 줄로 빈 자리를 올릴 수 있다면 해보실 의향이 있나요?')
-    .setHelpText('예) "오늘 3시 비었음" 이라고 회신하면 등록되는 방식')
-    .setChoiceValues(['해보겠습니다', '잘 모르겠습니다', '하지 않겠습니다'])
+    .setTitle('Q11. 자리가 비었을 때, 최소 몇 분 뒤에 오시는 손님부터 받으실 수 있나요?')
+    .setHelpText('정리·세팅에 걸리는 시간을 포함해서요.')
+    .setChoiceValues(['바로 가능합니다', '30분 뒤부터', '1시간 뒤부터', '2시간 이상은 필요합니다'])
+    .setRequired(true);
+
+  form
+    .addMultipleChoiceItem()
+    .setTitle('Q12. 기존 단골 손님께는 그 할인 자리가 보이지 않는다면, 결정이 달라지실까요?')
+    .setHelpText('단골 손님이 정가를 내지 않게 되는 일은 저희도 막고 싶습니다.')
+    .setChoiceValues([
+      '네, 그게 꼭 필요한 조건입니다',
+      '조금 낫지만 결정적이지는 않습니다',
+      '상관없습니다',
+    ])
+    .setRequired(true);
+
+  form
+    .addParagraphTextItem()
+    .setTitle('Q13. Q9에서 "조건부" 또는 "아니요"를 고르셨다면, 그 이유나 조건을 알려주실 수 있을까요?')
+    .setHelpText('이 답변이 저희에게 가장 큰 도움이 됩니다. 한 줄이면 충분합니다.');
+
+  /* ── 4. 입점 조건 ───────────────────────────────── */
+  form
+    .addSectionHeaderItem()
+    .setTitle('4. 입점 조건에 대해 여쭙겠습니다')
+    .setHelpText(
+      [
+        '입점비와 월 구독료는 받지 않을 계획입니다.',
+        '실제로 매출이 일어났을 때만 매출의 3%를 수수료로 받으려 합니다.',
+        '리뷰가 좋은 우수 사업자께는 앱이 쿠폰을 지원해 드릴 예정입니다.',
+      ].join('\n')
+    );
+
+  form
+    .addMultipleChoiceItem()
+    .setTitle('Q14. 입점비 0원, 매출의 3% 수수료 조건이라면 사업자로 등록해 보실 의향이 있으신가요?')
+    .setChoiceValues([
+      '네, 등록하겠습니다',
+      '조건을 좀 더 보고 정하겠습니다',
+      '아니요, 등록하지 않겠습니다',
+    ])
+    .setRequired(true);
+
+  form
+    .addMultipleChoiceItem()
+    .setTitle('Q15. 솔직히 여쭙습니다. 수수료가 몇 %까지면 받아들일 만하신가요?')
+    .setChoiceValues(['3%', '5%', '7%', '10%', '수수료를 받는다면 쓰지 않겠습니다'])
+    .setRequired(true);
+
+  form
+    .addMultipleChoiceItem()
+    .setTitle('Q16. 입점을 정하실 때 가장 크게 영향을 주는 것 하나를 고른다면 무엇일까요?')
+    .setChoiceValues([
+      '수수료가 얼마인가',
+      '새로운 손님이 실제로 오는가',
+      '단골에게 안 보이는 것이 보장되는가',
+      '쿠폰 · 프로모션을 지원해 주는가',
+      '정산이 편한가',
+    ])
+    .setRequired(true);
+
+  form
+    .addMultipleChoiceItem()
+    .setTitle('Q17. 앱을 새로 설치하지 않고, 문자 한 줄로 빈 자리를 올릴 수 있다면 어떠실까요?')
+    .setHelpText('예) "오늘 3시 비었어요" 라고 회신하시면 등록되는 방식입니다.')
+    .setChoiceValues(['그 방식이면 해보겠습니다', '잘 모르겠습니다', '그래도 하지 않겠습니다'])
+    .setRequired(true);
+
+  /* ── 5. 마무리 ──────────────────────────────────── */
+  form
+    .addSectionHeaderItem()
+    .setTitle('5. 마지막입니다. 감사합니다')
+    .setHelpText('아래 세 문항은 모두 선택이며, 적지 않으셔도 응답은 제출됩니다.');
+
+  form
+    .addParagraphTextItem()
+    .setTitle('혹시 저희에게 더 해주고 싶으신 말씀이 있으실까요?')
+    .setHelpText('쓴소리도 감사히 듣겠습니다.');
+
+  form
+    .addMultipleChoiceItem()
+    .setTitle('추후 10분 정도 통화로 조금 더 여쭤봐도 괜찮으실까요?')
+    .setChoiceValues(['네, 괜찮습니다', '아니요, 어렵습니다'])
     .setRequired(true);
 
   form
     .addTextItem()
     .setTitle('기프티콘 받으실 휴대폰 번호 (선택)')
-    .setHelpText('기프티콘 발송에만 쓰고 발송 후 폐기합니다. 적지 않으셔도 응답은 제출됩니다.');
+    .setHelpText('기프티콘 발송에만 사용하고 발송 후 폐기합니다.');
 
   form
     .addTextItem()
-    .setTitle('결과 요약본을 받으실 이메일 (선택)')
-    .setHelpText('동종 업계 응답을 정리해 보내드립니다.');
+    .setTitle('결과 요약본 받으실 이메일 (선택)')
+    .setHelpText('강남 지역 동종 업계 응답을 정리해 보내드립니다.');
 
   form.setDestination(FormApp.DestinationType.SPREADSHEET, ss.getId());
   return form;
