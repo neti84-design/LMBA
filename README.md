@@ -49,6 +49,7 @@
 | **[넛츠_IR덱_대본.docx](넛츠_IR덱_대본.docx)** | 위 덱의 **발표 대본** (실측 5:00) · 마크다운판 [docs/06_ir-pitch-10min.md](docs/06_ir-pitch-10min.md) |
 | **[넛츠_사업정리.docx](넛츠_사업정리.docx)** | **사업 전체 정리** — 개정 덱 기준 요약·시장·BM·재무 재산정·리스크·**롯데 관점**·부록(뺀 슬라이드 보존) · 원본 [docs/07_business-summary.md](docs/07_business-summary.md) |
 | **[넛츠_예상질문_답변.docx](넛츠_예상질문_답변.docx)** | **심사위원 예상 질문 28개와 답변** — 30초 답 + 근거 · 원본 [docs/08_qna-judges.md](docs/08_qna-judges.md) |
+| **[넛츠_심사피드백_정리.docx](넛츠_심사피드백_정리.docx)** | **발표 현장 피드백 8건** — 질문자의 의도 · 그때 답의 문제 · 다시 답한다면 · 다음까지 할 일 · 원본 [docs/09_review-feedback.md](docs/09_review-feedback.md) |
 | [deck/](deck/) | 덱 생성기 — 내용·좌표 한 곳에서 PPT·대본·미리보기를 뽑습니다 |
 
 ---
@@ -94,6 +95,7 @@ npm install
 npm run build          # 제안서 + 발표대본 둘 다
 npm run build:deck && npm run build:deck-script   # IR 덱 + 덱 대본
 npm run build:summary && npm run build:qna        # 사업정리 + 예상질문 답변
+npm run build:feedback                            # 심사 피드백 정리
 ```
 
 `넛츠_사업정리.docx` 와 `넛츠_예상질문_답변.docx` 는 `docs/07_*.md` · `docs/08_*.md` 가 원본이고,
