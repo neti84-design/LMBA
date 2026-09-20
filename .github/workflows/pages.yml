@@ -4,7 +4,7 @@ name: Deploy NUTS app
 
 on:
   push:
-    branches: [main, claude/confident-ride-gqw2hh]
+    branches: [main, claude/lotte-new-business-pitch-0kqfnn, claude/confident-ride-gqw2hh]
     paths: ["nuts-app/**", ".github/workflows/pages.yml"]
   workflow_dispatch:
 
